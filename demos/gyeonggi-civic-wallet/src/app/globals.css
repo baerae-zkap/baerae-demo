@@ -1,0 +1,138 @@
+@import "tailwindcss";
+
+:root {
+  --color-primary: #0F172A;
+  --color-secondary: #334155;
+  --color-cta: #2D5BA8;
+  --color-cta-hover: #254D8F;
+  --color-bg: #F8FAFC;
+  --color-bg-card: #FFFFFF;
+  --color-text: #020617;
+  --color-text-secondary: #475569;
+  --color-text-tertiary: #64748B;
+  --color-border: #E2E8F0;
+  --color-divider: #F1F5F9;
+  --color-success: #059669;
+  --color-success-bg: #ECFDF5;
+  --color-warning: #D97706;
+  --color-warning-bg: #FFFBEB;
+  --color-error: #DC2626;
+  --color-error-bg: #FEF2F2;
+  --color-badge-recommend: #0369A1;
+  --color-badge-recommend-bg: #E0F2FE;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-md: 0 2px 8px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+@theme inline {
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
+  --color-cta: var(--color-cta);
+  --color-cta-hover: var(--color-cta-hover);
+  --color-bg: var(--color-bg);
+  --color-bg-card: var(--color-bg-card);
+  --color-text: var(--color-text);
+  --color-text-secondary: var(--color-text-secondary);
+  --color-text-tertiary: var(--color-text-tertiary);
+  --color-border: var(--color-border);
+  --color-divider: var(--color-divider);
+  --color-success: var(--color-success);
+  --color-success-bg: var(--color-success-bg);
+  --color-warning: var(--color-warning);
+  --color-warning-bg: var(--color-warning-bg);
+  --color-error: var(--color-error);
+  --color-error-bg: var(--color-error-bg);
+  --color-badge-recommend: var(--color-badge-recommend);
+  --color-badge-recommend-bg: var(--color-badge-recommend-bg);
+  --font-sans: var(--font-noto-sans-kr), 'Noto Sans KR', sans-serif;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-noto-sans-kr), 'Noto Sans KR', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Mobile app frame */
+.app-frame {
+  max-width: 430px;
+  margin: 0 auto;
+  min-height: 100dvh;
+  position: relative;
+  background: var(--color-bg);
+}
+
+@media (min-width: 431px) {
+  body {
+    background: #E2E8F0;
+  }
+  .app-frame {
+    box-shadow: 0 0 40px rgba(0,0,0,0.1);
+  }
+}
+
+/* Safe area for bottom nav (tab bar 56 + FAB overlap) */
+.pb-safe {
+  padding-bottom: calc(180px + env(safe-area-inset-bottom, 0px));
+}
+
+/* Smooth page transitions */
+.page-enter {
+  animation: fadeIn 200ms ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-enter {
+    animation: none;
+  }
+}
+
+/* Timeline pulse animation */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.2;
+  }
+  50% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.2;
+  }
+}
+
+/* Bottom sheet slide up */
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.sheet-enter {
+  animation: slideUp 300ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+/* Savings celebration */
+@keyframes savingsBounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.savings-celebrate {
+  animation: savingsBounce 600ms ease-out;
+}
+
+/* Skeleton shimmer (enhancement) */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
