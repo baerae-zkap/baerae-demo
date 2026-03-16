@@ -24,6 +24,19 @@ jobs:
         with:
           node-version: 20
 
+      - name: Patch basePaths for GitHub Pages
+        run: |
+          # Wallet: /gyeonggi-civic-wallet-demo → /baerae-demo/gyeonggi-civic-wallet-demo
+          sed -i 's|basePath: "/gyeonggi-civic-wallet-demo"|basePath: "/baerae-demo/gyeonggi-civic-wallet-demo"|' demos/gyeonggi-civic-wallet/next.config.ts
+          # Also patch hardcoded asset paths in source
+          find demos/gyeonggi-civic-wallet/src -type f \( -name "*.ts" -o -name "*.tsx" \) -exec sed -i 's|/gyeonggi-civic-wallet-demo/|/baerae-demo/gyeonggi-civic-wallet-demo/|g' {} +
+
+          # ZKAP: /zkap-app → /baerae-demo/zkap-app
+          sed -i 's|basePath: "/zkap-app"|basePath: "/baerae-demo/zkap-app"|' demos/zkap-app/next.config.mjs
+          # Also patch hardcoded image paths
+          find demos/zkap-app/src -type f \( -name "*.js" -o -name "*.jsx" \) -exec sed -i 's|"/zkap-app/|"/baerae-demo/zkap-app/|g' {} +
+          find demos/zkap-app/src -type f \( -name "*.js" -o -name "*.jsx" \) -exec sed -i "s|'/zkap-app/|'/baerae-demo/zkap-app/|g" {} +
+
       - name: Build landing
         working-directory: landing
         run: npm install && npm run build
@@ -38,22 +51,18 @@ jobs:
 
       - name: Assemble dist
         run: |
-          mkdir -p dist/baerae-demo
-          cp -R landing/out/* dist/baerae-demo/
+          mkdir -p dist
+          cp -R landing/out/* dist/
           mkdir -p dist/gyeonggi-civic-wallet-demo
           cp -R demos/gyeonggi-civic-wallet/out/* dist/gyeonggi-civic-wallet-demo/
           mkdir -p dist/zkap-app
           cp -R demos/zkap-app/out/* dist/zkap-app/
-
-          # Redirect root to landing
-          echo '<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0;url=/baerae-demo/"></head><body></body></html>' > dist/index.html
 
           # Inject home button on demo pages
           HOME_BTN='<div id="baerae-home-btn" style="position:fixed;bottom:24px;right:24px;z-index:99999"><a href="/baerae-demo/" style="display:flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;background:rgba(0,0,0,0.65);box-shadow:0 2px 12px rgba(0,0,0,0.2);text-decoration:none;backdrop-filter:blur(8px)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></a></div>'
           find dist/gyeonggi-civic-wallet-demo -name "*.html" -exec sed -i "s|</body>|${HOME_BTN}</body>|" {} +
           find dist/zkap-app -name "*.html" -exec sed -i "s|</body>|${HOME_BTN}</body>|" {} +
 
-          # .nojekyll for GitHub Pages
           touch dist/.nojekyll
 
       - uses: actions/upload-pages-artifact@v3
