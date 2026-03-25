@@ -37,6 +37,11 @@ jobs:
           find demos/zkap-app/src -type f \( -name "*.js" -o -name "*.jsx" \) -exec sed -i 's|"/zkap-app/|"/baerae-demo/zkap-app/|g' {} +
           find demos/zkap-app/src -type f \( -name "*.js" -o -name "*.jsx" \) -exec sed -i "s|'/zkap-app/|'/baerae-demo/zkap-app/|g" {} +
 
+          # ZKAP Coin Detail: /zkap-coin-detail → /baerae-demo/zkap-coin-detail
+          sed -i 's|basePath: "/zkap-coin-detail"|basePath: "/baerae-demo/zkap-coin-detail"|' demos/zkap-coin-detail/next.config.mjs
+          find demos/zkap-coin-detail/src -type f \( -name "*.js" -o -name "*.jsx" \) -exec sed -i 's|"/zkap-coin-detail/|"/baerae-demo/zkap-coin-detail/|g' {} +
+          find demos/zkap-coin-detail/src -type f \( -name "*.js" -o -name "*.jsx" \) -exec sed -i "s|'/zkap-coin-detail/|'/baerae-demo/zkap-coin-detail/|g" {} +
+
       - name: Build landing
         working-directory: landing
         run: npm install && npm run build
@@ -49,6 +54,10 @@ jobs:
         working-directory: demos/zkap-app
         run: npm install && npm run build
 
+      - name: Build zkap-coin-detail
+        working-directory: demos/zkap-coin-detail
+        run: npm install && npm run build
+
       - name: Assemble dist
         run: |
           mkdir -p dist
@@ -57,11 +66,14 @@ jobs:
           cp -R demos/gyeonggi-civic-wallet/out/* dist/gyeonggi-civic-wallet-demo/
           mkdir -p dist/zkap-app
           cp -R demos/zkap-app/out/* dist/zkap-app/
+          mkdir -p dist/zkap-coin-detail
+          cp -R demos/zkap-coin-detail/out/* dist/zkap-coin-detail/
 
           # Inject home button on demo pages
           HOME_BTN='<div id="baerae-home-btn" style="position:fixed;bottom:24px;right:24px;z-index:99999"><a href="/baerae-demo/" style="display:flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;background:rgba(0,0,0,0.65);box-shadow:0 2px 12px rgba(0,0,0,0.2);text-decoration:none;backdrop-filter:blur(8px)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></a></div>'
           find dist/gyeonggi-civic-wallet-demo -name "*.html" -exec sed -i "s|</body>|${HOME_BTN}</body>|" {} +
           find dist/zkap-app -name "*.html" -exec sed -i "s|</body>|${HOME_BTN}</body>|" {} +
+          find dist/zkap-coin-detail -name "*.html" -exec sed -i "s|</body>|${HOME_BTN}</body>|" {} +
 
           touch dist/.nojekyll
 
