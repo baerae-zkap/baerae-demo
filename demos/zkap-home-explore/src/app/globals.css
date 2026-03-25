@@ -67,7 +67,7 @@ body {
   background: #E0F7F6;
   color: #0D9488;
   border-radius: 999px;
-  padding: 4px 12px;
+  padding: 5px 14px;
   font-size: 13px;
   font-weight: 600;
   letter-spacing: -0.2px;
@@ -77,12 +77,12 @@ body {
   position: absolute;
   top: -6px;
   right: -8px;
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   background: #EF4444;
   color: #fff;
   border-radius: 50%;
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 700;
   display: flex;
   align-items: center;
@@ -101,7 +101,7 @@ body {
   color: #fff;
   border: none;
   border-radius: 999px;
-  padding: 6px 14px;
+  padding: 7px 14px;
   font-size: 12px;
   font-weight: 600;
   cursor: pointer;
@@ -110,7 +110,7 @@ body {
 }
 
 .header-icon {
-  font-size: 18px;
+  font-size: 20px;
   line-height: 1;
   cursor: pointer;
 }
@@ -126,7 +126,7 @@ body {
   overflow-x: hidden;
   z-index: 5;
   padding-top: 100px;
-  padding-bottom: 90px;
+  padding-bottom: 80px;
   background: #FFFFFF;
 }
 .screen::-webkit-scrollbar { display: none; }
@@ -169,21 +169,22 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2px;
+  gap: 3px;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 4px 8px;
+  padding: 4px 12px;
   -webkit-tap-highlight-color: transparent;
   color: #9CA3AF;
+  font-family: inherit;
 }
 
 .tab-icon-svg {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
 }
 
 .tab-label {
@@ -198,12 +199,7 @@ body {
 }
 
 .tab-item.active .tab-label {
-  font-weight: 600;
-}
-
-.tab-item.disabled {
-  opacity: 0.4;
-  cursor: default;
+  font-weight: 700;
 }
 
 /* ===== Tab Content ===== */
@@ -214,19 +210,19 @@ body {
 
 /* ===== Home: Greeting + Asset ===== */
 .home-greeting-section {
-  padding: 24px 20px 20px;
+  padding: 20px 20px 24px;
 }
 
 .greeting-text {
   font-size: 14px;
   color: #6B7280;
   font-weight: 400;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 }
 
 .asset-label {
-  font-size: 14px;
-  color: #6B7280;
+  font-size: 13px;
+  color: #9CA3AF;
   font-weight: 500;
   margin-bottom: 4px;
 }
@@ -285,9 +281,16 @@ body {
   font-weight: 600;
   color: #0D9488;
   background: #E0F7F6;
-  padding: 3px 10px;
+  padding: 4px 10px;
   border-radius: 999px;
   letter-spacing: -0.2px;
+}
+
+/* ===== Section Gap ===== */
+.section-gap {
+  height: 8px;
+  background: #F7F8FA;
+  margin: 4px 0;
 }
 
 /* ===== News Tab (segmented control) ===== */
@@ -467,19 +470,23 @@ body {
   font-size: 11px;
   font-weight: 600;
   border-radius: 999px;
-  padding: 3px 8px;
+  padding: 4px 10px;
   letter-spacing: -0.2px;
   white-space: nowrap;
 }
 
 .change-text {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
   letter-spacing: -0.2px;
   white-space: nowrap;
 }
 
-/* ===== Stat Grid (비슷한 투자자) ===== */
+.inline-change {
+  font-weight: 600;
+}
+
+/* ===== Stat Grid (similar investors) ===== */
 .stat-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -489,8 +496,8 @@ body {
 
 .stat-card {
   background: #F7F8FA;
-  border-radius: 10px;
-  padding: 14px;
+  border-radius: 12px;
+  padding: 16px;
 }
 
 .stat-label {
@@ -510,6 +517,7 @@ body {
 
 .stat-value.cyan { color: #06B6D4; }
 .stat-value.red { color: #EF4444; }
+.stat-value.purple { color: #8B5CF6; }
 
 /* ===== Search Bar (Explore) ===== */
 .search-bar-wrapper {
@@ -522,7 +530,7 @@ body {
   gap: 8px;
   background: #F3F4F6;
   border-radius: 10px;
-  padding: 10px 16px;
+  padding: 11px 16px;
 }
 
 .search-placeholder {
@@ -535,7 +543,7 @@ body {
 .explore-chips-scroll {
   display: flex;
   gap: 8px;
-  padding: 0 16px 12px;
+  padding: 0 16px 14px;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
@@ -563,50 +571,23 @@ body {
   border-color: #06B6D4;
 }
 
-/* ===== Theme Filter Chips ===== */
-.theme-filter-chips {
-  display: flex;
-  gap: 6px;
-  padding: 4px 20px 12px;
-}
-
-.theme-filter-chip {
-  font-family: inherit;
-  font-size: 12px;
-  font-weight: 600;
-  color: #6B7280;
-  background: #F3F4F6;
-  border: none;
-  border-radius: 999px;
-  padding: 6px 12px;
-  cursor: pointer;
-  letter-spacing: -0.2px;
-  transition: all 0.15s;
-  white-space: nowrap;
-}
-
-.theme-filter-chip.active {
-  background: #06B6D4;
-  color: #FFFFFF;
-}
-
 /* ===== Theme Grid (Explore) ===== */
 .theme-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
-  padding: 0 20px 16px;
+  padding: 4px 20px 16px;
 }
 
 .theme-grid-card {
   background: #F7F8FA;
-  border-radius: 10px;
-  padding: 14px;
+  border-radius: 12px;
+  padding: 16px;
 }
 
 .theme-grid-emoji {
   font-size: 24px;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   line-height: 1;
 }
 
@@ -623,7 +604,7 @@ body {
   color: #6B7280;
   letter-spacing: -0.2px;
   line-height: 1.4;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .theme-grid-change {
@@ -633,20 +614,259 @@ body {
   letter-spacing: -0.3px;
 }
 
-/* ===== Simulation Card ===== */
-.sim-chips { display: flex; gap: 8px; margin: 12px 0; }
-.sim-chip { flex: 1; padding: 8px 0; border: 1.5px solid #E5E7EB; border-radius: 8px; font-size: 14px; font-weight: 500; color: #6B7280; background: #fff; cursor: pointer; font-family: inherit; }
-.sim-chip.active { border-color: #06B6D4; color: #06B6D4; background: #E0F7F6; font-weight: 600; }
-.sim-result { text-align: center; padding: 16px 0 8px; }
-.sim-label { font-size: 13px; color: #9CA3AF; margin-bottom: 4px; }
-.sim-amount { font-size: 26px; font-weight: 700; color: #06B6D4; letter-spacing: -0.5px; }
-.sim-compare { font-size: 13px; color: #6B7280; margin-top: 6px; }
-
 /* ===== Rank List ===== */
-.rank-item { display: flex; align-items: center; gap: 12px; padding: 14px 0; border-bottom: 1px solid #F3F4F6; }
+.rank-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid #F3F4F6;
+}
 .rank-item:last-child { border-bottom: none; }
-.rank-num { width: 24px; font-size: 18px; font-weight: 700; text-align: center; }
-.rank-change { font-size: 14px; font-weight: 600; margin-left: auto; }
+.rank-num {
+  width: 24px;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+}
+.rank-change {
+  font-size: 14px;
+  font-weight: 600;
+  margin-left: auto;
+}
+
+/* ===== Trade Tab ===== */
+.trade-filter-chips {
+  display: flex;
+  gap: 8px;
+  padding: 8px 20px 16px;
+  overflow-x: auto;
+}
+.trade-filter-chips::-webkit-scrollbar { display: none; }
+
+.trade-chip {
+  flex-shrink: 0;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  color: #6B7280;
+  background: #F3F4F6;
+  border: none;
+  border-radius: 999px;
+  padding: 8px 18px;
+  cursor: pointer;
+  letter-spacing: -0.2px;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+.trade-chip.active {
+  background: #06B6D4;
+  color: #FFFFFF;
+}
+
+.exchange-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  border-bottom: 1px solid #F3F4F6;
+  transition: background 0.15s;
+}
+
+.exchange-row.cheapest {
+  background: #F0FDFA;
+}
+
+.exchange-row:last-child {
+  border-bottom: none;
+}
+
+.exchange-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+  color: #fff;
+  font-weight: 700;
+}
+
+.exchange-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.exchange-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111827;
+  letter-spacing: -0.2px;
+}
+
+.exchange-price {
+  font-size: 13px;
+  font-weight: 500;
+  color: #6B7280;
+  letter-spacing: -0.2px;
+}
+
+.exchange-diff {
+  flex-shrink: 0;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+  letter-spacing: -0.2px;
+}
+
+.exchange-diff.cheapest-badge {
+  background: #CCFBF1;
+  color: #0D9488;
+}
+
+.exchange-diff.more-expensive {
+  background: #FEF3C7;
+  color: #B45309;
+}
+
+/* ===== More Tab ===== */
+.profile-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 24px 20px 20px;
+}
+
+.profile-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #06B6D4, #8B5CF6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: #fff;
+  font-weight: 700;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.profile-name {
+  font-size: 20px;
+  font-weight: 700;
+  color: #111827;
+  letter-spacing: -0.3px;
+}
+
+.profile-tier {
+  display: inline-flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: #0D9488;
+  background: #E0F7F6;
+  padding: 3px 10px;
+  border-radius: 999px;
+  letter-spacing: -0.2px;
+  width: fit-content;
+}
+
+.profile-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+  margin: 0 16px 12px;
+  background: #FFFFFF;
+  border-radius: 12px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+.profile-stat-item {
+  padding: 16px 12px;
+  text-align: center;
+  border-right: 1px solid #F3F4F6;
+}
+
+.profile-stat-item:last-child {
+  border-right: none;
+}
+
+.profile-stat-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: #9CA3AF;
+  letter-spacing: -0.2px;
+  margin-bottom: 6px;
+}
+
+.profile-stat-value {
+  font-size: 14px;
+  font-weight: 700;
+  color: #111827;
+  letter-spacing: -0.3px;
+}
+
+.profile-stat-value.green {
+  color: #0D9488;
+}
+
+.settings-list {
+  margin: 0 16px 12px;
+  background: #FFFFFF;
+  border-radius: 12px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+.settings-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid #F3F4F6;
+  cursor: pointer;
+}
+
+.settings-item:last-child {
+  border-bottom: none;
+}
+
+.settings-item-label {
+  font-size: 15px;
+  font-weight: 500;
+  color: #111827;
+  letter-spacing: -0.2px;
+}
+
+.settings-chevron {
+  font-size: 18px;
+  color: #D1D5DB;
+  font-weight: 300;
+}
+
+.settings-item-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.settings-item-value {
+  font-size: 13px;
+  color: #9CA3AF;
+  letter-spacing: -0.2px;
+}
 
 /* ===== Annotation Panel ===== */
 .anno-panel {
