@@ -4,6 +4,16 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 
+function StepIndicator({ current, total = 4 }) {
+  return (
+    <div className="step-indicator">
+      {Array.from({ length: total }, (_, i) => (
+        <div key={i} className={`step-dot ${i < current ? 'step-dot-done' : ''} ${i === current ? 'step-dot-active' : ''}`} />
+      ))}
+    </div>
+  );
+}
+
 const EXCHANGE_META = {
   binance: { name: 'Binance', logo: '/zkap-app/binance.svg' },
   okx: { name: 'OKX', logo: '/zkap-app/okx.png' },
@@ -40,6 +50,7 @@ export default function StakingConfirmScreen({ onBack, onConfirm, purchaseData, 
         </button>
       </div>
 
+      <StepIndicator current={1} />
       <div className="sc-center">
         <div className="stk-input-badge" style={{ justifyContent: 'center' }}>
           <Image src="/zkap-app/lido.png" alt="Lido" width={28} height={28} className="stk-input-badge-icon" />

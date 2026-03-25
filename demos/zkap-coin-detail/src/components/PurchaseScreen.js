@@ -59,14 +59,15 @@ export default function PurchaseScreen({ onNext }) {
         <span className="available-value">$66,000</span>
       </div>
 
-      <div className="percent-row">
+      <div className="amount-chips">
         {[
-          { label: '10%', pct: 10 },
-          { label: '25%', pct: 25 },
-          { label: '50%', pct: 50 },
-          { label: 'Max', pct: 100 },
-        ].map(({ label, pct }) => (
-          <button key={pct} className="percent-btn" onClick={() => handlePercent(pct)}>
+          { label: '$1,000', value: 1000 },
+          { label: '$5,000', value: 5000 },
+          { label: '$10,000', value: 10000 },
+          { label: '$50,000', value: 50000 },
+          { label: 'Max', value: MAX_AVAILABLE },
+        ].map(({ label, value }) => (
+          <button key={value} className={`amount-chip${num === value ? ' amount-chip-active' : ''}`} onClick={() => setRawValue(value.toString())}>
             {label}
           </button>
         ))}
@@ -85,6 +86,19 @@ export default function PurchaseScreen({ onNext }) {
           </button>
         ))}
       </div>
+
+      {num > 0 && (
+        <div className="purchase-summary">
+          <div className="purchase-summary-row">
+            <span className="purchase-summary-label">You'll get approximately</span>
+            <span className="purchase-summary-value">{ethAmount} ETH</span>
+          </div>
+          <div className="purchase-summary-row">
+            <span className="purchase-summary-label">Est. fee</span>
+            <span className="purchase-summary-value">~${(num * 0.001).toFixed(2)}</span>
+          </div>
+        </div>
+      )}
 
       <div className="bottom-area">
         <button className={`cta-btn${num === 0 ? ' cta-disabled' : ''}`} onClick={num > 0 ? onNext : undefined} disabled={num === 0}>Next</button>

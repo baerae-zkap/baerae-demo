@@ -50,6 +50,14 @@ export default function ResultScreen({ onClose, onStaking, purchaseData, onShowI
           <Image src="/zkap-app/receipt.png" alt="receipt" width={120} height={120} className="rs-hero-img" />
         </div>
 
+        <div className="rs-status-badge">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <circle cx="8" cy="8" r="8" fill="#10b981"/>
+            <path d="M5 8l2 2 4-4" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+          <span>Transaction Complete</span>
+        </div>
+
         <div className="rs-title-area">
           <h2 className="rs-title">You saved ${savingsUsd}</h2>
           <p className="rs-subtitle">You received {savingsEth} ETH more with optimal routing</p>

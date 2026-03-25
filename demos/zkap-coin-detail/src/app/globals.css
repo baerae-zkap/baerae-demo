@@ -4300,3 +4300,254 @@ img[src*="bybit"] {
 .cd-pred-bar-miss {
   background: #ef4444;
 }
+
+/* ========================================
+   COMPREHENSIVE POLISH — New Styles
+   ======================================== */
+
+/* ===== Amount Chips (PurchaseScreen) ===== */
+.amount-chips {
+  display: flex;
+  gap: 8px;
+  padding: 16px 24px 0;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+.amount-chip {
+  padding: 10px 16px;
+  border: 1.2px solid #dfe1e6;
+  border-radius: 20px;
+  background: #fff;
+  font-size: 13px;
+  color: #3a3d4a;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+  font-family: inherit;
+  white-space: nowrap;
+}
+.amount-chip:active { background: #f0f1f3; }
+.amount-chip-active {
+  background: #2962ff;
+  color: #fff;
+  border-color: #2962ff;
+}
+
+/* ===== Purchase Summary ===== */
+.purchase-summary {
+  margin: 12px 24px 0;
+  background: #f8f9fb;
+  border-radius: 12px;
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-shrink: 0;
+}
+.purchase-summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.purchase-summary-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #8a8e9b;
+}
+.purchase-summary-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1e2e;
+}
+
+/* ===== Step Indicator (Staking Flow) ===== */
+.step-indicator {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 0 4px;
+  flex-shrink: 0;
+}
+.step-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #e0e2e7;
+  transition: all 0.3s ease;
+}
+.step-dot-active {
+  width: 24px;
+  border-radius: 4px;
+  background: #2962ff;
+}
+.step-dot-done {
+  background: #2962ff;
+}
+
+/* ===== Staking Loading — Pulsing Logo ===== */
+.stk-loading-logo {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.stk-loading-ring {
+  position: absolute;
+  inset: 0;
+  border: 3px solid rgba(98, 126, 234, 0.15);
+  border-top-color: #627eea;
+  border-radius: 50%;
+  animation: stk-spin 1.2s linear infinite;
+}
+.stk-loading-eth {
+  position: relative;
+  z-index: 1;
+  animation: stk-pulse 2s ease-in-out infinite;
+}
+@keyframes stk-spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes stk-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.08); opacity: 0.85; }
+}
+.stk-loading-sub {
+  font-size: 14px;
+  color: #b0b3bd;
+  margin-top: -20px;
+}
+.stk-loading-progress-wrap {
+  flex-shrink: 0;
+  padding: 0 32px 24px;
+}
+.stk-loading-progress-track {
+  height: 6px;
+  background: #e8eaed;
+  border-radius: 3px;
+  overflow: hidden;
+}
+.stk-loading-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #627eea, #2962ff);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+.stk-loading-progress-label {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: #8a8e9b;
+  margin-top: 8px;
+}
+
+/* ===== Staking Complete — Summary Card ===== */
+.stk-complete-summary {
+  flex-shrink: 0;
+  padding: 0 24px 16px;
+}
+.stk-complete-card {
+  background: #f8f9fb;
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.stk-complete-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.stk-complete-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #8a8e9b;
+}
+.stk-complete-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1e2e;
+}
+.stk-complete-highlight {
+  color: #10b981;
+  font-weight: 700;
+}
+.stk-complete-divider {
+  height: 1px;
+  background: #ecedf0;
+  margin: 2px 0;
+}
+
+/* ===== Result Screen — Status Badge ===== */
+.rs-status-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 16px;
+  margin: 0 auto 12px;
+  background: rgba(16, 185, 129, 0.08);
+  border-radius: 100px;
+  width: fit-content;
+}
+.rs-status-badge span {
+  font-size: 14px;
+  font-weight: 700;
+  color: #10b981;
+}
+
+/* ===== Order Status — Progress Bar ===== */
+.os-progress-section {
+  flex-shrink: 0;
+  padding: 8px 24px 0;
+}
+.os-progress-bar-track {
+  height: 4px;
+  background: #e8eaed;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.os-progress-bar-fill {
+  height: 100%;
+  background: #1559ea;
+  border-radius: 2px;
+  transition: width 0.4s ease;
+}
+.os-progress-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #8a8e9b;
+  text-align: center;
+  margin-top: 8px;
+}
+
+/* ===== Consistent Card Shadow Mixin ===== */
+.card {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.card.best {
+  box-shadow: 0 2px 8px rgba(21, 89, 234, 0.12);
+}
+
+/* ===== Consistent Touch Targets ===== */
+.percent-btn,
+.amount-chip,
+.cd-calc-chip,
+.cd-time-btn,
+.eb-tab,
+.eb-action-btn {
+  min-height: 44px;
+}
+
+/* ===== Consistent border-radius for all cards ===== */
+.rs-details,
+.purchase-summary,
+.stk-complete-card,
+.available-card {
+  border-radius: 14px;
+}

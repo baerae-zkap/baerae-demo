@@ -23,9 +23,10 @@ export default function OrderStatusScreen({ onClose, onResult, purchaseData }) {
   }));
 
   const [statuses, setStatuses] = useState(exchanges.map(() => 'In Progress'));
+  const completedCount = statuses.filter((s) => s === 'Completed').length;
+  const progressPct = Math.round((completedCount / exchanges.length) * 100);
 
   useEffect(() => {
-    // Random order for completion
     const indices = exchanges.map((_, i) => i);
     for (let i = indices.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -59,6 +60,13 @@ export default function OrderStatusScreen({ onClose, onResult, purchaseData }) {
         </button>
       </div>
 
+      <div className="os-progress-section">
+        <div className="os-progress-bar-track">
+          <div className="os-progress-bar-fill" style={{ width: `${progressPct}%` }} />
+        </div>
+        <div className="os-progress-label">{completedCount} of {exchanges.length} exchanges completed</div>
+      </div>
+
       <div className="os-center">
         <div className="os-dots">
           <div className="os-dot os-dot-1" />
@@ -79,7 +87,15 @@ export default function OrderStatusScreen({ onClose, onResult, purchaseData }) {
                 <span className="os-exchange-pct">{ex.pct}%</span>
               </div>
             </div>
-            <span className={`os-exchange-status ${statusClass(statuses[i])}`}>{statuses[i]}</span>
+            <span className={`os-exchange-status ${statusClass(statuses[i])}`}>
+              {statuses[i] === 'Completed' && (
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style={{ marginRight: 4, verticalAlign: 'middle' }}>
+                  <circle cx="7" cy="7" r="7" fill="#1559ea"/>
+                  <path d="M4 7l2 2 4-4" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              )}
+              {statuses[i]}
+            </span>
           </div>
         ))}
       </div>

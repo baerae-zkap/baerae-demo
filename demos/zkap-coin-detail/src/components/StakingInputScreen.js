@@ -3,6 +3,16 @@
 import { useState, useCallback } from 'react';
 import Image from 'next/image';
 
+function StepIndicator({ current, total = 4 }) {
+  return (
+    <div className="step-indicator">
+      {Array.from({ length: total }, (_, i) => (
+        <div key={i} className={`step-dot ${i < current ? 'step-dot-done' : ''} ${i === current ? 'step-dot-active' : ''}`} />
+      ))}
+    </div>
+  );
+}
+
 export default function StakingInputScreen({ onBack, onNext, purchaseData }) {
   const totalEth = purchaseData?.zkapEth || 32.3218;
   const [rawValue, setRawValue] = useState('');
@@ -46,6 +56,7 @@ export default function StakingInputScreen({ onBack, onNext, purchaseData }) {
         </button>
       </div>
 
+      <StepIndicator current={0} />
       <div className="text-container">
         <div className="title">How much ETH<br/>would you like to stake?</div>
       </div>
