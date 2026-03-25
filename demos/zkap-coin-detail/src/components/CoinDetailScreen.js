@@ -543,36 +543,58 @@ function InfoTab({ selectedCalcAmount, setSelectedCalcAmount, monthlyInterest })
       {/* 했제와 그랬제 */}
       <div className="cd-info-block">
         <h3 className="cd-section-title">했제와 그랬제</h3>
-        <div className="cd-predict-list">
-          <div className="cd-predict-row">
-            <div className="cd-predict-left">
-              <div className="cd-predict-name">크립토 김대리</div>
-              <div className="cd-predict-quote">"500만원 돌파"</div>
+        <div className="cd-pred-scroll">
+          <div className="cd-pred-card cd-pred-hit">
+            <div className="cd-pred-profile">
+              <img className="cd-pred-photo" src="https://i.pravatar.cc/80?img=11" alt="" />
+              <div className="cd-pred-badge-wrap cd-pred-badge-hit">적중</div>
             </div>
-            <div className="cd-predict-right">
-              <div className="cd-predict-badge cd-predict-badge-hit">적중 ✓</div>
-              <div className="cd-predict-rate">78%</div>
+            <div className="cd-pred-name">크립토 김대리</div>
+            <div className="cd-pred-quote">"500만원 돌파한다"</div>
+            <div className="cd-pred-meta">
+              <span className="cd-pred-rate-label">적중률</span>
+              <span className="cd-pred-rate-value">78%</span>
             </div>
+            <div className="cd-pred-bar-track"><div className="cd-pred-bar-fill cd-pred-bar-hit" style={{ width: '78%' }} /></div>
           </div>
-          <div className="cd-predict-row">
-            <div className="cd-predict-left">
-              <div className="cd-predict-name">머니토크 박실장</div>
-              <div className="cd-predict-quote">"700만원 간다"</div>
+          <div className="cd-pred-card cd-pred-miss">
+            <div className="cd-pred-profile">
+              <img className="cd-pred-photo" src="https://i.pravatar.cc/80?img=33" alt="" />
+              <div className="cd-pred-badge-wrap cd-pred-badge-miss">빗나감</div>
             </div>
-            <div className="cd-predict-right">
-              <div className="cd-predict-badge cd-predict-badge-miss">빗나감 ✗</div>
-              <div className="cd-predict-rate">45%</div>
+            <div className="cd-pred-name">머니토크 박실장</div>
+            <div className="cd-pred-quote">"700만원 간다"</div>
+            <div className="cd-pred-meta">
+              <span className="cd-pred-rate-label">적중률</span>
+              <span className="cd-pred-rate-value">45%</span>
             </div>
+            <div className="cd-pred-bar-track"><div className="cd-pred-bar-fill cd-pred-bar-miss" style={{ width: '45%' }} /></div>
           </div>
-          <div className="cd-predict-row">
-            <div className="cd-predict-left">
-              <div className="cd-predict-name">코인 정프로</div>
-              <div className="cd-predict-quote">"500만원대 안착"</div>
+          <div className="cd-pred-card cd-pred-hit">
+            <div className="cd-pred-profile">
+              <img className="cd-pred-photo" src="https://i.pravatar.cc/80?img=52" alt="" />
+              <div className="cd-pred-badge-wrap cd-pred-badge-hit">적중</div>
             </div>
-            <div className="cd-predict-right">
-              <div className="cd-predict-badge cd-predict-badge-hit">적중 ✓</div>
-              <div className="cd-predict-rate">82%</div>
+            <div className="cd-pred-name">코인 정프로</div>
+            <div className="cd-pred-quote">"500만원대 안착"</div>
+            <div className="cd-pred-meta">
+              <span className="cd-pred-rate-label">적중률</span>
+              <span className="cd-pred-rate-value">82%</span>
             </div>
+            <div className="cd-pred-bar-track"><div className="cd-pred-bar-fill cd-pred-bar-hit" style={{ width: '82%' }} /></div>
+          </div>
+          <div className="cd-pred-card cd-pred-hit">
+            <div className="cd-pred-profile">
+              <img className="cd-pred-photo" src="https://i.pravatar.cc/80?img=15" alt="" />
+              <div className="cd-pred-badge-wrap cd-pred-badge-hit">적중</div>
+            </div>
+            <div className="cd-pred-name">온체인 이박사</div>
+            <div className="cd-pred-quote">"연말 600만원"</div>
+            <div className="cd-pred-meta">
+              <span className="cd-pred-rate-label">적중률</span>
+              <span className="cd-pred-rate-value">71%</span>
+            </div>
+            <div className="cd-pred-bar-track"><div className="cd-pred-bar-fill cd-pred-bar-hit" style={{ width: '71%' }} /></div>
           </div>
         </div>
       </div>
