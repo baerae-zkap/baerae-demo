@@ -2350,10 +2350,11 @@ img[src*="bybit"] {
   margin-top: 6px;
 }
 .cd-tag {
-  padding: 3px 8px;
-  border-radius: 100px;
-  font-size: 13px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
   font-weight: 600;
+  letter-spacing: -0.1px;
 }
 .cd-tag-blue {
   background: rgba(41, 98, 255, 0.1);
@@ -2518,6 +2519,7 @@ img[src*="bybit"] {
   padding: 20px 24px;
   margin-bottom: 16px;
   color: #fff;
+  box-shadow: 0 4px 16px rgba(41, 98, 255, 0.2);
 }
 .cd-compare-hero-label {
   font-size: 13px;
@@ -2561,7 +2563,7 @@ img[src*="bybit"] {
   padding: 16px 20px;
   background: #f5f6f8;
   border: none;
-  border-radius: 12px;
+  border-radius: 14px;
 }
 .cd-exchange-cheapest {
   background: rgba(16, 185, 129, 0.06);
@@ -2651,8 +2653,8 @@ img[src*="bybit"] {
 .cd-52week-card {
   background: #f5f6f8;
   border: none;
-  border-radius: 12px;
-  padding: 16px 20px;
+  border-radius: 14px;
+  padding: 20px 20px;
 }
 .cd-52week-labels {
   display: flex;
@@ -2717,7 +2719,7 @@ img[src*="bybit"] {
   gap: 8px;
 }
 .cd-perf-card {
-  border-radius: 12px;
+  border-radius: 14px;
   padding: 16px 12px;
   text-align: center;
 }
@@ -2763,7 +2765,7 @@ img[src*="bybit"] {
 .cd-calc-wrap {
   background: #f5f6f8;
   border: none;
-  border-radius: 12px;
+  border-radius: 14px;
   padding: 20px 20px;
 }
 .cd-calc-label {
@@ -2780,7 +2782,7 @@ img[src*="bybit"] {
 }
 .cd-calc-chip {
   padding: 10px 18px;
-  border-radius: 100px;
+  border-radius: 999px;
   border: 1.5px solid rgba(0, 0, 0, 0.08);
   background: transparent;
   color: #8a8e9b;
@@ -2844,8 +2846,8 @@ img[src*="bybit"] {
 .cd-qna-card {
   background: #f5f6f8;
   border: none;
-  border-radius: 12px;
-  padding: 16px 20px;
+  border-radius: 14px;
+  padding: 18px 20px;
 }
 .cd-qna-label {
   font-size: 13px;
@@ -2874,8 +2876,8 @@ img[src*="bybit"] {
 .cd-people-stat-card {
   background: #f5f6f8;
   border: none;
-  border-radius: 12px;
-  padding: 16px 16px;
+  border-radius: 14px;
+  padding: 18px 16px;
   text-align: center;
 }
 .cd-people-stat-value {
@@ -2953,7 +2955,7 @@ img[src*="bybit"] {
   padding: 16px 20px;
   background: #f5f6f8;
   border: none;
-  border-radius: 12px;
+  border-radius: 14px;
 }
 .cd-ranking-gold {
   background: rgba(245, 158, 11, 0.06);
@@ -3167,8 +3169,8 @@ img[src*="bybit"] {
   right: 0;
   display: flex;
   gap: 10px;
-  padding: 12px 24px;
-  background: linear-gradient(to top, #ffffff 70%, transparent);
+  padding: 16px 24px 12px;
+  background: linear-gradient(to top, #ffffff 80%, rgba(255,255,255,0));
   z-index: 30;
 }
 .coin-detail-cta .cta-sell {
@@ -3209,7 +3211,7 @@ img[src*="bybit"] {
   margin-top: 24px;
   background: #f5f6f8;
   border: none;
-  border-radius: 12px;
+  border-radius: 14px;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -3697,6 +3699,8 @@ img[src*="bybit"] {
   max-height: calc(100vh - 80px);
   overflow-y: auto;
   padding-right: 8px;
+  padding-left: 24px;
+  border-left: 1px solid #e2e4e9;
 }
 .anno-panel::-webkit-scrollbar { width: 3px; }
 .anno-panel::-webkit-scrollbar-thumb { background: #d1d3d9; border-radius: 3px; }
@@ -3968,8 +3972,8 @@ img[src*="bybit"] {
 .cd-today-card {
   background: #f5f6f8;
   border: none;
-  border-radius: 12px;
-  padding: 16px 20px;
+  border-radius: 14px;
+  padding: 18px 20px;
   margin-bottom: 16px;
 }
 .cd-today-subtitle {
@@ -4009,7 +4013,7 @@ img[src*="bybit"] {
 .cd-product-info {
   background: #f5f6f8;
   border: none;
-  border-radius: 12px;
+  border-radius: 14px;
   overflow: hidden;
 }
 .cd-product-row {
@@ -4172,18 +4176,28 @@ img[src*="bybit"] {
 }
 
 /* ===== Responsive: mobile ===== */
-@media (max-width: 430px) {
+@media (max-width: 860px) {
   .demo-layout {
     flex-direction: column;
+    align-items: center;
     padding: 0;
     gap: 0;
+    min-height: 100dvh;
   }
   .device {
     width: 100%;
+    max-width: 390px;
     height: 100dvh;
     border-radius: 0;
   }
   .anno-panel {
     display: none;
+  }
+}
+
+/* Very small screens: let device fill fully */
+@media (max-width: 390px) {
+  .device {
+    max-width: 100%;
   }
 }
