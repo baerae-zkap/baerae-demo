@@ -330,7 +330,7 @@ function HomeTab() {
           {/* Performance cards (horizontal scroll) */}
           <div className="perf-cards-scroll">
             {stakingTopCoins.map((c, i) => (
-              <div key={i} className="perf-card">
+              <div key={i} className="perf-card" style={{ cursor: 'pointer' }} onClick={() => window.open('/baerae-demo/zkap-coin-detail', '_blank')}>
                 <div className="perf-card-top">
                   <div className="perf-card-icon" style={{ background: c.iconBg }}>{c.icon}</div>
                   <div className="perf-card-rank">{c.rank}</div>
@@ -414,7 +414,7 @@ function HomeTab() {
 
       <div style={{ padding: '0 20px' }}>
         {myCoins.map((c, i) => (
-          <div key={i} className={`list-item ${i < myCoins.length - 1 ? 'with-divider' : ''}`} style={{ padding: '12px 0' }}>
+          <div key={i} className={`list-item ${i < myCoins.length - 1 ? 'with-divider' : ''}`} style={{ padding: '12px 0', cursor: 'pointer' }} onClick={() => window.open('/baerae-demo/zkap-coin-detail', '_blank')}>
             <div className="list-icon" style={{ background: c.iconBg }}>{c.icon}</div>
             <div className="list-text">
               <div style={{ fontSize: 14, color: '#888888' }}>ZKAP이 운용 중인 {c.name}</div>
@@ -454,7 +454,7 @@ function HomeTab() {
       </div>
 
       {notableCoins.map((c, i) => (
-        <div key={i} className={`notable-item ${i < notableCoins.length - 1 ? 'with-divider' : ''}`}>
+        <div key={i} className={`notable-item ${i < notableCoins.length - 1 ? 'with-divider' : ''}`} style={{ cursor: 'pointer' }} onClick={() => window.open('/baerae-demo/zkap-coin-detail', '_blank')}>
           <div className="notable-icon" style={{ background: c.iconBg }}>{c.icon}</div>
           <div className="notable-text">
             <div className="notable-name">{c.name}</div>
@@ -574,7 +574,7 @@ function ExploreHome() {
       <div className="recent-section-title">최근 관심 코인</div>
       <div style={{ padding: '0 20px 20px' }}>
         {exploreRecentCoins.map((c, i) => (
-          <div key={i} className={`list-item ${i < exploreRecentCoins.length - 1 ? 'with-divider' : ''}`} style={{ padding: '12px 0' }}>
+          <div key={i} className={`list-item ${i < exploreRecentCoins.length - 1 ? 'with-divider' : ''}`} style={{ padding: '12px 0', cursor: 'pointer' }} onClick={() => window.open('/baerae-demo/zkap-coin-detail', '_blank')}>
             <div className="list-icon" style={{ background: c.iconBg }}>{c.icon}</div>
             <div className="list-text">
               <div className="list-name">{c.name}</div>

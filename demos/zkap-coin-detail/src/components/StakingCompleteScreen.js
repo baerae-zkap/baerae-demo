@@ -20,7 +20,7 @@ function GreenCheckCircle() {
       transition={{ type: 'spring', stiffness: 200, damping: 15, delay: 0.1 }}
     >
       <svg width="96" height="96" viewBox="0 0 96 96" fill="none">
-        <circle cx="48" cy="48" r="46" fill="#10b981" />
+        <circle cx="48" cy="48" r="46" fill="#00C8BE" />
         <motion.path
           d="M28 48l14 14 26-26"
           stroke="#fff"

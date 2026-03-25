@@ -89,7 +89,7 @@ export default function StakingConfirmScreen({ onBack, onConfirm, purchaseData, 
 
         <button className="sc-agree" onClick={() => setAgreed(!agreed)}>
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-            <circle cx="12" cy="12" r="11" stroke={agreed ? '#2962ff' : 'none'} strokeWidth="1.5" fill={agreed ? '#2962ff' : '#f2f3f5'} />
+            <circle cx="12" cy="12" r="11" stroke={agreed ? '#00C8BE' : 'none'} strokeWidth="1.5" fill={agreed ? '#00C8BE' : '#f2f3f5'} />
             <path d="M7 12l3.5 3.5L17 9" stroke={agreed ? '#fff' : '#c0c2c5'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
           <span className="sc-agree-text"><strong>Required</strong>&nbsp; Agree to terms & fees</span>

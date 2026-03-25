@@ -168,8 +168,8 @@ function ChartTab({ selectedTimeRange, setSelectedTimeRange }) {
         <svg viewBox="0 0 345 200" preserveAspectRatio="none" className="cd-chart-svg">
           <defs>
             <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.2" />
-              <stop offset="100%" stopColor="#3b82f6" stopOpacity="0" />
+              <stop offset="0%" stopColor="#00C8BE" stopOpacity="0.2" />
+              <stop offset="100%" stopColor="#00C8BE" stopOpacity="0" />
             </linearGradient>
           </defs>
           {/* Grid lines */}
@@ -179,9 +179,9 @@ function ChartTab({ selectedTimeRange, setSelectedTimeRange }) {
           {/* Area fill */}
           <path d={CHART_AREA} fill="url(#chartGrad)" />
           {/* Line */}
-          <path d={CHART_LINE} fill="none" stroke="#3b82f6" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+          <path d={CHART_LINE} fill="none" stroke="#00C8BE" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
           {/* Current dot */}
-          <circle cx="345" cy="52" r="5" fill="#3b82f6" stroke="#ffffff" strokeWidth="2.5" />
+          <circle cx="345" cy="52" r="5" fill="#00C8BE" stroke="#ffffff" strokeWidth="2.5" />
           {/* Price labels */}
           <text x="4" y="46" fontSize="10" fill="#a9acb5" fontFamily="inherit">최고 6,800,000</text>
           <text x="4" y="196" fontSize="10" fill="#a9acb5" fontFamily="inherit">최저 3,100,000</text>

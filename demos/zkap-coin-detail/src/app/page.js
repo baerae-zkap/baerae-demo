@@ -64,6 +64,15 @@ export default function Home() {
     showIndicator();
   }, [showIndicator]);
 
+  const goBackToHome = useCallback(() => {
+    // Try to go back, or navigate to home-explore
+    if (window.history.length > 1) {
+      window.history.back();
+    } else {
+      window.location.href = '/baerae-demo/zkap-home-explore';
+    }
+  }, []);
+
   const goToCompare = useCallback(() => {
     setDirection(1);
     setScreen('compare');
@@ -170,7 +179,7 @@ export default function Home() {
           className={`screen ${screen === 'coinDetail' ? 'screen-dark' : ''}`}
         >
           {screen === 'coinDetail' && (
-            <CoinDetailScreen onBack={goToCoinDetail} onBuy={goToPurchaseFromCoinDetail} activeTab={coinDetailTab} setActiveTab={setCoinDetailTab} scrollToId={scrollToId} selectedExchange={selectedExchange} setSelectedExchange={setSelectedExchange} />
+            <CoinDetailScreen onBack={goBackToHome} onBuy={goToPurchaseFromCoinDetail} activeTab={coinDetailTab} setActiveTab={setCoinDetailTab} scrollToId={scrollToId} selectedExchange={selectedExchange} setSelectedExchange={setSelectedExchange} />
           )}
           {screen === 'purchase' && (
             <PurchaseScreen onNext={goToCompare} />

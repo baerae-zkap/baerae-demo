@@ -198,7 +198,7 @@ export default function CompareScreen({ onBack, onOrderStatus, onShowIndicator }
           <div className="inner-cta" onClick={(e) => { e.stopPropagation(); setSheetOpen(true); if (onShowIndicator) onShowIndicator(); }}>
             <span className="inner-cta-text">Split buying gets you up to 0.08 ETH more</span>
             <span className="inner-cta-arrow">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1559ea" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00C8BE" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <polyline points="9 6 15 12 9 18"/>
               </svg>
             </span>

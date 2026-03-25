@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-function FaceIdIcon({ color = '#0088ff', size = 48 }) {
+function FaceIdIcon({ color = '#00C8BE', size = 48 }) {
   return (
     <svg width={size} height={size} viewBox="0 0 48 48" fill="none">
       <path d="M14 2H7a5 5 0 00-5 5v7" stroke={color} strokeWidth="3" strokeLinecap="round"/>
@@ -21,7 +21,7 @@ function FaceIdIcon({ color = '#0088ff', size = 48 }) {
 function CheckIcon() {
   return (
     <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-      <circle cx="24" cy="24" r="22" fill="#0088ff"/>
+      <circle cx="24" cy="24" r="22" fill="#00C8BE"/>
       <path d="M14 24l7 7 13-13" stroke="white" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
   );
@@ -133,7 +133,7 @@ export default function PasskeyModal({ onClose }) {
         <div className="pk-content">
           {/* Icon + Title + Description: always visible */}
           <div className="pk-faceid-icon">
-            <FaceIdIcon color="#0088ff" size={48} />
+            <FaceIdIcon color="#00C8BE" size={48} />
           </div>
           <div className="pk-texts">
             <h2 className="pk-title">Use Face ID to sign in?</h2>
@@ -154,7 +154,7 @@ export default function PasskeyModal({ onClose }) {
 
             {phase === 'faceid' && (
               <motion.div className="pk-action-status" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-                <FaceIdIcon color="#0088ff" size={48} />
+                <FaceIdIcon color="#00C8BE" size={48} />
                 <span className="pk-status-label">Face ID</span>
               </motion.div>
             )}

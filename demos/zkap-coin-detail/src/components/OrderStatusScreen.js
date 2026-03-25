@@ -90,7 +90,7 @@ export default function OrderStatusScreen({ onClose, onResult, purchaseData }) {
             <span className={`os-exchange-status ${statusClass(statuses[i])}`}>
               {statuses[i] === 'Completed' && (
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style={{ marginRight: 4, verticalAlign: 'middle' }}>
-                  <circle cx="7" cy="7" r="7" fill="#1559ea"/>
+                  <circle cx="7" cy="7" r="7" fill="#00C8BE"/>
                   <path d="M4 7l2 2 4-4" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               )}
