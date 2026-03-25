@@ -247,49 +247,6 @@ body {
   letter-spacing: -0.2px;
 }
 
-/* ===== Ticker Strip ===== */
-.ticker-strip {
-  background: #F7F8FA;
-  padding: 8px 20px;
-  overflow-x: auto;
-  white-space: nowrap;
-  margin-bottom: 12px;
-}
-.ticker-strip::-webkit-scrollbar { display: none; }
-
-.ticker-inner {
-  display: inline-flex;
-  gap: 20px;
-  align-items: center;
-}
-
-.ticker-item {
-  display: inline-flex;
-  gap: 4px;
-  align-items: center;
-  font-size: 12px;
-}
-
-.ticker-name {
-  font-weight: 600;
-  color: #111827;
-}
-
-.ticker-desc {
-  color: #9CA3AF;
-  font-weight: 400;
-}
-
-.ticker-up {
-  color: #EF4444;
-  font-weight: 600;
-}
-
-.ticker-down {
-  color: #2563EB;
-  font-weight: 600;
-}
-
 /* ===== Fint Card (white section card) ===== */
 .fint-card {
   margin: 0 16px 12px;
@@ -675,6 +632,21 @@ body {
   color: #EF4444;
   letter-spacing: -0.3px;
 }
+
+/* ===== Simulation Card ===== */
+.sim-chips { display: flex; gap: 8px; margin: 12px 0; }
+.sim-chip { flex: 1; padding: 8px 0; border: 1.5px solid #E5E7EB; border-radius: 8px; font-size: 14px; font-weight: 500; color: #6B7280; background: #fff; cursor: pointer; font-family: inherit; }
+.sim-chip.active { border-color: #06B6D4; color: #06B6D4; background: #E0F7F6; font-weight: 600; }
+.sim-result { text-align: center; padding: 16px 0 8px; }
+.sim-label { font-size: 13px; color: #9CA3AF; margin-bottom: 4px; }
+.sim-amount { font-size: 26px; font-weight: 700; color: #06B6D4; letter-spacing: -0.5px; }
+.sim-compare { font-size: 13px; color: #6B7280; margin-top: 6px; }
+
+/* ===== Rank List ===== */
+.rank-item { display: flex; align-items: center; gap: 12px; padding: 14px 0; border-bottom: 1px solid #F3F4F6; }
+.rank-item:last-child { border-bottom: none; }
+.rank-num { width: 24px; font-size: 18px; font-weight: 700; text-align: center; }
+.rank-change { font-size: 14px; font-weight: 600; margin-left: auto; }
 
 /* ===== Annotation Panel ===== */
 .anno-panel {

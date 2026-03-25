@@ -51,6 +51,7 @@ export default function HomePage() {
   const [activeChip, setActiveChip] = useState(0);
   const [activeThemeFilter, setActiveThemeFilter] = useState(0);
   const [activeNewsTab, setActiveNewsTab] = useState(0);
+  const [simChip, setSimChip] = useState(1);
 
   return (
     <div className="demo-layout">
@@ -77,7 +78,7 @@ export default function HomePage() {
 
         <div className="screen">
           {activeTab === 'home' ? (
-            <HomeTab activeNewsTab={activeNewsTab} setActiveNewsTab={setActiveNewsTab} />
+            <HomeTab activeNewsTab={activeNewsTab} setActiveNewsTab={setActiveNewsTab} simChip={simChip} setSimChip={setSimChip} />
           ) : (
             <ExploreTab activeChip={activeChip} setActiveChip={setActiveChip} activeThemeFilter={activeThemeFilter} setActiveThemeFilter={setActiveThemeFilter} />
           )}
@@ -194,7 +195,8 @@ function TabIconMore() {
 /* 홈 Tab                                                        */
 /* ══════════════════════════════════════════════════════════════ */
 
-function HomeTab({ activeNewsTab, setActiveNewsTab }) {
+function HomeTab({ activeNewsTab, setActiveNewsTab, simChip, setSimChip }) {
+  const simMap = { 0: '21,667', 1: '43,333', 2: '216,667' };
   return (
     <div className="tab-content">
       {/* Greeting + Asset */}
@@ -203,32 +205,6 @@ function HomeTab({ activeNewsTab, setActiveNewsTab }) {
         <div className="asset-label">내 자산</div>
         <div className="asset-amount">3,240,500원</div>
         <div className="asset-change">+116,500원 (3.7%) 오늘</div>
-      </div>
-
-      {/* Ticker Strip */}
-      <div className="ticker-strip">
-        <div className="ticker-inner">
-          <span className="ticker-item">
-            <span className="ticker-name">SPY</span>
-            <span className="ticker-desc">(S&P500 추종)</span>
-            <span className="ticker-up">+0.12%</span>
-          </span>
-          <span className="ticker-item">
-            <span className="ticker-name">QQQ</span>
-            <span className="ticker-desc">(나스닥 추종)</span>
-            <span className="ticker-down">-0.18%</span>
-          </span>
-          <span className="ticker-item">
-            <span className="ticker-name">BTC</span>
-            <span className="ticker-desc">(비트코인)</span>
-            <span className="ticker-up">+4.2%</span>
-          </span>
-          <span className="ticker-item">
-            <span className="ticker-name">ETH</span>
-            <span className="ticker-desc">(이더리움)</span>
-            <span className="ticker-up">+1.8%</span>
-          </span>
-        </div>
       </div>
 
       {/* 오늘의 소식 Card */}
@@ -341,6 +317,58 @@ function HomeTab({ activeNewsTab, setActiveNewsTab }) {
         </div>
       </div>
 
+      {/* 주목할 종목 Card */}
+      <div className="fint-card">
+        <div className="card-inner">
+          <div className="card-title-row">
+            <span className="card-section-title">ZKAP에서 요즘 주목받는 코인</span>
+            <span className="date-badge-teal">3월 25일</span>
+          </div>
+          <div className="list-items">
+            {[
+              { icon: '₿', iconBg: '#F7931A', name: '비트코인', sub: '오늘 새로 1,247명이 매수했어요', badge: '오늘 인기', badgeBg: '#DBEAFE', badgeColor: '#2563EB' },
+              { icon: 'Ξ', iconBg: '#627EEA', name: '이더리움', sub: '이번 주 7일 연속 상승 중', badge: '연속 상승', badgeBg: '#D1FAE5', badgeColor: '#047857' },
+              { icon: '◎', iconBg: '#9945FF', name: '솔라나', sub: '거래량이 어제보다 2.3배 늘었어요', badge: '거래량 급증', badgeBg: '#FFEDD5', badgeColor: '#C2410C' },
+              { icon: '◈', iconBg: '#0080FF', name: '리플', sub: '10만원으로 살 수 있는 검증된 코인', badge: '소액 추천', badgeBg: '#F3E8FF', badgeColor: '#7C3AED' },
+            ].map((coin, i, arr) => (
+              <div key={i} className={`list-item ${i < arr.length - 1 ? 'with-divider' : ''}`}>
+                <div className="list-icon" style={{ background: coin.iconBg }}>
+                  <span>{coin.icon}</span>
+                </div>
+                <div className="list-text">
+                  <div className="list-name">{coin.name}</div>
+                  <div className="list-sub">{coin.sub}</div>
+                </div>
+                <div className="list-right">
+                  <span className="badge-pill" style={{ background: coin.badgeBg, color: coin.badgeColor }}>{coin.badge}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* 이자받기 시뮬레이션 Card */}
+      <div className="fint-card">
+        <div className="card-inner">
+          <div className="card-section-title">맡기면 이자가 쌓여요</div>
+          <div style={{ padding: '0 20px 20px' }}>
+            <div className="sim-label">이더리움 기준, 연 5.2% 이율</div>
+            <div className="sim-chips">
+              {['50만원', '100만원', '500만원'].map((label, i) => (
+                <button key={i} className={`sim-chip ${simChip === i ? 'active' : ''}`} onClick={() => setSimChip(i)}>{label}</button>
+              ))}
+            </div>
+            <div className="sim-result">
+              <div className="sim-label">매달</div>
+              <div className="sim-amount">{simMap[simChip]}원</div>
+              <div className="sim-compare">은행 예금(3.5%)보다 높아요</div>
+            </div>
+            <button className="cta-btn">이자 받기 시작</button>
+          </div>
+        </div>
+      </div>
+
       <div style={{ height: 20 }} />
     </div>
   );
@@ -397,6 +425,36 @@ function ExploreTab({ activeChip, setActiveChip, activeThemeFilter, setActiveThe
                 <div className="list-right">
                   <span className="badge-pill" style={{ background: cat.badgeBg, color: cat.badgeColor }}>{cat.badge}</span>
                 </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* 지금 많이 찾는 코인 */}
+      <div className="fint-card">
+        <div className="card-inner">
+          <div className="card-title-row">
+            <span className="card-section-title">지금 많이 찾는 코인</span>
+            <span style={{ fontSize: 12, color: '#9CA3AF', paddingTop: 8 }}>ZKAP 사용자 검색 기준</span>
+          </div>
+          <div style={{ padding: '0 20px 12px' }}>
+            {[
+              { icon: '₿', iconBg: '#F7931A', name: '비트코인', sub: '시가총액 1위', change: '+4.2%', color: '#EF4444', rankColor: '#F59E0B' },
+              { icon: 'Ξ', iconBg: '#627EEA', name: '이더리움', sub: '스마트 컨트랙트 대장', change: '+1.8%', color: '#EF4444', rankColor: '#94A3B8' },
+              { icon: '◎', iconBg: '#9945FF', name: '솔라나', sub: '빠르고 저렴한 네트워크', change: '+3.1%', color: '#EF4444', rankColor: '#CD7F32' },
+              { icon: '◈', iconBg: '#0080FF', name: '리플', sub: '글로벌 송금 코인', change: '+0.9%', color: '#EF4444', rankColor: '#9CA3AF' },
+            ].map((coin, i) => (
+              <div key={i} className="rank-item">
+                <div className="rank-num" style={{ color: coin.rankColor }}>{i + 1}</div>
+                <div className="list-icon" style={{ background: coin.iconBg, width: 40, height: 40, fontSize: 17 }}>
+                  <span>{coin.icon}</span>
+                </div>
+                <div className="list-text">
+                  <div className="list-name">{coin.name}</div>
+                  <div className="list-sub">{coin.sub}</div>
+                </div>
+                <div className="rank-change" style={{ color: coin.color }}>{coin.change}</div>
               </div>
             ))}
           </div>
