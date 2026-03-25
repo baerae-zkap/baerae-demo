@@ -1,123 +1,47 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import StatusBar from '@/components/StatusBar';
 
-/* ── News Cards Data ── */
-const newsCards = [
-  {
-    bg: '#EFF6FF',
-    chipBg: '#DBEAFE',
-    chipColor: '#2563EB',
-    chip: '💸 여기서 사면 아껴요',
-    title: '이더리움, 코인원이 2만 3천원 더 싸요',
-    sub: '업비트 대비 기준',
-    cta: '확인하기 →',
-    ctaColor: '#2563EB',
-  },
-  {
-    bg: '#F0FDF4',
-    chipBg: '#DCFCE7',
-    chipColor: '#16A34A',
-    chip: '📈 지금 수익 중이에요',
-    title: '비트코인 +12% 수익 중, 이번 달 최고예요',
-    sub: '2월 24일 매수 기준',
-    cta: '자세히 보기 →',
-    ctaColor: '#16A34A',
-  },
-  {
-    bg: '#FAF5FF',
-    chipBg: '#F3E8FF',
-    chipColor: '#7C3AED',
-    chip: '🌙 자는 동안 무슨 일이?',
-    title: '밤사이 솔라나 +4.1% 올랐어요',
-    sub: '자정~오전 9시 기준',
-    cta: null,
-    ctaColor: null,
-  },
-  {
-    bg: '#FEFCE8',
-    chipBg: '#FEF9C3',
-    chipColor: '#B45309',
-    chip: '💡 30초 코인 상식',
-    title: '리플이 뭔지 아세요?',
-    sub: '탭하면 알 수 있어요',
-    cta: null,
-    ctaColor: null,
-  },
-];
+/* ── Data ── */
 
-/* ── My Coins ── */
 const myCoins = [
-  { symbol: 'BTC', icon: '₿', name: '비트코인', value: '1,340,000원', change: '+12%', up: true },
-  { symbol: 'ETH', icon: 'Ξ', name: '이더리움', value: '2,500,000원', change: '+4.2%', up: true },
-  { symbol: 'SOL', icon: '◎', name: '솔라나', value: '115,000원', change: '-1.1%', up: false },
+  { icon: '₿', iconBg: '#F7931A', name: '비트코인', value: '1,340,000원', badge: '수익률 TOP', badgeBg: '#EFF6FF', badgeColor: '#2563EB' },
+  { icon: 'Ξ', iconBg: '#627EEA', name: '이더리움', value: '2,500,000원', changeText: '이번 달 +12%', changeColor: '#EF4444' },
+  { icon: '◎', iconBg: '#9945FF', name: '솔라나', value: '115,000원', sub: '-1.1%', subColor: '#2563EB' },
 ];
 
-/* ── Theme Chips ── */
-const themeChips = [
-  '🇺🇸 미국이 밀어주는',
-  '🤖 AI 코인',
-  '💳 결제의 미래',
-  '🪙 디지털 금',
-  '📈 꾸준히 오르는',
+const themes = [
+  { emoji: '🤖', title: 'AI 시대의 코인', sub: '이달 +28.4%', badge: '수익률 TOP', badgeBg: '#EFF6FF', badgeColor: '#2563EB' },
+  { emoji: '💳', title: '결제의 미래', sub: '이달 +15.1%', badge: '검색 TOP', badgeBg: '#FEF9C3', badgeColor: '#B45309' },
+  { emoji: '🪙', title: '디지털 금', sub: '이달 +9.2%', badge: '꾸준한 성장', badgeBg: '#F3F4F6', badgeColor: '#6B7280' },
+  { emoji: '🇺🇸', title: '미국이 밀어주는', sub: '이달 +6.8%', badge: '거래량 TOP', badgeBg: '#CCFBF1', badgeColor: '#0D9488' },
 ];
 
-/* ── Category Cards ── */
-const categoryCards = [
-  {
-    accent: '#3B82F6',
-    chip: '💸 여기서 사면 N만원 아껴요',
-    chipBg: '#DBEAFE',
-    chipColor: '#2563EB',
-    badge: '조건 충족',
-    title: '이더리움, 코인원이 가장 싸요',
-    sub: '업비트보다 23,000원 더 저렴해요',
-  },
-  {
-    accent: '#F97316',
-    chip: '🔥 지금 난리난 코인',
-    chipBg: '#FFEDD5',
-    chipColor: '#C2410C',
-    badge: null,
-    title: '도지코인, 거래량 평소보다 340% 폭발',
-    sub: '어제보다 거래량이 크게 늘었어요',
-  },
-  {
-    accent: '#10B981',
-    chip: '📈 이번 주 계속 오르는 중',
-    chipBg: '#D1FAE5',
-    chipColor: '#047857',
-    badge: null,
-    title: '비트코인, 7일 연속 상승 중이에요',
-    sub: '1주일 내내 올랐어요',
-  },
-  {
-    accent: '#64748B',
-    chip: '🛡 크게 안 흔들렸어요',
-    chipBg: '#E2E8F0',
-    chipColor: '#475569',
-    badge: null,
-    title: '테더, 이번 주 변동폭이 비교적 작았어요',
-    sub: '가격이 비교적 안정적인 코인이에요',
-  },
-  {
-    accent: '#8B5CF6',
-    chip: '🎯 10만원으로 시작하기',
-    chipBg: '#EDE9FE',
-    chipColor: '#6D28D9',
-    badge: null,
-    title: '소액으로 살 수 있는 검증된 코인',
-    sub: '단가 10만원 이하, 시총 상위 코인들',
-  },
+const exploreCategories = [
+  { emoji: '💸', iconBg: '#06B6D4', name: '이더리움', sub: '코인원이 업비트보다 23,000원 저렴할 때', badge: '가격 차이', badgeBg: '#CCFBF1', badgeColor: '#0D9488' },
+  { emoji: '🔥', iconBg: '#F97316', name: '도지코인', sub: '거래량이 평소보다 3배 이상 늘었을 때', badge: '거래량 폭발', badgeBg: '#FFEDD5', badgeColor: '#C2410C' },
+  { emoji: '📈', iconBg: '#10B981', name: '비트코인', sub: '7일 연속 오름세가 이어질 때', badge: '연속 상승', badgeBg: '#D1FAE5', badgeColor: '#047857' },
+  { emoji: '🛡', iconBg: '#64748B', name: '테더', sub: '변동폭이 가장 적은 코인', badge: '안정적', badgeBg: '#F3F4F6', badgeColor: '#6B7280' },
+  { emoji: '🎯', iconBg: '#8B5CF6', name: '리플', sub: '10만원 이하, 시총 상위 50개 중', badge: '소액 추천', badgeBg: '#F3E8FF', badgeColor: '#7C3AED' },
 ];
 
-/* ── Theme Cards ── */
-const themeCards = [
-  { emoji: '🪙', title: '디지털 금', desc: '금처럼 가치를 저장', coins: ['BTC'] },
-  { emoji: '🤖', title: 'AI 시대', desc: 'AI를 움직이는 코인들', coins: ['FET', 'RNDR'] },
-  { emoji: '💳', title: '결제의 미래', desc: '해외 송금, 결제에 쓰이는', coins: ['XRP', 'XLM'] },
-  { emoji: '🇺🇸', title: '미국이 밀어주는', desc: '미국 ETF에 포함된 코인', coins: ['BTC', 'ETH', 'SOL'] },
+const exploreChips = [
+  { label: '전체' },
+  { label: '💸 가격 차이' },
+  { label: '🔥 화제' },
+  { label: '📈 오르는 중' },
+  { label: '🛡 안정' },
+  { label: '🎯 소액' },
+];
+
+const themeFilterChips = ['수익률 TOP', '검색 TOP', '거래량 TOP'];
+
+const themeGrid = [
+  { emoji: '🤖', title: 'AI 시대', sub: 'AI 관련 코인 묶음', change: '+28.4%' },
+  { emoji: '💳', title: '결제의 미래', sub: '해외 송금/결제', change: '+15.1%' },
+  { emoji: '🪙', title: '디지털 금', sub: 'BTC 중심 가치 저장', change: '+9.2%' },
+  { emoji: '🇺🇸', title: '미국 ETF 포함', sub: '기관이 담는 코인들', change: '+6.8%' },
 ];
 
 /* ══════════════════════════════════════════════════════════════ */
@@ -125,8 +49,8 @@ const themeCards = [
 export default function HomePage() {
   const [activeTab, setActiveTab] = useState('home');
   const [activeChip, setActiveChip] = useState(0);
-  const newsScrollRef = useRef(null);
-  const coinScrollRef = useRef(null);
+  const [activeThemeFilter, setActiveThemeFilter] = useState(0);
+  const [activeNewsTab, setActiveNewsTab] = useState(0);
 
   return (
     <div className="demo-layout">
@@ -136,28 +60,47 @@ export default function HomePage() {
           <StatusBar />
         </div>
 
+        {/* Fixed Header */}
+        <div className="fixed-header">
+          <div className="header-left">
+            <div className="news-pill">
+              3월 25일 소식
+              <span className="notif-badge">9</span>
+            </div>
+          </div>
+          <div className="header-right">
+            <button className="benefit-btn">혜택 구경하기 ×</button>
+            <span className="header-icon">🎁</span>
+            <span className="header-icon">🔔</span>
+          </div>
+        </div>
+
         <div className="screen">
-          {activeTab === 'home' ? <HomeTab /> : <ExploreTab activeChip={activeChip} setActiveChip={setActiveChip} />}
+          {activeTab === 'home' ? (
+            <HomeTab activeNewsTab={activeNewsTab} setActiveNewsTab={setActiveNewsTab} />
+          ) : (
+            <ExploreTab activeChip={activeChip} setActiveChip={setActiveChip} activeThemeFilter={activeThemeFilter} setActiveThemeFilter={setActiveThemeFilter} />
+          )}
         </div>
 
         {/* ── Bottom Tab Bar ── */}
         <div className="tab-bar">
-          <button className={`tab-item ${activeTab === 'home' ? 'active' : ''}`} onClick={() => setActiveTab('home')}>
-            <span className="tab-icon">{activeTab === 'home' ? '🏠' : '🏠'}</span>
-            <span className="tab-label">홈</span>
-          </button>
-          <button className={`tab-item ${activeTab === 'explore' ? 'active' : ''}`} onClick={() => setActiveTab('explore')}>
-            <span className="tab-icon">🔍</span>
-            <span className="tab-label">탐색</span>
-          </button>
-          <button className="tab-item disabled">
-            <span className="tab-icon">💰</span>
-            <span className="tab-label">거래</span>
-          </button>
-          <button className="tab-item disabled">
-            <span className="tab-icon">☰</span>
-            <span className="tab-label">더보기</span>
-          </button>
+          {[
+            { key: 'home', icon: <TabIconHome />, label: '홈' },
+            { key: 'explore', icon: <TabIconExplore />, label: '탐색' },
+            { key: 'trade', icon: <TabIconTrade />, label: '거래', disabled: true },
+            { key: 'earn', icon: <TabIconEarn />, label: '이자받기', disabled: true },
+            { key: 'more', icon: <TabIconMore />, label: '더보기', disabled: true },
+          ].map((tab) => (
+            <button
+              key={tab.key}
+              className={`tab-item ${activeTab === tab.key ? 'active' : ''} ${tab.disabled ? 'disabled' : ''}`}
+              onClick={() => !tab.disabled && setActiveTab(tab.key)}
+            >
+              <span className="tab-icon-svg">{tab.icon}</span>
+              <span className="tab-label">{tab.label}</span>
+            </button>
+          ))}
         </div>
 
         {/* Home indicator */}
@@ -172,26 +115,25 @@ export default function HomePage() {
           <div className="anno-title">홈 + 탐색 탭 기획안</div>
           <div className="anno-subtitle">ZKAP UX 개선 · 2026.03.25</div>
         </div>
-
         <div className="anno-section">
-          <div className="anno-label">오늘의 소식 카드</div>
-          <div className="anno-text">매일 바뀌는 Tier 1/2/3 카드 시스템. 내 자산과 연결된 정보가 최우선.</div>
+          <div className="anno-label">핀트 스타일 헤더</div>
+          <div className="anno-text">날짜 소식 pill + 알림 뱃지. 혜택 CTA 버튼으로 프로모션 진입점 제공.</div>
         </div>
         <div className="anno-section">
-          <div className="anno-label">조건형 카테고리</div>
-          <div className="anno-text">조건 충족 시에만 노출되는 피드. 매일 다른 카드가 뜨는 구조.</div>
+          <div className="anno-label">리스트 카드 UI</div>
+          <div className="anno-text">원형 아이콘 + 2줄 텍스트 + 뱃지 pill. 핀트 앱의 표준 리스트 아이템 패턴.</div>
         </div>
         <div className="anno-section">
-          <div className="anno-label">가격차 원화 표현</div>
-          <div className="anno-text">% 대신 원화 금액. "2만 3천원 아껴요"가 직관적.</div>
+          <div className="anno-label">뱃지 시스템</div>
+          <div className="anno-text">수익률 TOP, 검색 TOP, 거래량 TOP 등 상태별 컬러 코딩된 pill 뱃지.</div>
         </div>
         <div className="anno-section">
-          <div className="anno-label">하단 탭 구조</div>
-          <div className="anno-text">거래 탭 완전 분리. 홈이 정보 중심, 거래는 명시적 의도가 있을 때만.</div>
+          <div className="anno-label">탐색 탭 카테고리</div>
+          <div className="anno-text">조건 기반 카테고리. 가격 차이, 거래량 폭발 등 실시간 조건 충족 시 노출.</div>
         </div>
         <div className="anno-section" style={{ borderBottom: 'none' }}>
-          <div className="anno-label">테마 묶음</div>
-          <div className="anno-text">온체인 용어 없이 일상 키워드로 코인 그룹화.</div>
+          <div className="anno-label">테마 그리드</div>
+          <div className="anno-text">2×2 카드 그리드로 테마별 수익률 한눈에 비교. 필터 칩으로 정렬 전환.</div>
         </div>
       </div>
     </div>
@@ -199,62 +141,207 @@ export default function HomePage() {
 }
 
 /* ══════════════════════════════════════════════════════════════ */
+/* Tab Icons (SVG line icons)                                     */
+/* ══════════════════════════════════════════════════════════════ */
+
+function TabIconHome() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+      <polyline points="9 22 9 12 15 12 15 22" />
+    </svg>
+  );
+}
+
+function TabIconExplore() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="11" cy="11" r="8" />
+      <line x1="21" y1="21" x2="16.65" y2="16.65" />
+    </svg>
+  );
+}
+
+function TabIconTrade() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <line x1="12" y1="1" x2="12" y2="23" />
+      <path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" />
+    </svg>
+  );
+}
+
+function TabIconEarn() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+      <polyline points="17 6 23 6 23 12" />
+    </svg>
+  );
+}
+
+function TabIconMore() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <line x1="3" y1="12" x2="21" y2="12" />
+      <line x1="3" y1="6" x2="21" y2="6" />
+      <line x1="3" y1="18" x2="21" y2="18" />
+    </svg>
+  );
+}
+
+/* ══════════════════════════════════════════════════════════════ */
 /* 홈 Tab                                                        */
 /* ══════════════════════════════════════════════════════════════ */
 
-function HomeTab() {
+function HomeTab({ activeNewsTab, setActiveNewsTab }) {
   return (
     <div className="tab-content">
-      {/* Header */}
-      <div className="home-header">
-        <div className="home-greeting">안녕하세요 👋</div>
-        <div className="home-balance">내 자산 3,240,500원</div>
-        <div className="home-change positive">+116,500원 (3.7%)</div>
-        <div className="home-timestamp">3월 25일 오전 9:12 기준</div>
+      {/* Greeting + Asset */}
+      <div className="home-greeting-section">
+        <div className="greeting-text">종인님, 안녕하세요 👋</div>
+        <div className="asset-label">내 자산</div>
+        <div className="asset-amount">3,240,500원</div>
+        <div className="asset-change">+116,500원 (3.7%) 오늘</div>
       </div>
 
-      {/* 오늘의 소식 */}
-      <div className="section">
-        <div className="section-header">
-          <span className="section-title">오늘의 소식</span>
-          <span className="date-badge">3월 25일</span>
+      {/* Ticker Strip */}
+      <div className="ticker-strip">
+        <div className="ticker-inner">
+          <span className="ticker-item">
+            <span className="ticker-name">SPY</span>
+            <span className="ticker-desc">(S&P500 추종)</span>
+            <span className="ticker-up">+0.12%</span>
+          </span>
+          <span className="ticker-item">
+            <span className="ticker-name">QQQ</span>
+            <span className="ticker-desc">(나스닥 추종)</span>
+            <span className="ticker-down">-0.18%</span>
+          </span>
+          <span className="ticker-item">
+            <span className="ticker-name">BTC</span>
+            <span className="ticker-desc">(비트코인)</span>
+            <span className="ticker-up">+4.2%</span>
+          </span>
+          <span className="ticker-item">
+            <span className="ticker-name">ETH</span>
+            <span className="ticker-desc">(이더리움)</span>
+            <span className="ticker-up">+1.8%</span>
+          </span>
         </div>
-        <div className="news-scroll">
-          {newsCards.map((card, i) => (
-            <div key={i} className="news-card" style={{ background: card.bg }}>
-              <div className="news-chip" style={{ background: card.chipBg, color: card.chipColor }}>
-                {card.chip}
-              </div>
-              <div className="news-title">{card.title}</div>
-              <div className="news-sub">{card.sub}</div>
-              {card.cta && (
-                <div className="news-cta" style={{ color: card.ctaColor }}>{card.cta}</div>
-              )}
+      </div>
+
+      {/* 오늘의 소식 Card */}
+      <div className="fint-card">
+        <div className="card-inner">
+          <div className="news-tab-row">
+            <div className="news-segmented">
+              <button className={`news-seg-btn ${activeNewsTab === 0 ? 'active' : ''}`} onClick={() => setActiveNewsTab(0)}>이더리움</button>
+              <button className={`news-seg-btn ${activeNewsTab === 1 ? 'active' : ''}`} onClick={() => setActiveNewsTab(1)}>비트코인</button>
             </div>
-          ))}
-        </div>
-      </div>
-
-      {/* 내 코인 */}
-      <div className="section">
-        <div className="section-header">
-          <span className="section-title">내 코인</span>
-        </div>
-        <div className="coin-scroll">
-          {myCoins.map((coin, i) => (
-            <div key={i} className="coin-card">
-              <div className="coin-icon-wrapper">
-                <span className="coin-icon-text">{coin.icon}</span>
+          </div>
+          {activeNewsTab === 0 ? (
+            <div className="news-content">
+              <div className="news-sub-label">오늘의 가격 기회</div>
+              <div className="news-big-title">{'코인원에서 사면\n2만 3천원 저렴해요'}</div>
+              <div className="exchange-compare">
+                <div className="exchange-bar">
+                  <div className="exchange-label">코인원</div>
+                  <div className="exchange-fill" style={{ width: '60%', background: '#06B6D4' }} />
+                  <div className="exchange-val">3,821,000원</div>
+                </div>
+                <div className="exchange-bar">
+                  <div className="exchange-label">업비트</div>
+                  <div className="exchange-fill" style={{ width: '65%', background: '#E5E7EB' }} />
+                  <div className="exchange-val">3,844,000원</div>
+                </div>
+                <div className="exchange-bar">
+                  <div className="exchange-label">빗썸</div>
+                  <div className="exchange-fill" style={{ width: '63%', background: '#E5E7EB' }} />
+                  <div className="exchange-val">3,838,000원</div>
+                </div>
               </div>
-              <div className="coin-symbol">{coin.symbol}</div>
-              <div className="coin-value">{coin.value}</div>
-              <div className={`coin-change ${coin.up ? 'up' : 'down'}`}>{coin.change}</div>
+              <button className="cta-btn">코인원에서 구매하기</button>
             </div>
-          ))}
+          ) : (
+            <div className="news-content">
+              <div className="news-sub-label">이번 달 수익 현황</div>
+              <div className="news-big-title">{'비트코인 +12%\n이번 달 최고 수익이에요'}</div>
+              <button className="cta-btn">자세히 보기</button>
+            </div>
+          )}
         </div>
       </div>
 
-      <div style={{ height: 40 }} />
+      {/* 내 코인 Card */}
+      <div className="fint-card">
+        <div className="card-inner">
+          <div className="card-section-title">내 코인</div>
+          <div className="list-items">
+            {myCoins.map((coin, i) => (
+              <div key={i} className={`list-item ${i < myCoins.length - 1 ? 'with-divider' : ''}`}>
+                <div className="list-icon" style={{ background: coin.iconBg }}>
+                  <span>{coin.icon}</span>
+                </div>
+                <div className="list-text">
+                  <div className="list-name">{coin.name}</div>
+                  <div className="list-sub">{coin.value}{coin.sub ? ` ${coin.sub}` : ''}</div>
+                </div>
+                <div className="list-right">
+                  {coin.badge && (
+                    <span className="badge-pill" style={{ background: coin.badgeBg, color: coin.badgeColor }}>{coin.badge}</span>
+                  )}
+                  {coin.changeText && (
+                    <span className="change-text" style={{ color: coin.changeColor }}>{coin.changeText}</span>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* 비슷한 투자자 Card */}
+      <div className="fint-card">
+        <div className="card-inner">
+          <div className="card-section-title">종인님과 비슷한 투자자들은?</div>
+          <div className="stat-grid">
+            <div className="stat-card">
+              <div className="stat-label">20대 또래{'\n'}평균 투자</div>
+              <div className="stat-value cyan">516만원</div>
+            </div>
+            <div className="stat-card">
+              <div className="stat-label">20대 또래{'\n'}이번달 +수익</div>
+              <div className="stat-value red">+82,000원</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* 지금 뜨는 테마 Card */}
+      <div className="fint-card">
+        <div className="card-inner">
+          <div className="card-section-title">지금 뜨는 테마</div>
+          <div className="list-items">
+            {themes.map((t, i) => (
+              <div key={i} className={`list-item ${i < themes.length - 1 ? 'with-divider' : ''}`}>
+                <div className="list-icon emoji-icon">
+                  <span>{t.emoji}</span>
+                </div>
+                <div className="list-text">
+                  <div className="list-name">{t.title}</div>
+                  <div className="list-sub">{t.sub}</div>
+                </div>
+                <div className="list-right">
+                  <span className="badge-pill" style={{ background: t.badgeBg, color: t.badgeColor }}>{t.badge}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div style={{ height: 20 }} />
     </div>
   );
 }
@@ -263,7 +350,7 @@ function HomeTab() {
 /* 탐색 Tab                                                      */
 /* ══════════════════════════════════════════════════════════════ */
 
-function ExploreTab({ activeChip, setActiveChip }) {
+function ExploreTab({ activeChip, setActiveChip, activeThemeFilter, setActiveThemeFilter }) {
   return (
     <div className="tab-content">
       {/* Search bar */}
@@ -273,73 +360,78 @@ function ExploreTab({ activeChip, setActiveChip }) {
             <circle cx="11" cy="11" r="8" />
             <line x1="21" y1="21" x2="16.65" y2="16.65" />
           </svg>
-          <span className="search-placeholder">코인 이름이나 키워드로 검색</span>
+          <span className="search-placeholder">코인 이름이나 키워드 검색</span>
         </div>
       </div>
 
-      {/* Theme chips */}
-      <div className="theme-chips-scroll">
-        {themeChips.map((chip, i) => (
+      {/* Segmented chips */}
+      <div className="explore-chips-scroll">
+        {exploreChips.map((chip, i) => (
           <button
             key={i}
-            className={`theme-chip ${i === activeChip ? 'active' : ''}`}
+            className={`explore-chip ${i === activeChip ? 'active' : ''}`}
             onClick={() => setActiveChip(i)}
           >
-            {chip}
+            {chip.label}
           </button>
         ))}
       </div>
 
-      {/* 오늘의 카테고리 */}
-      <div className="section">
-        <div className="section-header">
-          <span className="section-title">오늘의 카테고리</span>
-          <span className="date-badge">3월 25일</span>
-        </div>
-
-        <div className="category-feed">
-          {categoryCards.map((card, i) => (
-            <div key={i} className="category-card" style={{ borderLeft: `3px solid ${card.accent}` }}>
-              <div className="category-top-row">
-                <div className="category-chip" style={{ background: card.chipBg, color: card.chipColor }}>
-                  {card.chip}
+      {/* 오늘의 카테고리 Card */}
+      <div className="fint-card">
+        <div className="card-inner">
+          <div className="card-title-row">
+            <span className="card-section-title">오늘의 카테고리</span>
+            <span className="date-badge-teal">3월 25일</span>
+          </div>
+          <div className="list-items">
+            {exploreCategories.map((cat, i) => (
+              <div key={i} className={`list-item ${i < exploreCategories.length - 1 ? 'with-divider' : ''}`}>
+                <div className="list-icon" style={{ background: cat.iconBg }}>
+                  <span>{cat.emoji}</span>
                 </div>
-                {card.badge && (
-                  <div className="category-badge">
-                    <span className="badge-dot" />
-                    {card.badge}
-                  </div>
-                )}
+                <div className="list-text">
+                  <div className="list-name">{cat.name}</div>
+                  <div className="list-sub">{cat.sub}</div>
+                </div>
+                <div className="list-right">
+                  <span className="badge-pill" style={{ background: cat.badgeBg, color: cat.badgeColor }}>{cat.badge}</span>
+                </div>
               </div>
-              <div className="category-title">{card.title}</div>
-              <div className="category-sub">{card.sub}</div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* 테마로 보기 */}
-      <div className="section">
-        <div className="section-header">
-          <span className="section-title">테마로 보기</span>
-        </div>
-        <div className="theme-grid">
-          {themeCards.map((t, i) => (
-            <div key={i} className="theme-card">
-              <div className="theme-card-emoji">{t.emoji}</div>
-              <div className="theme-card-title">{t.title}</div>
-              <div className="theme-card-desc">{t.desc}</div>
-              <div className="theme-card-coins">
-                {t.coins.map((c, j) => (
-                  <span key={j} className="theme-coin-tag">{c}</span>
-                ))}
+      {/* 테마 한눈에 보기 Card */}
+      <div className="fint-card">
+        <div className="card-inner">
+          <div className="card-section-title">지금 잘나가는 테마, 한눈에 보기</div>
+          <div className="theme-filter-chips">
+            {themeFilterChips.map((chip, i) => (
+              <button
+                key={i}
+                className={`theme-filter-chip ${i === activeThemeFilter ? 'active' : ''}`}
+                onClick={() => setActiveThemeFilter(i)}
+              >
+                {chip}
+              </button>
+            ))}
+          </div>
+          <div className="theme-grid">
+            {themeGrid.map((t, i) => (
+              <div key={i} className="theme-grid-card">
+                <div className="theme-grid-emoji">{t.emoji}</div>
+                <div className="theme-grid-title">{t.title}</div>
+                <div className="theme-grid-sub">{t.sub}</div>
+                <div className="theme-grid-change">{t.change}</div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
 
-      <div style={{ height: 40 }} />
+      <div style={{ height: 20 }} />
     </div>
   );
 }
