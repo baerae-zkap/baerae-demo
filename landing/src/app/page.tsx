@@ -21,6 +21,16 @@ const demos = [
     heroBg: "linear-gradient(135deg, #1a1a2e, #4a1d96)",
     iframeW: 390, iframeH: 844, scale: 0.667,
   },
+  {
+    id: "zkap-home-explore",
+    title: "ZKAP 홈·탐색",
+    desc: "오늘의 소식, 조건형 카테고리, 테마 묶음 — 정보 중심의 홈과 탐색 탭 UX",
+    href: "/baerae-demo/zkap-home-explore/",
+    preview: "/baerae-demo/zkap-home-explore/",
+    icon: "/baerae-demo/zkap-icon.png",
+    heroBg: "linear-gradient(135deg, #0f172a, #3B82F6)",
+    iframeW: 390, iframeH: 844, scale: 0.667,
+  },
 ];
 
 export default function LandingPage() {
