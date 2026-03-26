@@ -2466,16 +2466,53 @@ img[src*="bybit"] {
   font-weight: 600;
 }
 .cd-info-block {
-  background: #FFFFFF;
-  border-radius: 20px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-  margin: 0 16px 12px;
-  padding: 20px;
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+  margin: 0;
+  padding: 0 20px 16px;
 }
 
 #sec-info {
-  padding: 12px 0;
+  padding: 0;
+  background: #FFFFFF;
 }
+
+.section-divider {
+  height: 8px;
+  background: #F5F6F8;
+}
+
+.cd-info-block > .cd-section-title {
+  padding: 20px 0 12px;
+  margin-bottom: 0;
+  font-size: 17px;
+}
+
+.cd-info-block > .cd-section-header-row {
+  padding: 20px 0 12px;
+}
+.cd-info-block > .cd-section-header-row .cd-section-title {
+  font-size: 17px;
+  margin-bottom: 0;
+}
+
+.cd-info-block > .cd-section-subtitle {
+  padding: 20px 0 12px;
+  margin-bottom: 0;
+  font-size: 17px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid #F0F0F0;
+}
+.info-row:last-child { border-bottom: none; }
+.info-row-label { font-size: 15px; color: #888888; }
+.info-row-value { font-size: 15px; font-weight: 600; color: #1A1A1A; text-align: right; }
 
 /* ---- Chart Tab ---- */
 .cd-chart-container {
@@ -3034,8 +3071,8 @@ img[src*="bybit"] {
   gap: 10px;
   overflow-x: auto;
   padding-bottom: 4px;
-  margin-right: -24px;
-  padding-right: 24px;
+  margin-right: -20px;
+  padding-right: 20px;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -4039,7 +4076,7 @@ img[src*="bybit"] {
   justify-content: space-between;
   align-items: center;
   padding: 14px 0;
-  border-bottom: 1px solid #F5F6F8;
+  border-bottom: 1px solid #F0F0F0;
 }
 .cd-product-row:last-child {
   border-bottom: none;
@@ -4229,8 +4266,8 @@ img[src*="bybit"] {
   display: flex;
   gap: 12px;
   overflow-x: auto;
-  margin: 0 -24px;
-  padding: 0 24px 8px;
+  margin: 0 -20px;
+  padding: 0 20px 8px;
   scroll-snap-type: x mandatory;
 }
 .cd-pred-scroll::-webkit-scrollbar { display: none; }

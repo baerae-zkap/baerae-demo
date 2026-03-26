@@ -325,6 +325,7 @@ function ChartTab({ selectedTimeRange, setSelectedTimeRange }) {
 function InfoTab({ selectedCalcAmount, setSelectedCalcAmount, monthlyInterest }) {
   return (
     <div className="cd-section" id="sec-info">
+      <div className="section-divider" />
       {/* Market overview — daily freshness */}
       <div className="cd-info-block" id="sec-market">
         <h3 className="cd-section-title">3월 25일 오늘의 이더리움</h3>
@@ -363,6 +364,7 @@ function InfoTab({ selectedCalcAmount, setSelectedCalcAmount, monthlyInterest })
         </div>
       </div>
 
+      <div className="section-divider" />
       {/* 52 week range */}
       <div className="cd-info-block">
         <h3 className="cd-section-title" id="sec-52week">지금 비싼 거야, 싼 거야?</h3>
@@ -389,6 +391,7 @@ function InfoTab({ selectedCalcAmount, setSelectedCalcAmount, monthlyInterest })
         </div>
       </div>
 
+      <div className="section-divider" />
       {/* Visual insight card */}
       <div className="cd-info-block">
         <div className="cd-visual-insight">
@@ -400,6 +403,7 @@ function InfoTab({ selectedCalcAmount, setSelectedCalcAmount, monthlyInterest })
         </div>
       </div>
 
+      <div className="section-divider" />
       {/* Past performance */}
       <div className="cd-info-block">
         <h3 className="cd-section-title" id="sec-timing">이때 샀으면 지금은...</h3>
@@ -428,6 +432,7 @@ function InfoTab({ selectedCalcAmount, setSelectedCalcAmount, monthlyInterest })
         </div>
       </div>
 
+      <div className="section-divider" />
       {/* Interest calculator */}
       <div className="cd-info-block">
         <h3 className="cd-section-title" id="sec-calc">이더리움(으)로 이자 받기</h3>
@@ -460,6 +465,7 @@ function InfoTab({ selectedCalcAmount, setSelectedCalcAmount, monthlyInterest })
         </div>
       </div>
 
+      <div className="section-divider" />
       {/* Q&A */}
       <div className="cd-info-block">
         <h3 className="cd-section-title" id="sec-qna">이더리움이 뭐야?</h3>
@@ -473,6 +479,7 @@ function InfoTab({ selectedCalcAmount, setSelectedCalcAmount, monthlyInterest })
         </div>
       </div>
 
+      <div className="section-divider" />
       {/* People section: stats */}
       <div className="cd-info-block">
         <h3 className="cd-section-title" id="sec-people">어떤 사람들이 갖고 있을까?</h3>
@@ -488,6 +495,7 @@ function InfoTab({ selectedCalcAmount, setSelectedCalcAmount, monthlyInterest })
         </div>
       </div>
 
+      <div className="section-divider" />
       {/* Age distribution */}
       <div className="cd-info-block">
         <h3 className="cd-section-subtitle">연령대별 보유 비율</h3>
@@ -512,6 +520,7 @@ function InfoTab({ selectedCalcAmount, setSelectedCalcAmount, monthlyInterest })
         </div>
       </div>
 
+      <div className="section-divider" />
       {/* Ranking */}
       <div className="cd-info-block">
         <div className="cd-section-header-row">
@@ -540,6 +549,7 @@ function InfoTab({ selectedCalcAmount, setSelectedCalcAmount, monthlyInterest })
         </div>
       </div>
 
+      <div className="section-divider" />
       {/* 했제와 그랬제 */}
       <div className="cd-info-block">
         <h3 className="cd-section-title">했제와 그랬제</h3>
@@ -599,6 +609,7 @@ function InfoTab({ selectedCalcAmount, setSelectedCalcAmount, monthlyInterest })
         </div>
       </div>
 
+      <div className="section-divider" />
       {/* Co-held coins */}
       <div className="cd-info-block">
         <h3 className="cd-section-title">이 코인 보유자가 같이 산 코인</h3>
@@ -613,6 +624,7 @@ function InfoTab({ selectedCalcAmount, setSelectedCalcAmount, monthlyInterest })
         </div>
       </div>
 
+      <div className="section-divider" />
       {/* 상품 정보 */}
       <div className="cd-info-block">
         <h3 className="cd-section-title">상품 정보</h3>
