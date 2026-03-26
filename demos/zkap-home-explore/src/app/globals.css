@@ -1773,6 +1773,52 @@ body {
   margin-top: 4px;
 }
 
+/* Category filter tabs */
+.explore-cat-wrap {
+  display: flex;
+  gap: 8px;
+  padding: 12px 20px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  background: #fff;
+  border-bottom: 1px solid #F0F0F0;
+}
+.explore-cat-wrap::-webkit-scrollbar { display: none; }
+
+.explore-cat-tab {
+  flex-shrink: 0;
+  border: 1.5px solid #E4E6EC;
+  border-radius: 100px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #7A7D87;
+  background: #fff;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s;
+}
+.explore-cat-tab.active {
+  border-color: #3B6CFF;
+  color: #3B6CFF;
+  background: #EEF2FF;
+}
+
+/* Coin category tag */
+.explore-coin-tag {
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 4px;
+  padding: 2px 6px;
+  flex-shrink: 0;
+}
+.explore-coin-tag.purple { background: #F3F0FF; color: #7C5CFC; }
+.explore-coin-tag.blue   { background: #EEF4FF; color: #3B6CFF; }
+.explore-coin-tag.orange { background: #FFF3EE; color: #FF6B2B; }
+.explore-coin-tag.green  { background: #EDFAF5; color: #00B386; }
+.explore-coin-tag.red    { background: #FFF0F1; color: #F04452; }
+
 /* 1위 hook 워딩 — 조건 충족 시에만 노출 */
 .explore-coin-row.top-highlight {
   background: #F8F9FF;

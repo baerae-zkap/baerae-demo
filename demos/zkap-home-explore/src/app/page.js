@@ -81,66 +81,83 @@ const popularThemes = [
 /* ── Explore v2 data ── */
 const exploreTrendingKeywords = ['솔라나', '비트코인', 'TRUMP', '이더리움', '수이', '도지코인'];
 
+// 카테고리 필터 탭
+const exploreCategories = [
+  { key: 'all', label: '전체' },
+  { key: 'AI', label: 'AI' },
+  { key: '결제', label: '결제' },
+  { key: '밈', label: '밈코인' },
+  { key: '레이어1', label: '레이어1' },
+  { key: '거래량급증', label: '거래량 급증' },
+];
+
+// tag: 코인당 1개 카테고리 태그. color: 'purple'|'blue'|'orange'|'green'|'red'
 // hook: 조건 충족 시에만 보여줄 서브워딩. 1위만 노출. 없으면 null.
 const exploreSections = [
   {
     emoji: '🔥',
     title: '이번 주 거래량 폭발',
     sub: '24시간 거래량이 평소보다 3배 이상 늘었어요',
+    category: '거래량급증',
     coins: [
-      { icon: '◎', iconBg: '#9945FF', name: '솔라나', hook: '오늘 거래량 평소의 4배예요', price: '182,400원', change: '+9.2%', up: true },
-      { icon: 'D', iconBg: '#C2A633', name: '도지코인', hook: null, price: '242원', change: '+7.8%', up: true },
-      { icon: 'X', iconBg: '#00AAE4', name: '리플', hook: null, price: '3,120원', change: '+4.1%', up: true },
+      { icon: '◎', iconBg: '#9945FF', name: '솔라나', tag: '레이어1', tagColor: 'green', hook: '오늘 거래량 평소의 4배예요', price: '182,400원', change: '+9.2%', up: true },
+      { icon: 'D', iconBg: '#C2A633', name: '도지코인', tag: '밈', tagColor: 'orange', hook: null, price: '242원', change: '+7.8%', up: true },
+      { icon: 'X', iconBg: '#00AAE4', name: '리플', tag: '결제', tagColor: 'blue', hook: null, price: '3,120원', change: '+4.1%', up: true },
     ],
   },
   {
     emoji: '💰',
     title: '다른 데보다 더 싸게 살 수 있어요',
     sub: '지금 거래소마다 가격이 달라요 — ZKAP이 찾아드렸어요',
+    category: null,
     coins: [
-      { icon: 'Ξ', iconBg: '#627EEA', name: '이더리움', hook: '코인원이 업비트보다 38,200원 싸요', price: '4,820,000원', change: '+1.3%', up: true },
-      { icon: '₿', iconBg: '#F7931A', name: '비트코인', hook: null, price: '128,400,000원', change: '+0.8%', up: true },
-      { icon: '◎', iconBg: '#9945FF', name: '솔라나', hook: null, price: '182,400원', change: '+9.2%', up: true },
+      { icon: 'Ξ', iconBg: '#627EEA', name: '이더리움', tag: '레이어1', tagColor: 'green', hook: '코인원이 업비트보다 38,200원 싸요', price: '4,820,000원', change: '+1.3%', up: true },
+      { icon: '₿', iconBg: '#F7931A', name: '비트코인', tag: '레이어1', tagColor: 'green', hook: null, price: '128,400,000원', change: '+0.8%', up: true },
+      { icon: '◎', iconBg: '#9945FF', name: '솔라나', tag: '레이어1', tagColor: 'green', hook: null, price: '182,400원', change: '+9.2%', up: true },
     ],
   },
   {
     emoji: '📈',
     title: '이번 주 계속 오르는 중',
     sub: '7일 연속 양봉이에요 — 쭉 올랐다는 뜻',
+    category: null,
     coins: [
-      { icon: 'N', iconBg: '#00C08B', name: '니어프로토콜', hook: '7일 연속 올랐어요', price: '6,840원', change: '+12.4%', up: true },
-      { icon: '₿', iconBg: '#F7931A', name: '비트코인', hook: null, price: '128,400,000원', change: '+0.8%', up: true },
-      { icon: 'A', iconBg: '#E84142', name: '아발란체', hook: null, price: '42,300원', change: '+5.7%', up: true },
+      { icon: 'N', iconBg: '#00C08B', name: '니어프로토콜', tag: 'AI', tagColor: 'purple', hook: '7일 연속 올랐어요', price: '6,840원', change: '+12.4%', up: true },
+      { icon: '₿', iconBg: '#F7931A', name: '비트코인', tag: '레이어1', tagColor: 'green', hook: null, price: '128,400,000원', change: '+0.8%', up: true },
+      { icon: 'A', iconBg: '#E84142', name: '아발란체', tag: '레이어1', tagColor: 'green', hook: null, price: '42,300원', change: '+5.7%', up: true },
     ],
   },
   {
     emoji: '🇺🇸',
     title: '트럼프가 좋아하는 코인',
     sub: '미국 정책이 코인 가격에 영향을 주고 있어요',
+    category: '밈',
     coins: [
-      { icon: 'T', iconBg: '#C0392B', name: 'TRUMP', hook: '출시 이후 최고가 경신 중', price: '18,700원', change: '+21.3%', up: true },
-      { icon: '₿', iconBg: '#F7931A', name: '비트코인', hook: null, price: '128,400,000원', change: '+0.8%', up: true },
-      { icon: 'X', iconBg: '#00AAE4', name: '리플', hook: null, price: '3,120원', change: '+4.1%', up: true },
+      { icon: 'T', iconBg: '#C0392B', name: 'TRUMP', tag: '밈', tagColor: 'orange', hook: '출시 이후 최고가 경신 중', price: '18,700원', change: '+21.3%', up: true },
+      { icon: '₿', iconBg: '#F7931A', name: '비트코인', tag: '레이어1', tagColor: 'green', hook: null, price: '128,400,000원', change: '+0.8%', up: true },
+      { icon: 'X', iconBg: '#00AAE4', name: '리플', tag: '결제', tagColor: 'blue', hook: null, price: '3,120원', change: '+4.1%', up: true },
     ],
   },
   {
-    emoji: '🏆',
-    title: 'ZKAP에서 제일 많이 가진 코인',
-    sub: '지금 ZKAP 사용자들이 가장 많이 보유하고 있어요',
+    emoji: '🎯',
+    title: '이번 달 수익 낸 사람들의 공통 코인',
+    sub: '수익 낸 ZKAP 사용자 847명이 공통으로 가진 코인이에요',
+    category: null,
     coins: [
-      { icon: '₿', iconBg: '#F7931A', name: '비트코인', hook: '사용자 2,341명이 갖고 있어요', price: '128,400,000원', change: '+0.8%', up: true },
-      { icon: 'Ξ', iconBg: '#627EEA', name: '이더리움', hook: null, price: '4,820,000원', change: '+1.3%', up: true },
-      { icon: '◎', iconBg: '#9945FF', name: '솔라나', hook: null, price: '182,400원', change: '+9.2%', up: true },
+      { icon: '₿', iconBg: '#F7931A', name: '비트코인', tag: '레이어1', tagColor: 'green', hook: '수익 낸 사람 10명 중 7명이 갖고 있어요', price: '128,400,000원', change: '+0.8%', up: true },
+      { icon: 'Ξ', iconBg: '#627EEA', name: '이더리움', tag: '레이어1', tagColor: 'green', hook: null, price: '4,820,000원', change: '+1.3%', up: true },
+      { icon: '◎', iconBg: '#9945FF', name: '솔라나', tag: '레이어1', tagColor: 'green', hook: null, price: '182,400원', change: '+9.2%', up: true },
     ],
   },
   {
     emoji: '📉',
     title: '너무 많이 빠졌는데 한번 볼 만해요',
     sub: '1년 최저가 근처예요 — 투자 판단은 본인이 하세요',
+    category: null,
     coins: [
-      { icon: 'P', iconBg: '#E6007A', name: '폴카닷', hook: '1년 최저가에서 4% 위예요', price: '9,240원', change: '-3.4%', up: false },
-      { icon: 'A', iconBg: '#0033AD', name: '카르다노', hook: null, price: '728원', change: '-2.1%', up: false },
-      { icon: 'L', iconBg: '#2A5ADA', name: '체인링크', hook: null, price: '19,800원', change: '-1.2%', up: false },
+      { icon: 'P', iconBg: '#E6007A', name: '폴카닷', tag: '레이어1', tagColor: 'green', hook: '1년 최저가에서 4% 위예요', price: '9,240원', change: '-3.4%', up: false },
+      { icon: 'A', iconBg: '#0033AD', name: '카르다노', tag: '레이어1', tagColor: 'green', hook: null, price: '728원', change: '-2.1%', up: false },
+      { icon: 'F', iconBg: '#2A5ADA', name: '체인링크', tag: 'AI', tagColor: 'purple', hook: null, price: '19,800원', change: '-1.2%', up: false },
     ],
   },
 ];
@@ -701,6 +718,15 @@ function ExploreHome() {
 }
 
 function ExplorePopular() {
+  const [activeCategory, setActiveCategory] = useState('all');
+
+  const visibleSections = activeCategory === 'all'
+    ? exploreSections
+    : exploreSections.filter(sec =>
+        sec.category === activeCategory ||
+        sec.coins.some(c => c.tag === activeCategory)
+      );
+
   return (
     <>
       {/* Search bar */}
@@ -729,8 +755,21 @@ function ExplorePopular() {
         </div>
       </div>
 
+      {/* Category filter tabs */}
+      <div className="explore-cat-wrap">
+        {exploreCategories.map(cat => (
+          <button
+            key={cat.key}
+            className={`explore-cat-tab ${activeCategory === cat.key ? 'active' : ''}`}
+            onClick={() => setActiveCategory(cat.key)}
+          >
+            {cat.label}
+          </button>
+        ))}
+      </div>
+
       {/* Worded sections feed */}
-      {exploreSections.map((sec, si) => (
+      {visibleSections.map((sec, si) => (
         <div key={si} className="explore-section">
           <div className="explore-section-header">
             <div className="explore-section-title-wrap">
@@ -761,6 +800,9 @@ function ExplorePopular() {
                   <div className="explore-coin-info">
                     <div className="explore-coin-name-row">
                       <span className="explore-coin-name">{c.name}</span>
+                      {c.tag && (
+                        <span className={`explore-coin-tag ${c.tagColor}`}>{c.tag}</span>
+                      )}
                     </div>
                     {isTop && (
                       <span className="explore-coin-hook">{c.hook}</span>
