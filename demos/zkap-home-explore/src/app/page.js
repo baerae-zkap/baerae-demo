@@ -263,7 +263,7 @@ export default function HomePage() {
         </div>
         <div className="anno-section">
           <div className="anno-label">탐색 탭 v2</div>
-          <div className="anno-text">검색창 플레이스홀더 + 트렌딩 키워드 chips + 워딩 타이틀 섹션 피드. 두 레이어: (1) 섹션 타이틀 — 스크롤 중 클릭 유발 ("이번 주 거래량 폭발") (2) 항목 서브워딩 — 코인마다 맥락 한 줄 ("밈인데 거래량은 진지함"). 섹션: 거래량 폭발 · 더 싸게 살 수 있어요 · 계속 오르는 중 · 트럼프 코인 · ZKAP 인기 · 바닥 근처.</div>
+          <div className="anno-text">홈/인기테마/신규코인 서브탭 구조. 홈: 계정 요약 + 가이드 카드 + 최근 관심 코인 + 테마 배너/그리드. 인기테마(v2): 검색창 + 트렌딩 chips + 워딩 타이틀 섹션 피드 — (1) 섹션 타이틀로 클릭 유발 ("이번 주 거래량 폭발") (2) 항목 서브워딩으로 맥락 제공 ("밈인데 거래량은 진지함"). 신규코인: 최근 30일 상장 리스트.</div>
         </div>
         <div className="anno-section">
           <div className="anno-label">소식 탭</div>
@@ -583,12 +583,125 @@ function StakingTab() {
 }
 
 /* ══════════════════════════════════════════════════════════════ */
-/* Tab 3: 탐색 v2 — 워딩 타이틀 섹션 + 항목 서브워딩               */
+/* Tab 3: 탐색 — 서브탭 구조 복원 + 인기테마를 v2 피드로           */
 /* ══════════════════════════════════════════════════════════════ */
 
 function ExploreTab() {
+  const [exploreSub, setExploreSub] = useState(0);
+
   return (
     <div className="tab-content">
+      {/* Sub-tabs: 홈 / 인기테마 / 신규코인 */}
+      <div className="explore-sub-tabs">
+        {['홈', '인기테마', '신규코인'].map((label, i) => (
+          <button
+            key={i}
+            className={`explore-sub-tab ${exploreSub === i ? 'active' : ''}`}
+            onClick={() => setExploreSub(i)}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
+
+      {exploreSub === 0 && <ExploreHome />}
+      {exploreSub === 1 && <ExplorePopular />}
+      {exploreSub === 2 && <ExploreNew />}
+    </div>
+  );
+}
+
+function ExploreHome() {
+  return (
+    <>
+      {/* Account summary */}
+      <div className="explore-account-summary">
+        <div className="explore-account-label">보유 자산</div>
+        <div className="explore-account-amount">3,955,500원</div>
+      </div>
+
+      {/* Guide cards 2-column */}
+      <div className="guide-cards-row">
+        <div className="guide-card">
+          <div className="guide-card-icon">📊</div>
+          <span className="guide-card-chevron">&gt;</span>
+          <div className="guide-card-title">{'탐색에 대해\n알려드려요'}</div>
+          <div className="guide-card-sub">탐색 가이드</div>
+        </div>
+        <div className="guide-card">
+          <div className="guide-card-icon">🔗</div>
+          <span className="guide-card-chevron">&gt;</span>
+          <div className="guide-card-title">{'거래소를 미리\n연결해요'}</div>
+          <div className="guide-card-sub">거래소 연결</div>
+        </div>
+      </div>
+
+      {/* 최근 관심 코인 */}
+      <div className="recent-section-title">최근 관심 코인</div>
+      <div style={{ padding: '0 20px 20px' }}>
+        {exploreRecentCoins.map((c, i) => (
+          <div key={i} className={`list-item ${i < exploreRecentCoins.length - 1 ? 'with-divider' : ''}`} style={{ padding: '12px 0', cursor: 'pointer' }} onClick={() => window.open('/baerae-demo/zkap-coin-detail', '_blank')}>
+            <div className="list-icon" style={{ background: c.iconBg }}>{c.icon}</div>
+            <div className="list-text">
+              <div className="list-name">{c.name}</div>
+              <div className="list-sub">{c.sub}</div>
+            </div>
+            <span style={{ fontSize: 14, fontWeight: 600, color: '#FF4444' }}>{c.change}</span>
+          </div>
+        ))}
+      </div>
+
+      <div className="section-gap" />
+
+      {/* 인기 테마 banners */}
+      <div className="recent-section-title">인기 테마</div>
+      <div className="theme-banner-scroll">
+        {themeBanners.map((b, i) => (
+          <div key={i} className="theme-banner-card" style={{ background: b.bg }}>
+            <div className="theme-banner-bg" />
+            <div className="theme-banner-text">
+              <div className="theme-banner-title" style={{ whiteSpace: 'pre-line' }}>{b.title}</div>
+              <div className="theme-banner-sub">{b.sub}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* 인기 테마 2-column grid */}
+      <div className="recent-section-title">인기 테마</div>
+      <div className="theme-grid">
+        {popularThemes.map((t, i) => (
+          <div key={i} className="theme-grid-card">
+            <div className="theme-grid-label">{t.label}</div>
+            <div className="theme-grid-name">{t.name}</div>
+          </div>
+        ))}
+      </div>
+
+      {/* Bottom guide banner */}
+      <div style={{ padding: '8px 20px 20px' }}>
+        <div style={{
+          background: '#00C8BE',
+          borderRadius: 24,
+          height: 48,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: 8,
+        }}>
+          <span style={{ fontSize: 16 }}>📊</span>
+          <span style={{ fontSize: 15, fontWeight: 600, color: '#fff', letterSpacing: '-0.2px' }}>탐색 이용 가이드 보기</span>
+        </div>
+      </div>
+
+      <div style={{ height: 20 }} />
+    </>
+  );
+}
+
+function ExplorePopular() {
+  return (
+    <>
       {/* Search bar */}
       <div className="explore-search-wrap">
         <div className="explore-search-box">
@@ -615,10 +728,9 @@ function ExploreTab() {
         </div>
       </div>
 
-      {/* Sections */}
+      {/* Worded sections feed */}
       {exploreSections.map((sec, si) => (
         <div key={si} className="explore-section">
-          {/* Section header */}
           <div className="explore-section-header">
             <div className="explore-section-title-wrap">
               <span className="explore-section-emoji">{sec.emoji}</span>
@@ -632,8 +744,6 @@ function ExploreTab() {
             </span>
           </div>
           <div className="explore-section-sub">{sec.sub}</div>
-
-          {/* Coin rows */}
           <div className="explore-coin-list">
             {sec.coins.map((c, ci) => (
               <div
@@ -663,14 +773,41 @@ function ExploreTab() {
       ))}
 
       <div style={{ height: 20 }} />
-    </div>
+    </>
   );
 }
 
-// Legacy sub-tab components (kept for reference, no longer used)
-function ExploreHome() { return null; }
-function ExplorePopular() { return null; }
-function ExploreNew() { return null; }
+function ExploreNew() {
+  const newCoins = [
+    { icon: '🌟', iconBg: '#8B5CF6', name: '새로운 코인 A', sub: '3일 전 상장', change: '+12.5%' },
+    { icon: '✨', iconBg: '#06B6D4', name: '새로운 코인 B', sub: '7일 전 상장', change: '+8.3%' },
+    { icon: '💎', iconBg: '#EC4899', name: '새로운 코인 C', sub: '14일 전 상장', change: '+3.1%' },
+  ];
+
+  return (
+    <>
+      <div style={{ padding: '20px 20px 0' }}>
+        <div style={{ fontSize: 20, fontWeight: 700, color: '#1A1A1A', letterSpacing: '-0.3px', marginBottom: 4 }}>
+          최근 상장된 코인
+        </div>
+        <div style={{ fontSize: 14, color: '#888888', marginBottom: 16 }}>최근 30일 이내 상장된 코인들이에요</div>
+      </div>
+
+      {newCoins.map((c, i) => (
+        <div key={i} className={`list-item ${i < newCoins.length - 1 ? 'with-divider' : ''}`}>
+          <div className="list-icon" style={{ background: c.iconBg }}>{c.icon}</div>
+          <div className="list-text">
+            <div className="list-name">{c.name}</div>
+            <div className="list-sub">{c.sub}</div>
+          </div>
+          <span style={{ fontSize: 14, fontWeight: 600, color: '#FF4444' }}>{c.change}</span>
+        </div>
+      ))}
+
+      <div style={{ height: 20 }} />
+    </>
+  );
+}
 
 /* ══════════════════════════════════════════════════════════════ */
 /* Tab 4: 소식 (인사이트 clone)                                    */
