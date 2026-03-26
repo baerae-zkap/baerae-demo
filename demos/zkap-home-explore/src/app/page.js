@@ -78,6 +78,72 @@ const popularThemes = [
   { label: '꾸준한 상승세', name: '디지털 금' },
 ];
 
+/* ── Explore v2 data ── */
+const exploreTrendingKeywords = ['솔라나', '비트코인', 'TRUMP', '이더리움', '수이', '도지코인'];
+
+const exploreSections = [
+  {
+    emoji: '🔥',
+    title: '이번 주 거래량 폭발',
+    sub: '24시간 거래량이 평소보다 3배 이상 늘었어요',
+    coins: [
+      { icon: '◎', iconBg: '#9945FF', name: '솔라나', sub: '갑자기 왜 올랐냐면… ETF 신청 접수됐어요', price: '182,400원', change: '+9.2%', up: true },
+      { icon: 'D', iconBg: '#C2A633', name: '도지코인', sub: '밈인데 거래량은 진지함', price: '242원', change: '+7.8%', up: true },
+      { icon: 'X', iconBg: '#00AAE4', name: '리플', sub: '은행들이 조용히 담는 중', price: '3,120원', change: '+4.1%', up: true },
+    ],
+  },
+  {
+    emoji: '💰',
+    title: '다른 데보다 더 싸게 살 수 있어요',
+    sub: '지금 거래소마다 가격이 달라요 — ZKAP이 찾아드렸어요',
+    coins: [
+      { icon: 'Ξ', iconBg: '#627EEA', name: '이더리움', sub: '코인원이 업비트보다 38,200원 더 싸요', price: '4,820,000원', change: '+1.3%', up: true },
+      { icon: '₿', iconBg: '#F7931A', name: '비트코인', sub: '빗썸이 업비트보다 21,000원 더 싸요', price: '128,400,000원', change: '+0.8%', up: true },
+      { icon: '◎', iconBg: '#9945FF', name: '솔라나', sub: '코인원이 빗썸보다 1,800원 더 싸요', price: '182,400원', change: '+9.2%', up: true },
+    ],
+  },
+  {
+    emoji: '📈',
+    title: '이번 주 계속 오르는 중',
+    sub: '7일 연속 양봉이에요 — 쭉 올랐다는 뜻',
+    coins: [
+      { icon: '₿', iconBg: '#F7931A', name: '비트코인', sub: 'ETF로 큰손들이 사들이는 중 · 이번 주 +8.3%', price: '128,400,000원', change: '+0.8%', up: true },
+      { icon: 'N', iconBg: '#00C08B', name: '니어프로토콜', sub: 'AI 에이전트 열풍에 같이 올랐어요', price: '6,840원', change: '+12.4%', up: true },
+      { icon: 'A', iconBg: '#E84142', name: '아발란체', sub: '조용히 올라가는 중, 뉴스 없는데도', price: '42,300원', change: '+5.7%', up: true },
+    ],
+  },
+  {
+    emoji: '🇺🇸',
+    title: '트럼프가 좋아하는 코인',
+    sub: '미국 정책이 코인 가격에 영향을 주고 있어요',
+    coins: [
+      { icon: 'T', iconBg: '#C0392B', name: 'TRUMP', sub: '트럼프 공식 밈코인, 근데 진짜 올랐어요', price: '18,700원', change: '+21.3%', up: true },
+      { icon: '₿', iconBg: '#F7931A', name: '비트코인', sub: '"전략적 비축자산"으로 직접 언급했어요', price: '128,400,000원', change: '+0.8%', up: true },
+      { icon: 'X', iconBg: '#00AAE4', name: '리플', sub: 'SEC 소송 끝나고 날개 달렸어요', price: '3,120원', change: '+4.1%', up: true },
+    ],
+  },
+  {
+    emoji: '🏆',
+    title: 'ZKAP에서 제일 많이 가진 코인',
+    sub: '지금 ZKAP 사용자들이 가장 많이 보유하고 있어요',
+    coins: [
+      { icon: '₿', iconBg: '#F7931A', name: '비트코인', sub: 'ZKAP 사용자 절반이 갖고 있어요', badge: '2,341명 보유', price: '128,400,000원', change: '+0.8%', up: true },
+      { icon: 'Ξ', iconBg: '#627EEA', name: '이더리움', sub: '비트코인 다음으로 제일 많아요', badge: '1,890명 보유', price: '4,820,000원', change: '+1.3%', up: true },
+      { icon: '◎', iconBg: '#9945FF', name: '솔라나', sub: '이번 달 신규 보유자 제일 많이 늘었어요', badge: '984명 보유', price: '182,400원', change: '+9.2%', up: true },
+    ],
+  },
+  {
+    emoji: '📉',
+    title: '너무 많이 빠졌는데 한번 볼 만해요',
+    sub: '1년 최저가 근처예요 — 투자 판단은 본인이 하세요',
+    coins: [
+      { icon: 'A', iconBg: '#0033AD', name: '카르다노', sub: '1년 최저가에서 7% 위예요', price: '728원', change: '-2.1%', up: false },
+      { icon: 'P', iconBg: '#E6007A', name: '폴카닷', sub: '1년 전보다 반토막, 지금이 역대 저점', price: '9,240원', change: '-3.4%', up: false },
+      { icon: 'L', iconBg: '#2A5ADA', name: '체인링크', sub: '조용하지만 꾸준히 쓰이는 중', price: '19,800원', change: '-1.2%', up: false },
+    ],
+  },
+];
+
 const marketPills = [
   { name: 'BTC', change: '+2.31%', up: true },
   { name: 'ETH', change: '+1.85%', up: true },
@@ -196,8 +262,8 @@ export default function HomePage() {
           <div className="anno-text">핀트 AI투자 1:1. 일반/장기 세그먼트 + 히어로 텍스트 + 전략별 코인 리스트 (ETH/BTC/SOL/USDC/XRP).</div>
         </div>
         <div className="anno-section">
-          <div className="anno-label">탐색 탭</div>
-          <div className="anno-text">핀트 테마투자 1:1. 홈/인기테마/신규코인 서브탭 + 보유 자산 + 가이드 카드 + 최근 관심 코인 + 테마 배너 캐러셀 + 인기 테마 그리드.</div>
+          <div className="anno-label">탐색 탭 v2</div>
+          <div className="anno-text">검색창 플레이스홀더 + 트렌딩 키워드 chips + 워딩 타이틀 섹션 피드. 두 레이어: (1) 섹션 타이틀 — 스크롤 중 클릭 유발 ("이번 주 거래량 폭발") (2) 항목 서브워딩 — 코인마다 맥락 한 줄 ("밈인데 거래량은 진지함"). 섹션: 거래량 폭발 · 더 싸게 살 수 있어요 · 계속 오르는 중 · 트럼프 코인 · ZKAP 인기 · 바닥 근처.</div>
         </div>
         <div className="anno-section">
           <div className="anno-label">소식 탭</div>
@@ -517,185 +583,94 @@ function StakingTab() {
 }
 
 /* ══════════════════════════════════════════════════════════════ */
-/* Tab 3: 탐색 (테마투자 clone)                                    */
+/* Tab 3: 탐색 v2 — 워딩 타이틀 섹션 + 항목 서브워딩               */
 /* ══════════════════════════════════════════════════════════════ */
 
 function ExploreTab() {
-  const [exploreSub, setExploreSub] = useState(0);
-
   return (
     <div className="tab-content">
-      {/* Sub-tabs: 홈 / 인기테마 / 신규코인 */}
-      <div className="explore-sub-tabs">
-        {['홈', '인기테마', '신규코인'].map((label, i) => (
-          <button
-            key={i}
-            className={`explore-sub-tab ${exploreSub === i ? 'active' : ''}`}
-            onClick={() => setExploreSub(i)}
-          >
-            {label}
-          </button>
-        ))}
-      </div>
-
-      {exploreSub === 0 && <ExploreHome />}
-      {exploreSub === 1 && <ExplorePopular />}
-      {exploreSub === 2 && <ExploreNew />}
-    </div>
-  );
-}
-
-function ExploreHome() {
-  return (
-    <>
-      {/* Account summary */}
-      <div className="explore-account-summary">
-        <div className="explore-account-label">보유 자산</div>
-        <div className="explore-account-amount">3,955,500원</div>
-      </div>
-
-      {/* Guide cards 2-column */}
-      <div className="guide-cards-row">
-        <div className="guide-card">
-          <div className="guide-card-icon">📊</div>
-          <span className="guide-card-chevron">&gt;</span>
-          <div className="guide-card-title">{'탐색에 대해\n알려드려요'}</div>
-          <div className="guide-card-sub">탐색 가이드</div>
-        </div>
-        <div className="guide-card">
-          <div className="guide-card-icon">🔗</div>
-          <span className="guide-card-chevron">&gt;</span>
-          <div className="guide-card-title">{'거래소를 미리\n연결해요'}</div>
-          <div className="guide-card-sub">거래소 연결</div>
+      {/* Search bar */}
+      <div className="explore-search-wrap">
+        <div className="explore-search-box">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#A9ACB5" strokeWidth="2" strokeLinecap="round">
+            <circle cx="8" cy="8" r="5.5" />
+            <path d="M12.5 12.5L16 16" />
+          </svg>
+          <span className="explore-search-placeholder">
+            <strong>어떤 코인이든</strong> 찾아드릴게요
+          </span>
         </div>
       </div>
 
-      {/* 최근 관심 코인 */}
-      <div className="recent-section-title">최근 관심 코인</div>
-      <div style={{ padding: '0 20px 20px' }}>
-        {exploreRecentCoins.map((c, i) => (
-          <div key={i} className={`list-item ${i < exploreRecentCoins.length - 1 ? 'with-divider' : ''}`} style={{ padding: '12px 0', cursor: 'pointer' }} onClick={() => window.open('/baerae-demo/zkap-coin-detail', '_blank')}>
-            <div className="list-icon" style={{ background: c.iconBg }}>{c.icon}</div>
-            <div className="list-text">
-              <div className="list-name">{c.name}</div>
-              <div className="list-sub">{c.sub}</div>
-            </div>
-            <span style={{ fontSize: 14, fontWeight: 600, color: '#FF4444' }}>{c.change}</span>
-          </div>
-        ))}
-      </div>
-
-      <div className="section-gap" />
-
-      {/* 인기 테마 banners */}
-      <div className="recent-section-title">인기 테마</div>
-      <div className="theme-banner-scroll">
-        {themeBanners.map((b, i) => (
-          <div key={i} className="theme-banner-card" style={{ background: b.bg }}>
-            <div className="theme-banner-bg" />
-            <div className="theme-banner-text">
-              <div className="theme-banner-title" style={{ whiteSpace: 'pre-line' }}>{b.title}</div>
-              <div className="theme-banner-sub">{b.sub}</div>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* 인기 테마 2-column grid */}
-      <div className="recent-section-title">인기 테마</div>
-      <div className="theme-grid">
-        {popularThemes.map((t, i) => (
-          <div key={i} className="theme-grid-card">
-            <div className="theme-grid-label">{t.label}</div>
-            <div className="theme-grid-name">{t.name}</div>
-          </div>
-        ))}
-      </div>
-
-      {/* Bottom guide banner */}
-      <div style={{ padding: '8px 20px 20px' }}>
-        <div style={{
-          background: '#00C8BE',
-          borderRadius: 24,
-          height: 48,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: 8,
-        }}>
-          <span style={{ fontSize: 16 }}>📊</span>
-          <span style={{ fontSize: 15, fontWeight: 600, color: '#fff', letterSpacing: '-0.2px' }}>탐색 이용 가이드 보기</span>
-        </div>
-      </div>
-
-      <div style={{ height: 20 }} />
-    </>
-  );
-}
-
-function ExplorePopular() {
-  return (
-    <>
-      <div style={{ padding: '20px' }}>
-        <div className="theme-banner-scroll" style={{ padding: '0 0 20px' }}>
-          {themeBanners.map((b, i) => (
-            <div key={i} className="theme-banner-card" style={{ background: b.bg }}>
-              <div className="theme-banner-bg" />
-              <div className="theme-banner-text">
-                <div className="theme-banner-title" style={{ whiteSpace: 'pre-line' }}>{b.title}</div>
-                <div className="theme-banner-sub">{b.sub}</div>
-              </div>
+      {/* Trending chips */}
+      <div className="explore-trending-wrap">
+        <span className="explore-trending-label">지금 많이 찾아요</span>
+        <div className="explore-trending-chips">
+          {exploreTrendingKeywords.map((kw, i) => (
+            <div key={i} className={`explore-trend-chip ${i < 2 ? 'hot' : ''}`}>
+              <span className={`explore-trend-rank ${i < 2 ? 'hot' : ''}`}>{i + 1}</span>
+              {kw}
             </div>
           ))}
         </div>
       </div>
 
-      <div className="recent-section-title">인기 테마 전체</div>
-      <div className="theme-grid">
-        {[...popularThemes, ...popularThemes].map((t, i) => (
-          <div key={i} className="theme-grid-card">
-            <div className="theme-grid-label">{t.label}</div>
-            <div className="theme-grid-name">{t.name}</div>
+      {/* Sections */}
+      {exploreSections.map((sec, si) => (
+        <div key={si} className="explore-section">
+          {/* Section header */}
+          <div className="explore-section-header">
+            <div className="explore-section-title-wrap">
+              <span className="explore-section-emoji">{sec.emoji}</span>
+              <span className="explore-section-title">{sec.title}</span>
+            </div>
+            <span className="explore-section-more">
+              더보기
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#A9ACB5" strokeWidth="2" strokeLinecap="round">
+                <path d="M5 3l4 4-4 4" />
+              </svg>
+            </span>
           </div>
-        ))}
-      </div>
+          <div className="explore-section-sub">{sec.sub}</div>
 
-      <div style={{ height: 20 }} />
-    </>
-  );
-}
-
-function ExploreNew() {
-  const newCoins = [
-    { icon: '🌟', iconBg: '#8B5CF6', name: '새로운 코인 A', sub: '3일 전 상장', change: '+12.5%' },
-    { icon: '✨', iconBg: '#06B6D4', name: '새로운 코인 B', sub: '7일 전 상장', change: '+8.3%' },
-    { icon: '💎', iconBg: '#EC4899', name: '새로운 코인 C', sub: '14일 전 상장', change: '+3.1%' },
-  ];
-
-  return (
-    <>
-      <div style={{ padding: '20px 20px 0' }}>
-        <div style={{ fontSize: 20, fontWeight: 700, color: '#1A1A1A', letterSpacing: '-0.3px', marginBottom: 4 }}>
-          최근 상장된 코인
-        </div>
-        <div style={{ fontSize: 14, color: '#888888', marginBottom: 16 }}>최근 30일 이내 상장된 코인들이에요</div>
-      </div>
-
-      {newCoins.map((c, i) => (
-        <div key={i} className={`list-item ${i < newCoins.length - 1 ? 'with-divider' : ''}`}>
-          <div className="list-icon" style={{ background: c.iconBg }}>{c.icon}</div>
-          <div className="list-text">
-            <div className="list-name">{c.name}</div>
-            <div className="list-sub">{c.sub}</div>
+          {/* Coin rows */}
+          <div className="explore-coin-list">
+            {sec.coins.map((c, ci) => (
+              <div
+                key={ci}
+                className={`explore-coin-row ${ci < sec.coins.length - 1 ? 'with-divider' : ''}`}
+                onClick={() => window.open('/baerae-demo/zkap-coin-detail', '_blank')}
+              >
+                <span className={`explore-rank-num ${ci < 2 ? 'top' : ''}`}>{ci + 1}</span>
+                <div className="explore-coin-icon" style={{ background: c.iconBg }}>
+                  <span className="explore-coin-icon-text">{c.icon}</span>
+                </div>
+                <div className="explore-coin-info">
+                  <div className="explore-coin-name-row">
+                    <span className="explore-coin-name">{c.name}</span>
+                    {c.badge && <span className="explore-coin-badge">{c.badge}</span>}
+                  </div>
+                  <span className="explore-coin-sub">{c.sub}</span>
+                </div>
+                <div className="explore-coin-price-wrap">
+                  <div className="explore-coin-price">{c.price}</div>
+                  <div className={`explore-coin-change ${c.up ? 'up' : 'down'}`}>{c.change}</div>
+                </div>
+              </div>
+            ))}
           </div>
-          <span style={{ fontSize: 14, fontWeight: 600, color: '#FF4444' }}>{c.change}</span>
         </div>
       ))}
 
       <div style={{ height: 20 }} />
-    </>
+    </div>
   );
 }
+
+// Legacy sub-tab components (kept for reference, no longer used)
+function ExploreHome() { return null; }
+function ExplorePopular() { return null; }
+function ExploreNew() { return null; }
 
 /* ══════════════════════════════════════════════════════════════ */
 /* Tab 4: 소식 (인사이트 clone)                                    */

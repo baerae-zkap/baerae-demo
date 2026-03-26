@@ -35,12 +35,20 @@ npm run build
 mkdir -p "$DIST/zkap-coin-detail"
 cp -R out/* "$DIST/zkap-coin-detail/"
 
+echo "=== Building zkap-home-explore ==="
+cd "$ROOT/demos/zkap-home-explore"
+npm install --silent
+npm run build
+mkdir -p "$DIST/zkap-home-explore"
+cp -R out/* "$DIST/zkap-home-explore/"
+
 echo "=== Injecting home button ==="
 HOME_BTN='<div id="baerae-home-btn" style="position:fixed;bottom:24px;right:24px;z-index:99999"><a href="/baerae-demo/" style="display:flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;background:rgba(0,0,0,0.65);box-shadow:0 2px 12px rgba(0,0,0,0.2);text-decoration:none;transition:transform 0.15s,background 0.15s;backdrop-filter:blur(8px)" onmouseover="this.style.background='"'"'rgba(0,0,0,0.8)'"'"'" onmouseout="this.style.background='"'"'rgba(0,0,0,0.65)'"'"'"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></a></div>'
 
 find "$DIST/gyeonggi-civic-wallet-demo" -name "*.html" -exec sed -i '' "s|</body>|${HOME_BTN}</body>|" {} +
 find "$DIST/zkap-app" -name "*.html" -exec sed -i '' "s|</body>|${HOME_BTN}</body>|" {} +
 find "$DIST/zkap-coin-detail" -name "*.html" -exec sed -i '' "s|</body>|${HOME_BTN}</body>|" {} +
+find "$DIST/zkap-home-explore" -name "*.html" -exec sed -i '' "s|</body>|${HOME_BTN}</body>|" {} +
 
 echo ""
 echo "=== Build complete! ==="

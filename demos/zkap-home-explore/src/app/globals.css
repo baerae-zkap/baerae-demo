@@ -1579,6 +1579,215 @@ body {
   letter-spacing: -0.2px;
 }
 
+/* ══════════════════════════════════════════════════════════════ */
+/* Explore Tab v2                                                */
+/* ══════════════════════════════════════════════════════════════ */
+
+/* Search */
+.explore-search-wrap {
+  padding: 12px 20px 8px;
+  background: #fff;
+}
+.explore-search-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #F5F6F8;
+  border-radius: 14px;
+  padding: 12px 16px;
+  cursor: text;
+}
+.explore-search-placeholder {
+  font-size: 14px;
+  color: #A9ACB5;
+  letter-spacing: -0.2px;
+}
+.explore-search-placeholder strong {
+  color: #3D404A;
+  font-weight: 600;
+}
+
+/* Trending chips */
+.explore-trending-wrap {
+  padding: 4px 20px 12px;
+  background: #fff;
+  border-bottom: 1px solid #F0F0F0;
+}
+.explore-trending-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #A9ACB5;
+  display: block;
+  margin-bottom: 8px;
+}
+.explore-trending-chips {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: 2px;
+}
+.explore-trending-chips::-webkit-scrollbar { display: none; }
+
+.explore-trend-chip {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: #F5F6F8;
+  border-radius: 100px;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #3D404A;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.explore-trend-rank {
+  font-size: 11px;
+  font-weight: 700;
+  color: #A9ACB5;
+}
+.explore-trend-rank.hot { color: #FF6B2B; }
+
+/* Section */
+.explore-section {
+  background: #fff;
+  margin-top: 8px;
+}
+.explore-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px 4px;
+}
+.explore-section-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.explore-section-emoji {
+  font-size: 20px;
+  line-height: 1;
+}
+.explore-section-title {
+  font-size: 17px;
+  font-weight: 800;
+  color: #1A1A1A;
+  letter-spacing: -0.4px;
+}
+.explore-section-more {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #A9ACB5;
+  cursor: pointer;
+}
+.explore-section-sub {
+  font-size: 12px;
+  color: #A9ACB5;
+  padding: 2px 20px 12px;
+  letter-spacing: -0.2px;
+}
+
+/* Coin rows */
+.explore-coin-list {
+  padding: 0 20px;
+}
+.explore-coin-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  cursor: pointer;
+}
+.explore-coin-row.with-divider {
+  border-bottom: 1px solid #F5F5F5;
+}
+
+.explore-rank-num {
+  font-size: 13px;
+  font-weight: 700;
+  color: #A9ACB5;
+  width: 18px;
+  text-align: center;
+  flex-shrink: 0;
+}
+.explore-rank-num.top { color: #FF6B2B; }
+
+.explore-coin-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.explore-coin-icon-text {
+  font-size: 16px;
+  font-weight: 800;
+  color: #fff;
+}
+
+.explore-coin-info {
+  flex: 1;
+  min-width: 0;
+}
+.explore-coin-name-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 2px;
+}
+.explore-coin-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1A1A1A;
+  letter-spacing: -0.3px;
+}
+.explore-coin-badge {
+  font-size: 10px;
+  font-weight: 700;
+  background: #F3F0FF;
+  color: #7C5CFC;
+  border-radius: 4px;
+  padding: 2px 6px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.explore-coin-sub {
+  font-size: 12px;
+  color: #A9ACB5;
+  letter-spacing: -0.2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+
+.explore-coin-price-wrap {
+  text-align: right;
+  flex-shrink: 0;
+}
+.explore-coin-price {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1A1A1A;
+  letter-spacing: -0.3px;
+  margin-bottom: 2px;
+  white-space: nowrap;
+}
+.explore-coin-change {
+  font-size: 12px;
+  font-weight: 700;
+}
+.explore-coin-change.up { color: #FF4444; }
+.explore-coin-change.down { color: #448AFF; }
+
 /* ===== Responsive ===== */
 @media (max-width: 860px) {
   .demo-layout {
