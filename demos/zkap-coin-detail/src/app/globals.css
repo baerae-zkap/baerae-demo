@@ -2441,16 +2441,16 @@ img[src*="bybit"] {
   padding: 24px 24px;
 }
 .cd-section-title {
-  font-size: 16px;
+  font-size: 22px;
   font-weight: 700;
-  color: #1a1e2e;
+  color: #1A1A1A;
   margin-bottom: 16px;
   letter-spacing: -0.3px;
 }
 .cd-section-subtitle {
   font-size: 15px;
   font-weight: 700;
-  color: #1a1e2e;
+  color: #1A1A1A;
   margin-bottom: 16px;
   letter-spacing: -0.3px;
 }
@@ -2466,7 +2466,15 @@ img[src*="bybit"] {
   font-weight: 600;
 }
 .cd-info-block {
-  margin-bottom: 28px;
+  background: #FFFFFF;
+  border-radius: 20px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  margin: 0 16px 12px;
+  padding: 20px;
+}
+
+#sec-info {
+  padding: 12px 0;
 }
 
 /* ---- Chart Tab ---- */
@@ -2651,10 +2659,10 @@ img[src*="bybit"] {
 
 /* 52 week */
 .cd-52week-card {
-  background: #f5f6f8;
+  background: transparent;
   border: none;
   border-radius: 14px;
-  padding: 20px 20px;
+  padding: 0;
 }
 .cd-52week-labels {
   display: flex;
@@ -2763,10 +2771,10 @@ img[src*="bybit"] {
 
 /* Calculator */
 .cd-calc-wrap {
-  background: #f5f6f8;
+  background: transparent;
   border: none;
   border-radius: 14px;
-  padding: 20px 20px;
+  padding: 0;
 }
 .cd-calc-label {
   font-size: 15px;
@@ -2844,9 +2852,10 @@ img[src*="bybit"] {
   gap: 10px;
 }
 .cd-qna-card {
-  background: #f5f6f8;
+  background: transparent;
   border: none;
-  border-radius: 14px;
+  border-bottom: 1px solid #F5F6F8;
+  border-radius: 0;
   padding: 18px 20px;
 }
 .cd-qna-label {
@@ -2855,9 +2864,12 @@ img[src*="bybit"] {
   color: #00C8BE;
   margin-bottom: 8px;
 }
+.cd-qna-card:last-child {
+  border-bottom: none;
+}
 .cd-qna-a {
   font-size: 14px;
-  color: #8a8e9b;
+  color: #888888;
   line-height: 1.75;
   letter-spacing: -0.2px;
 }
@@ -2874,8 +2886,8 @@ img[src*="bybit"] {
   gap: 8px;
 }
 .cd-people-stat-card {
-  background: #f5f6f8;
-  border: none;
+  background: transparent;
+  border: 1px solid #F5F6F8;
   border-radius: 14px;
   padding: 18px 16px;
   text-align: center;
@@ -2952,13 +2964,17 @@ img[src*="bybit"] {
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 16px 20px;
-  background: #f5f6f8;
+  padding: 14px 0;
+  background: transparent;
   border: none;
-  border-radius: 14px;
+  border-bottom: 1px solid #F5F6F8;
+  border-radius: 0;
+}
+.cd-ranking-item:last-child {
+  border-bottom: none;
 }
 .cd-ranking-gold {
-  background: rgba(245, 158, 11, 0.06);
+  background: transparent;
   border: none;
 }
 .cd-ranking-num {
@@ -3028,8 +3044,8 @@ img[src*="bybit"] {
 }
 .cd-coheld-card {
   min-width: 120px;
-  background: #f5f6f8;
-  border: none;
+  background: transparent;
+  border: 1px solid #F5F6F8;
   border-radius: 12px;
   padding: 16px 14px;
   text-align: center;
@@ -3127,14 +3143,15 @@ img[src*="bybit"] {
 
 /* Insight card */
 .cd-insight-card {
-  background: #f5f6f8;
+  background: transparent;
   border: none;
-  border-radius: 12px;
-  padding: 16px 20px;
+  border-top: 1px solid #F5F6F8;
+  border-radius: 0;
+  padding: 16px 0 0;
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  margin-top: 20px;
+  margin-top: 16px;
 }
 .cd-insight-icon {
   font-size: 20px;
@@ -3142,14 +3159,14 @@ img[src*="bybit"] {
   margin-top: 1px;
 }
 .cd-insight-text {
-  font-size: 14px;
-  color: #8a8e9b;
+  font-size: 15px;
+  color: #888888;
   line-height: 1.65;
   letter-spacing: -0.2px;
 }
 .cd-insight-text strong {
-  color: #1a1e2e;
-  font-weight: 700;
+  color: #1A1A1A;
+  font-weight: 600;
 }
 
 /* Disclaimer */
@@ -3392,10 +3409,11 @@ img[src*="bybit"] {
   display: flex;
   align-items: center;
   margin: 0 0 8px;
-  background: #f5f6f8;
+  background: transparent;
   border: none;
-  border-radius: 12px;
-  padding: 16px 8px;
+  border-top: 1px solid #F5F6F8;
+  border-radius: 0;
+  padding: 16px 0 0;
 }
 .cd-key-metric {
   flex: 1;
@@ -3403,15 +3421,15 @@ img[src*="bybit"] {
 }
 .cd-key-metric-label {
   font-size: 13px;
-  color: #b0b3bd;
-  font-weight: 600;
+  color: #888888;
+  font-weight: 400;
   margin-bottom: 8px;
   letter-spacing: -0.1px;
 }
 .cd-key-metric-value {
   font-size: 15px;
-  font-weight: 700;
-  color: #1a1e2e;
+  font-weight: 600;
+  color: #1A1A1A;
   letter-spacing: -0.3px;
 }
 .cd-key-metric-divider {
@@ -3538,21 +3556,21 @@ img[src*="bybit"] {
 
 /* ---- Visual insight card (gradient bg) ---- */
 .cd-visual-insight {
-  background: #f5f6f8;
+  background: transparent;
   border: none;
   border-radius: 12px;
-  padding: 16px 20px;
+  padding: 0;
 }
 .cd-visual-insight-title {
   font-size: 15px;
-  font-weight: 700;
-  color: #1a1e2e;
+  font-weight: 600;
+  color: #1A1A1A;
   letter-spacing: -0.3px;
   margin-bottom: 12px;
 }
 .cd-visual-insight-body {
-  font-size: 14px;
-  color: #8a8e9b;
+  font-size: 15px;
+  color: #888888;
   line-height: 1.75;
   letter-spacing: -0.2px;
 }
@@ -3970,16 +3988,16 @@ img[src*="bybit"] {
 
 /* ===== Today's changes card (daily freshness) ===== */
 .cd-today-card {
-  background: #f5f6f8;
+  background: transparent;
   border: none;
   border-radius: 14px;
-  padding: 18px 20px;
+  padding: 0;
   margin-bottom: 16px;
 }
 .cd-today-subtitle {
   font-size: 14px;
   font-weight: 700;
-  color: #8a8e9b;
+  color: #888888;
   margin-bottom: 14px;
 }
 .cd-today-items {
@@ -3999,19 +4017,19 @@ img[src*="bybit"] {
   text-align: center;
 }
 .cd-today-text {
-  font-size: 14px;
-  color: #8a8e9b;
+  font-size: 15px;
+  color: #888888;
   line-height: 1.5;
   letter-spacing: -0.2px;
 }
 .cd-today-text strong {
-  color: #1a1e2e;
-  font-weight: 700;
+  color: #1A1A1A;
+  font-weight: 600;
 }
 
 /* ===== Product info table ===== */
 .cd-product-info {
-  background: #f5f6f8;
+  background: transparent;
   border: none;
   border-radius: 14px;
   overflow: hidden;
@@ -4020,20 +4038,24 @@ img[src*="bybit"] {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 20px;
+  padding: 14px 0;
+  border-bottom: 1px solid #F5F6F8;
+}
+.cd-product-row:last-child {
+  border-bottom: none;
 }
 .cd-product-row-alt {
-  background: rgba(0,0,0,0.02);
+  background: transparent;
 }
 .cd-product-label {
-  font-size: 14px;
-  font-weight: 500;
-  color: #8a8e9b;
+  font-size: 15px;
+  font-weight: 400;
+  color: #888888;
 }
 .cd-product-value {
-  font-size: 14px;
-  font-weight: 700;
-  color: #1a1e2e;
+  font-size: 15px;
+  font-weight: 600;
+  color: #1A1A1A;
   text-align: right;
 }
 
@@ -4216,7 +4238,8 @@ img[src*="bybit"] {
 .cd-pred-card {
   min-width: 160px;
   max-width: 160px;
-  background: #f5f6f8;
+  background: transparent;
+  border: 1px solid #F5F6F8;
   border-radius: 14px;
   padding: 18px 16px;
   display: flex;
