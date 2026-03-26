@@ -81,15 +81,16 @@ const popularThemes = [
 /* ── Explore v2 data ── */
 const exploreTrendingKeywords = ['솔라나', '비트코인', 'TRUMP', '이더리움', '수이', '도지코인'];
 
+// hook: 조건 충족 시에만 보여줄 서브워딩. 1위만 노출. 없으면 null.
 const exploreSections = [
   {
     emoji: '🔥',
     title: '이번 주 거래량 폭발',
     sub: '24시간 거래량이 평소보다 3배 이상 늘었어요',
     coins: [
-      { icon: '◎', iconBg: '#9945FF', name: '솔라나', sub: '갑자기 왜 올랐냐면… ETF 신청 접수됐어요', price: '182,400원', change: '+9.2%', up: true },
-      { icon: 'D', iconBg: '#C2A633', name: '도지코인', sub: '밈인데 거래량은 진지함', price: '242원', change: '+7.8%', up: true },
-      { icon: 'X', iconBg: '#00AAE4', name: '리플', sub: '은행들이 조용히 담는 중', price: '3,120원', change: '+4.1%', up: true },
+      { icon: '◎', iconBg: '#9945FF', name: '솔라나', hook: '오늘 거래량 평소의 4배예요', price: '182,400원', change: '+9.2%', up: true },
+      { icon: 'D', iconBg: '#C2A633', name: '도지코인', hook: null, price: '242원', change: '+7.8%', up: true },
+      { icon: 'X', iconBg: '#00AAE4', name: '리플', hook: null, price: '3,120원', change: '+4.1%', up: true },
     ],
   },
   {
@@ -97,9 +98,9 @@ const exploreSections = [
     title: '다른 데보다 더 싸게 살 수 있어요',
     sub: '지금 거래소마다 가격이 달라요 — ZKAP이 찾아드렸어요',
     coins: [
-      { icon: 'Ξ', iconBg: '#627EEA', name: '이더리움', sub: '코인원이 업비트보다 38,200원 더 싸요', price: '4,820,000원', change: '+1.3%', up: true },
-      { icon: '₿', iconBg: '#F7931A', name: '비트코인', sub: '빗썸이 업비트보다 21,000원 더 싸요', price: '128,400,000원', change: '+0.8%', up: true },
-      { icon: '◎', iconBg: '#9945FF', name: '솔라나', sub: '코인원이 빗썸보다 1,800원 더 싸요', price: '182,400원', change: '+9.2%', up: true },
+      { icon: 'Ξ', iconBg: '#627EEA', name: '이더리움', hook: '코인원이 업비트보다 38,200원 싸요', price: '4,820,000원', change: '+1.3%', up: true },
+      { icon: '₿', iconBg: '#F7931A', name: '비트코인', hook: null, price: '128,400,000원', change: '+0.8%', up: true },
+      { icon: '◎', iconBg: '#9945FF', name: '솔라나', hook: null, price: '182,400원', change: '+9.2%', up: true },
     ],
   },
   {
@@ -107,9 +108,9 @@ const exploreSections = [
     title: '이번 주 계속 오르는 중',
     sub: '7일 연속 양봉이에요 — 쭉 올랐다는 뜻',
     coins: [
-      { icon: '₿', iconBg: '#F7931A', name: '비트코인', sub: 'ETF로 큰손들이 사들이는 중 · 이번 주 +8.3%', price: '128,400,000원', change: '+0.8%', up: true },
-      { icon: 'N', iconBg: '#00C08B', name: '니어프로토콜', sub: 'AI 에이전트 열풍에 같이 올랐어요', price: '6,840원', change: '+12.4%', up: true },
-      { icon: 'A', iconBg: '#E84142', name: '아발란체', sub: '조용히 올라가는 중, 뉴스 없는데도', price: '42,300원', change: '+5.7%', up: true },
+      { icon: 'N', iconBg: '#00C08B', name: '니어프로토콜', hook: '7일 연속 올랐어요', price: '6,840원', change: '+12.4%', up: true },
+      { icon: '₿', iconBg: '#F7931A', name: '비트코인', hook: null, price: '128,400,000원', change: '+0.8%', up: true },
+      { icon: 'A', iconBg: '#E84142', name: '아발란체', hook: null, price: '42,300원', change: '+5.7%', up: true },
     ],
   },
   {
@@ -117,9 +118,9 @@ const exploreSections = [
     title: '트럼프가 좋아하는 코인',
     sub: '미국 정책이 코인 가격에 영향을 주고 있어요',
     coins: [
-      { icon: 'T', iconBg: '#C0392B', name: 'TRUMP', sub: '트럼프 공식 밈코인, 근데 진짜 올랐어요', price: '18,700원', change: '+21.3%', up: true },
-      { icon: '₿', iconBg: '#F7931A', name: '비트코인', sub: '"전략적 비축자산"으로 직접 언급했어요', price: '128,400,000원', change: '+0.8%', up: true },
-      { icon: 'X', iconBg: '#00AAE4', name: '리플', sub: 'SEC 소송 끝나고 날개 달렸어요', price: '3,120원', change: '+4.1%', up: true },
+      { icon: 'T', iconBg: '#C0392B', name: 'TRUMP', hook: '출시 이후 최고가 경신 중', price: '18,700원', change: '+21.3%', up: true },
+      { icon: '₿', iconBg: '#F7931A', name: '비트코인', hook: null, price: '128,400,000원', change: '+0.8%', up: true },
+      { icon: 'X', iconBg: '#00AAE4', name: '리플', hook: null, price: '3,120원', change: '+4.1%', up: true },
     ],
   },
   {
@@ -127,9 +128,9 @@ const exploreSections = [
     title: 'ZKAP에서 제일 많이 가진 코인',
     sub: '지금 ZKAP 사용자들이 가장 많이 보유하고 있어요',
     coins: [
-      { icon: '₿', iconBg: '#F7931A', name: '비트코인', sub: 'ZKAP 사용자 절반이 갖고 있어요', badge: '2,341명 보유', price: '128,400,000원', change: '+0.8%', up: true },
-      { icon: 'Ξ', iconBg: '#627EEA', name: '이더리움', sub: '비트코인 다음으로 제일 많아요', badge: '1,890명 보유', price: '4,820,000원', change: '+1.3%', up: true },
-      { icon: '◎', iconBg: '#9945FF', name: '솔라나', sub: '이번 달 신규 보유자 제일 많이 늘었어요', badge: '984명 보유', price: '182,400원', change: '+9.2%', up: true },
+      { icon: '₿', iconBg: '#F7931A', name: '비트코인', hook: '사용자 2,341명이 갖고 있어요', price: '128,400,000원', change: '+0.8%', up: true },
+      { icon: 'Ξ', iconBg: '#627EEA', name: '이더리움', hook: null, price: '4,820,000원', change: '+1.3%', up: true },
+      { icon: '◎', iconBg: '#9945FF', name: '솔라나', hook: null, price: '182,400원', change: '+9.2%', up: true },
     ],
   },
   {
@@ -137,9 +138,9 @@ const exploreSections = [
     title: '너무 많이 빠졌는데 한번 볼 만해요',
     sub: '1년 최저가 근처예요 — 투자 판단은 본인이 하세요',
     coins: [
-      { icon: 'A', iconBg: '#0033AD', name: '카르다노', sub: '1년 최저가에서 7% 위예요', price: '728원', change: '-2.1%', up: false },
-      { icon: 'P', iconBg: '#E6007A', name: '폴카닷', sub: '1년 전보다 반토막, 지금이 역대 저점', price: '9,240원', change: '-3.4%', up: false },
-      { icon: 'L', iconBg: '#2A5ADA', name: '체인링크', sub: '조용하지만 꾸준히 쓰이는 중', price: '19,800원', change: '-1.2%', up: false },
+      { icon: 'P', iconBg: '#E6007A', name: '폴카닷', hook: '1년 최저가에서 4% 위예요', price: '9,240원', change: '-3.4%', up: false },
+      { icon: 'A', iconBg: '#0033AD', name: '카르다노', hook: null, price: '728원', change: '-2.1%', up: false },
+      { icon: 'L', iconBg: '#2A5ADA', name: '체인링크', hook: null, price: '19,800원', change: '-1.2%', up: false },
     ],
   },
 ];
@@ -745,29 +746,33 @@ function ExplorePopular() {
           </div>
           <div className="explore-section-sub">{sec.sub}</div>
           <div className="explore-coin-list">
-            {sec.coins.map((c, ci) => (
-              <div
-                key={ci}
-                className={`explore-coin-row ${ci < sec.coins.length - 1 ? 'with-divider' : ''}`}
-                onClick={() => window.open('/baerae-demo/zkap-coin-detail', '_blank')}
-              >
-                <span className={`explore-rank-num ${ci < 2 ? 'top' : ''}`}>{ci + 1}</span>
-                <div className="explore-coin-icon" style={{ background: c.iconBg }}>
-                  <span className="explore-coin-icon-text">{c.icon}</span>
-                </div>
-                <div className="explore-coin-info">
-                  <div className="explore-coin-name-row">
-                    <span className="explore-coin-name">{c.name}</span>
-                    {c.badge && <span className="explore-coin-badge">{c.badge}</span>}
+            {sec.coins.map((c, ci) => {
+              const isTop = ci === 0 && c.hook;
+              return (
+                <div
+                  key={ci}
+                  className={`explore-coin-row ${ci < sec.coins.length - 1 ? 'with-divider' : ''} ${isTop ? 'top-highlight' : ''}`}
+                  onClick={() => window.open('/baerae-demo/zkap-coin-detail', '_blank')}
+                >
+                  <span className={`explore-rank-num ${ci === 0 ? 'top' : ''}`}>{ci + 1}</span>
+                  <div className="explore-coin-icon" style={{ background: c.iconBg }}>
+                    <span className="explore-coin-icon-text">{c.icon}</span>
                   </div>
-                  <span className="explore-coin-sub">{c.sub}</span>
+                  <div className="explore-coin-info">
+                    <div className="explore-coin-name-row">
+                      <span className="explore-coin-name">{c.name}</span>
+                    </div>
+                    {isTop && (
+                      <span className="explore-coin-hook">{c.hook}</span>
+                    )}
+                  </div>
+                  <div className="explore-coin-price-wrap">
+                    <div className="explore-coin-price">{c.price}</div>
+                    <div className={`explore-coin-change ${c.up ? 'up' : 'down'}`}>{c.change}</div>
+                  </div>
                 </div>
-                <div className="explore-coin-price-wrap">
-                  <div className="explore-coin-price">{c.price}</div>
-                  <div className={`explore-coin-change ${c.up ? 'up' : 'down'}`}>{c.change}</div>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       ))}
