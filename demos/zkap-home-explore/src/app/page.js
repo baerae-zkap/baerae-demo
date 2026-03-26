@@ -192,8 +192,8 @@ export default function HomePage() {
 
   const tabs = [
     { key: 'home', icon: <TabIconHome />, label: '홈' },
-    { key: 'staking', icon: <TabIconStaking />, label: '이자받기' },
     { key: 'explore', icon: <TabIconExplore />, label: '탐색' },
+    { key: 'staking', icon: <TabIconStaking />, label: '이자받기' },
     { key: 'news', icon: <TabIconNews />, label: '소식' },
     { key: 'more', icon: <TabIconMore />, label: '더보기' },
   ];
