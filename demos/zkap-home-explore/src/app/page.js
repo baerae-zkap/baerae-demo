@@ -251,8 +251,8 @@ export default function HomePage() {
       {/* Annotation Panel */}
       <div className="anno-panel">
         <div className="anno-header">
-          <div className="anno-title">ZKAP 5탭 핀트 클론</div>
-          <div className="anno-subtitle">핀트 1:1 UI 스펙 기반 · 2026.03.26</div>
+          <div className="anno-title">ZKAP 앱 UX 기획안</div>
+          <div className="anno-subtitle">3/24 UX 미팅 합의사항 기반 · 2026.03.26</div>
         </div>
         <div className="anno-section">
           <div className="anno-label">홈 탭</div>
@@ -260,19 +260,19 @@ export default function HomePage() {
         </div>
         <div className="anno-section">
           <div className="anno-label">이자받기 탭</div>
-          <div className="anno-text">핀트 AI투자 1:1. 일반/장기 세그먼트 + 히어로 텍스트 + 전략별 코인 리스트 (ETH/BTC/SOL/USDC/XRP).</div>
+          <div className="anno-text">일반/장기 세그먼트 + 히어로 텍스트 + 전략별 코인 리스트 (ETH/BTC/SOL/USDC/XRP).</div>
         </div>
         <div className="anno-section">
           <div className="anno-label">탐색 탭 v2</div>
-          <div className="anno-text">홈/인기테마/신규코인 서브탭 구조. 홈: 계정 요약 + 가이드 카드 + 최근 관심 코인 + 테마 배너/그리드. 인기테마(v2): 검색창 + 트렌딩 chips + 워딩 타이틀 섹션 피드 — (1) 섹션 타이틀로 클릭 유발 ("이번 주 거래량 폭발") (2) 항목 서브워딩으로 맥락 제공 ("밈인데 거래량은 진지함"). 신규코인: 최근 30일 상장 리스트.</div>
+          <div className="anno-text">홈/인기테마/신규코인 서브탭 구조. 홈: 계정 요약 + 가이드 카드 + 최근 관심 코인 + 테마 배너/그리드. 인기테마(v2): 검색창 + 트렌딩 chips + 워딩 타이틀 섹션 피드 — (1) 섹션 타이틀로 클릭 유발 ("이번 주 거래량 폭발") (2) 1위 코인에만 조건부 hook 워딩 노출. 신규코인: 최근 30일 상장 리스트.</div>
         </div>
         <div className="anno-section">
           <div className="anno-label">소식 탭</div>
-          <div className="anno-text">핀트 인사이트 1:1. 마켓 티커 pill + 이자받기/탐색 CTA + 뉴스 리스트 + AI 시황 분석.</div>
+          <div className="anno-text">마켓 티커 pill + 이자받기/탐색 CTA + 뉴스 리스트 + AI 시황 분석.</div>
         </div>
         <div className="anno-section" style={{ borderBottom: 'none' }}>
           <div className="anno-label">더보기 탭</div>
-          <div className="anno-text">핀트 전체 1:1. 프로필 26px Bold + 일반 투자자 뱃지 + ZKAP 머니 카드 + 3열 바로가기 + 프로모 리스트 HOT 뱃지.</div>
+          <div className="anno-text">프로필 + 일반 투자자 뱃지 + ZKAP 머니 카드 + 3열 바로가기 + 프로모 리스트.</div>
         </div>
       </div>
     </div>
