@@ -718,14 +718,82 @@ function ExploreHome() {
 }
 
 function ExplorePopular() {
+  const [detailSection, setDetailSection] = useState(null); // null = 피드, sec obj = 더보기 뷰
   const [activeCategory, setActiveCategory] = useState('all');
 
-  const visibleSections = activeCategory === 'all'
-    ? exploreSections
-    : exploreSections.filter(sec =>
-        sec.category === activeCategory ||
-        sec.coins.some(c => c.tag === activeCategory)
-      );
+  // 더보기 뷰
+  if (detailSection) {
+    const filtered = activeCategory === 'all'
+      ? detailSection.coins
+      : detailSection.coins.filter(c => c.tag === activeCategory);
+
+    // 해당 섹션에서 쓰이는 태그 목록
+    const usedTags = [...new Set(detailSection.coins.map(c => c.tag).filter(Boolean))];
+    const cats = [
+      { key: 'all', label: '전체' },
+      ...exploreCategories.filter(c => c.key !== 'all' && usedTags.includes(c.key)),
+    ];
+
+    return (
+      <>
+        {/* Back header */}
+        <div className="explore-detail-header">
+          <button className="explore-detail-back" onClick={() => { setDetailSection(null); setActiveCategory('all'); }}>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#1A1A1A" strokeWidth="2" strokeLinecap="round">
+              <path d="M13 4l-6 6 6 6" />
+            </svg>
+          </button>
+          <div className="explore-detail-title-wrap">
+            <span>{detailSection.emoji}</span>
+            <span className="explore-detail-title">{detailSection.title}</span>
+          </div>
+        </div>
+        <div className="explore-detail-sub">{detailSection.sub}</div>
+
+        {/* Category filter — 더보기 뷰에서만 */}
+        {cats.length > 1 && (
+          <div className="explore-cat-wrap">
+            {cats.map(cat => (
+              <button
+                key={cat.key}
+                className={`explore-cat-tab ${activeCategory === cat.key ? 'active' : ''}`}
+                onClick={() => setActiveCategory(cat.key)}
+              >
+                {cat.label}
+              </button>
+            ))}
+          </div>
+        )}
+
+        <div className="explore-coin-list" style={{ padding: '0 20px' }}>
+          {filtered.map((c, ci) => (
+            <div
+              key={ci}
+              className={`explore-coin-row ${ci < filtered.length - 1 ? 'with-divider' : ''}`}
+              onClick={() => window.open('/baerae-demo/zkap-coin-detail', '_blank')}
+            >
+              <span className={`explore-rank-num ${ci === 0 ? 'top' : ''}`}>{ci + 1}</span>
+              <div className="explore-coin-icon" style={{ background: c.iconBg }}>
+                <span className="explore-coin-icon-text">{c.icon}</span>
+              </div>
+              <div className="explore-coin-info">
+                <div className="explore-coin-name-row">
+                  <span className="explore-coin-name">{c.name}</span>
+                  {c.tag && <span className={`explore-coin-tag ${c.tagColor}`}>{c.tag}</span>}
+                </div>
+                {ci === 0 && c.hook && <span className="explore-coin-hook">{c.hook}</span>}
+              </div>
+              <div className="explore-coin-price-wrap">
+                <div className="explore-coin-price">{c.price}</div>
+                <div className={`explore-coin-change ${c.up ? 'up' : 'down'}`}>{c.change}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div style={{ height: 20 }} />
+      </>
+    );
+  }
 
   return (
     <>
@@ -755,28 +823,15 @@ function ExplorePopular() {
         </div>
       </div>
 
-      {/* Category filter tabs */}
-      <div className="explore-cat-wrap">
-        {exploreCategories.map(cat => (
-          <button
-            key={cat.key}
-            className={`explore-cat-tab ${activeCategory === cat.key ? 'active' : ''}`}
-            onClick={() => setActiveCategory(cat.key)}
-          >
-            {cat.label}
-          </button>
-        ))}
-      </div>
-
       {/* Worded sections feed */}
-      {visibleSections.map((sec, si) => (
+      {exploreSections.map((sec, si) => (
         <div key={si} className="explore-section">
           <div className="explore-section-header">
             <div className="explore-section-title-wrap">
               <span className="explore-section-emoji">{sec.emoji}</span>
               <span className="explore-section-title">{sec.title}</span>
             </div>
-            <span className="explore-section-more">
+            <span className="explore-section-more" onClick={() => setDetailSection(sec)}>
               더보기
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#A9ACB5" strokeWidth="2" strokeLinecap="round">
                 <path d="M5 3l4 4-4 4" />

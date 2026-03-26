@@ -1773,6 +1773,47 @@ body {
   margin-top: 4px;
 }
 
+/* Detail (더보기) view header */
+.explore-detail-header {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 16px 16px 8px;
+  background: #fff;
+  border-bottom: 1px solid #F0F0F0;
+}
+.explore-detail-back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: none;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.explore-detail-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+}
+.explore-detail-title {
+  font-size: 17px;
+  font-weight: 800;
+  color: #1A1A1A;
+  letter-spacing: -0.4px;
+}
+.explore-detail-sub {
+  font-size: 13px;
+  color: #7A7D87;
+  padding: 8px 20px 4px;
+  background: #fff;
+  letter-spacing: -0.2px;
+}
+
 /* Category filter tabs */
 .explore-cat-wrap {
   display: flex;
