@@ -273,7 +273,7 @@ export default function Home() {
       <div className="anno-panel">
         <div className="anno-header">
           <div className="anno-title">코인 상세 페이지 기획안</div>
-          <div className="anno-subtitle">ZKAP UX 개선 · 2차 개선 (2026.03.27)</div>
+          <div className="anno-subtitle">ZKAP UX 개선 · 4차 (2026.03.27)</div>
         </div>
 
         <div className="anno-section anno-clickable" onClick={() => annoClick('소개', 'sec-hero')}>
@@ -286,14 +286,14 @@ export default function Home() {
           <div className="anno-text">차트 | 소개 | 현황 | 내 보유 — 차트가 첫 탭(사용자 기대에 부합). 단, 소개·현황 탭의 정보 밀도를 대폭 강화해 "무엇을/언제" 판단을 뒷받침.</div>
         </div>
 
-        <div className="anno-section anno-clickable" onClick={() => annoClick('소개', 'sec-qna')}>
+        <div className="anno-section anno-clickable" onClick={() => annoClick('소개', 'sec-purpose')}>
           <div className="anno-label">소개 탭 — 이 코인이 어떤 애인지</div>
-          <div className="anno-text">Q&A + <strong>의도 vs 현실</strong>(약속한 것 vs 실제 결과) + 가치 원천(구체적 수치) + <strong>10년 타임라인</strong> + 기본 정보 + 보유자 분포. 단순 소개를 넘어 "약속을 지키고 있는지"까지.</div>
+          <div className="anno-text"><strong>목적 선언</strong> + Q&A + <strong>누가/어디서 쓰나</strong> + <strong>왜 토큰이 필요한지</strong> + 약속 vs 현실 + 가치 원천 + 타임라인 + 기본 정보 + 보유자 분포 + 정보 부족 코인 패턴. 초보자도 "이게 뭐하는 코인인지" 바로 이해.</div>
         </div>
 
         <div className="anno-section anno-clickable" onClick={() => annoClick('현황', 'sec-market')}>
           <div className="anno-label">현황 탭 — 지금 어떤 상태인지</div>
-          <div className="anno-text">오늘의 변동 · 52주 위치 · 뉴스 · 과거 수익 시뮬 + <strong>사용자 행동 신호</strong>(매수/매도 비율, 신규 보유자) + <strong>네트워크 건강 지표</strong>(거래량, 수수료, 스테이킹) + 기관 동향(구체적 수치).</div>
+          <div className="anno-text">오늘의 변동 · 1년 위치 · <strong>뉴스(왜 중요한지 설명 추가)</strong> · 과거 수익 시뮬 + 사용자 행동 + 네트워크 건강 + <strong>큰손 동향(초보 설명 강화)</strong>. 모든 지표에 헬퍼 텍스트.</div>
         </div>
 
         <div className="anno-section anno-clickable" onClick={() => annoClick('차트', 'sec-chart')}>
@@ -307,21 +307,23 @@ export default function Home() {
         </div>
 
         <div className="anno-section">
-          <div className="anno-label">2차 개선 (3/27)</div>
+          <div className="anno-label">4차 개선 — 초보 친화 + 미팅 갭 채움 (3/27)</div>
           <div className="anno-text">
-            {'\u2022'} 차트를 다시 첫 번째 탭으로 복원 (사용자 기대에 맞춤)<br/>
-            {'\u2022'} "말한 것 vs 실제로 된 것" 의도-현실 비교 섹션 추가<br/>
-            {'\u2022'} 10년 타임라인으로 코인 역사 맥락 제공<br/>
-            {'\u2022'} 가치 원천에 구체적 수치 추가 (개발자 7천명, TVL 80조원 등)<br/>
-            {'\u2022'} 사용자 행동 신호 섹션 추가 (매수/매도 비율, 신규 보유자)<br/>
-            {'\u2022'} 네트워크 건강 지표 추가 (거래량, 수수료, 스테이킹)<br/>
-            {'\u2022'} 기관 동향에 구체적 수치 보강
+            {'\u2022'} 전문 용어 → 쉬운 말 전면 교체 (시가총액→전체 가치, 스테이킹→코인 맡기기 등)<br/>
+            {'\u2022'} 모든 숫자/지표에 "이게 뭘 뜻하는지" 헬퍼 텍스트 추가<br/>
+            {'\u2022'} <strong>"이 코인이 하려는 일"</strong> 목적 선언 섹션 신설<br/>
+            {'\u2022'} <strong>"누가, 어디서 쓰나?"</strong> 사용처·사용자 섹션 신설<br/>
+            {'\u2022'} <strong>"ETH는 왜 필요한가?"</strong> 토큰 존재 이유 섹션 신설<br/>
+            {'\u2022'} 뉴스에 "왜 중요한지" 한줄 해설 추가<br/>
+            {'\u2022'} 기관 동향 → "큰손들은 어떻게 움직이고 있을까?"로 재구성<br/>
+            {'\u2022'} 정보 부족 코인 대응 패턴 카드 추가<br/>
+            {'\u2022'} 의도→약속, 현실→현재로 배지 라벨 변경
           </div>
         </div>
 
         <div className="anno-section" style={{ borderBottom: 'none' }}>
           <div className="anno-label">핵심 원칙</div>
-          <div className="anno-text">{'\u2460'} 유도가 아니라 정보 — 사자/팔자 권유 X {'\u2461'} 매일 바뀌어야 한다 {'\u2462'} 온체인 용어 노출 안 함 {'\u2463'} 코인은 상품, 상세는 상품 페이지 {'\u2464'} 쉬운 게 기본값</div>
+          <div className="anno-text">{'\u2460'} 유도가 아니라 정보 — 사자/팔자 권유 X {'\u2461'} 매일 바뀌어야 한다 {'\u2462'} 전문 용어 노출 안 함 {'\u2463'} 코인은 상품, 상세는 상품 페이지 {'\u2464'} 쉬운 게 기본값 {'\u2465'} 왜 봐야 하는지 항상 설명</div>
         </div>
       </div>
     )}

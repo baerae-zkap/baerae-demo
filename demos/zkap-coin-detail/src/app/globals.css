@@ -4634,6 +4634,215 @@ img[src*="bybit"] {
 .cd-health-good {
   color: #10b981;
 }
+.cd-health-left-col {
+  flex: 1;
+  min-width: 0;
+}
+.cd-health-helper {
+  font-size: 11px;
+  color: #a0a4b0;
+  margin-top: 2px;
+  line-height: 1.3;
+}
+
+/* ========================================
+   4th PASS — Beginner-friendly additions
+   ======================================== */
+
+/* Section helper text — appears below section titles */
+.cd-section-helper {
+  font-size: 12.5px;
+  color: #8a8e9b;
+  line-height: 1.5;
+  margin-top: -4px;
+  margin-bottom: 14px;
+}
+
+/* Purpose statement card */
+.cd-purpose-card {
+  background: linear-gradient(135deg, #f0fffe 0%, #f8f9ff 100%);
+  border-radius: 14px;
+  padding: 18px 20px;
+  border: 1px solid #e0f5f4;
+}
+.cd-purpose-main {
+  font-size: 15px;
+  color: #1a1e2e;
+  line-height: 1.6;
+  font-weight: 500;
+}
+.cd-purpose-main strong {
+  color: #00A89D;
+}
+.cd-purpose-sub {
+  font-size: 13px;
+  color: #6b7084;
+  line-height: 1.5;
+  margin-top: 10px;
+}
+
+/* Who uses section */
+.cd-who-uses-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.cd-who-uses-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: #f8f9fb;
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+.cd-who-uses-icon {
+  font-size: 22px;
+  flex-shrink: 0;
+  width: 36px;
+  text-align: center;
+  padding-top: 2px;
+}
+.cd-who-uses-body {
+  flex: 1;
+  min-width: 0;
+}
+.cd-who-uses-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a1e2e;
+}
+.cd-who-uses-desc {
+  font-size: 12.5px;
+  color: #6b7084;
+  margin-top: 3px;
+  line-height: 1.4;
+}
+
+/* Why token section */
+.cd-why-token-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.cd-why-token-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: #f8f9fb;
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+.cd-why-token-icon {
+  font-size: 22px;
+  flex-shrink: 0;
+  width: 36px;
+  text-align: center;
+  padding-top: 2px;
+}
+.cd-why-token-body {
+  flex: 1;
+  min-width: 0;
+}
+.cd-why-token-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a1e2e;
+}
+.cd-why-token-desc {
+  font-size: 12.5px;
+  color: #6b7084;
+  margin-top: 3px;
+  line-height: 1.5;
+}
+
+/* News "why" helper */
+.cd-news-why {
+  font-size: 11.5px;
+  color: #8a8e9b;
+  margin-top: 5px;
+  line-height: 1.4;
+  padding-left: 1px;
+}
+
+/* Key metric helper */
+.cd-key-metric-helper {
+  font-size: 10px;
+  color: #a0a4b0;
+  margin-top: 2px;
+  line-height: 1.3;
+}
+
+/* Context card "why" */
+.cd-context-why {
+  font-size: 11.5px;
+  color: #8a8e9b;
+  margin-top: 6px;
+  line-height: 1.4;
+  padding-top: 6px;
+  border-top: 1px solid #ecedf0;
+}
+
+/* ZKAP compare card helper */
+.cd-zkap-compare-card-helper {
+  font-size: 11.5px;
+  color: #8a8e9b;
+  margin-top: 2px;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+/* Empty/limited info pattern card */
+.cd-empty-pattern-card {
+  display: flex;
+  gap: 14px;
+  background: #f8f9fb;
+  border-radius: 14px;
+  padding: 18px 16px;
+  border: 1px dashed #d4d6de;
+}
+.cd-empty-pattern-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+.cd-empty-pattern-body {
+  flex: 1;
+}
+.cd-empty-pattern-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #4a4e5a;
+  margin-bottom: 10px;
+}
+.cd-empty-pattern-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.cd-empty-pattern-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  color: #6b7084;
+}
+.cd-empty-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.cd-empty-dot-yellow {
+  background: #f59e0b;
+}
+.cd-empty-dot-gray {
+  background: #d4d6de;
+}
+.cd-empty-pattern-note {
+  font-size: 11.5px;
+  color: #a0a4b0;
+  margin-top: 10px;
+}
 
 /* ========================================
    COMPREHENSIVE POLISH — New Styles

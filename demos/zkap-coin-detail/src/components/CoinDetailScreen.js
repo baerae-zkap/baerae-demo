@@ -23,15 +23,15 @@ const EXCHANGES_COMPARE = [
 
 const QNA_DATA = [
   {
-    label: '한줄 요약',
+    label: '쉽게 말하면?',
     a: <>비트코인이 <strong>디지털 금</strong>이라면, 이더리움은 <strong>디지털 세계의 컴퓨터</strong>예요. 전 세계 개발자들이 이더리움 위에서 다양한 앱을 만들고 있어요.</>,
   },
   {
-    label: '왜 중요해?',
-    a: <>디파이, NFT, 스테이블코인 등 <strong>블록체인 혁신의 대부분이 이더리움에서 시작</strong>됐어요. 비트코인 다음으로 큰 코인이에요.</>,
+    label: '왜 사람들이 관심 가질까?',
+    a: <>은행 없이 돈을 빌리거나, 디지털 그림을 사고팔거나 하는 <strong>새로운 서비스 대부분이 이더리움에서 시작</strong>됐어요. 비트코인 다음으로 큰 코인이에요.</>,
   },
   {
-    label: '비슷한 코인은?',
+    label: '비슷한 역할의 코인은?',
     a: <>솔라나, 아발란체 등이 비슷한 역할을 하지만, 이더리움이 <strong>원조이자 가장 큰 생태계</strong>를 갖고 있어요.</>,
   },
 ];
@@ -60,59 +60,74 @@ const RECENT_NEWS = [
   {
     date: '3월 24일',
     icon: '\u{1F680}',
-    title: 'Dencun 업그레이드 완료',
-    desc: '수수료 대폭 인하, 레이어2 거래 더 빠르고 저렴해짐',
+    title: '대규모 업그레이드 완료 (Dencun)',
+    desc: '수수료가 크게 줄어서, 이더리움 사용이 더 저렴해졌어요',
+    why: '수수료가 줄면 더 많은 사람이 쓰게 되고, 생태계가 커져요',
   },
   {
     date: '3월 20일',
     icon: '\u{1F3E6}',
-    title: '미국 ETH 현물 ETF 순유입 지속',
-    desc: '기관 자금 3주 연속 유입 중',
+    title: '큰 기관들이 계속 사들이는 중',
+    desc: '미국 ETF를 통해 기관 자금이 3주째 들어오고 있어요',
+    why: '기관이 사면 시장이 안정되는 데 도움이 될 수 있어요',
   },
   {
     date: '3월 18일',
     icon: '\u{1F4C8}',
-    title: '디파이 예치금(TVL) 증가세',
-    desc: '이더리움 디파이 자금 최근 한 달간 15% 증가',
+    title: '맡겨진 자금이 늘고 있어요',
+    desc: '이더리움 금융 서비스에 맡겨진 돈이 한 달간 15% 늘었어요',
+    why: '자금이 모일수록 생태계가 더 활발하다는 신호예요',
   },
 ];
 
 const MILESTONES = [
-  { year: '2015', event: '첫 출시', detail: '"세계 컴퓨터"라는 큰 꿈으로 시작' },
-  { year: '2017', event: 'ICO 붐', detail: '새 코인 만드는 도구로 폭발적 성장' },
-  { year: '2020', event: '디파이 여름', detail: '은행 없는 금융 서비스가 현실로' },
-  { year: '2022', event: 'PoS 전환', detail: '에너지 99% 절감, 이자 받기 가능해짐' },
-  { year: '2024', event: 'ETF 승인', detail: '전통 금융 시장이 이더리움을 인정' },
+  { year: '2015', event: '세상에 처음 등장', detail: '"전 세계 누구나 쓸 수 있는 컴퓨터"라는 큰 꿈으로 시작' },
+  { year: '2017', event: '폭발적 성장', detail: '새 코인을 만드는 도구로 인기 폭발' },
+  { year: '2020', event: '금융 서비스 붐', detail: '은행 없이 돈을 빌리고 맡기는 서비스가 현실이 됨' },
+  { year: '2022', event: '운영 방식 전환', detail: '전기 사용 99% 줄이고, 이자 받기가 가능해짐' },
+  { year: '2024', event: 'ETF 승인', detail: '전통 금융 시장이 이더리움을 공식 인정' },
 ];
 
 const INTENT_VS_REALITY = [
   {
     intent: '"전 세계 누구나 쓸 수 있는 컴퓨터"',
-    reality: '디파이·NFT에 집중. 게임·소셜은 아직 초기',
-    verdict: '핵심 방향은 유지, 실사용은 금융 쪽에 집중',
+    reality: '금융 서비스에 주로 쓰이고, 게임·소셜은 아직 초기 단계',
+    verdict: '큰 방향은 맞지만, 아직 금융 쪽에서 주로 쓰이고 있어요',
   },
   {
     intent: '"빠르고 저렴한 거래"',
-    reality: '직접 거래는 아직 비싸지만, 레이어2로 보완 중',
-    verdict: '문제를 인식하고 해결 중',
+    reality: '직접 거래는 아직 비싸지만, 보조 기술로 빠르게 보완 중',
+    verdict: '문제를 알고 적극적으로 해결하고 있어요',
   },
   {
-    intent: '"탈중앙화된 운영"',
-    reality: '약 90만 명 검증 참여. 다른 코인보다 참여자 많음',
-    verdict: '상대적으로 잘 지키고 있는 편',
+    intent: '"누구의 것도 아닌 공공 네트워크"',
+    reality: '약 90만 명이 검증에 참여. 다른 코인보다 참여자가 훨씬 많음',
+    verdict: '비교적 잘 지키고 있는 편이에요',
   },
+];
+
+const WHO_USES = [
+  { icon: '\u{1F468}\u200D\u{1F4BB}', label: '앱을 만드는 개발자', desc: '이더리움 위에 금융·게임·소셜 앱을 만들어요' },
+  { icon: '\u{1F4B8}', label: '금융 서비스 이용자', desc: '은행 없이 돈을 빌리거나 이자를 받아요' },
+  { icon: '\u{1F3E2}', label: '기관 투자자', desc: 'ETF 등을 통해 큰 금액을 운용해요' },
+];
+
+const WHY_TOKEN = [
+  { icon: '\u{26FD}', title: '수수료 지불', desc: '이더리움에서 뭘 하든 ETH로 수수료를 내요. 자동차의 기름 같은 역할이에요.' },
+  { icon: '\u{1F4B0}', title: '맡기고 이자 받기', desc: 'ETH를 네트워크에 맡기면 운영에 참여하면서 이자를 받을 수 있어요.' },
+  { icon: '\u{1F3D7}', title: '앱의 기반', desc: '이더리움 위에 만들어진 앱들이 돌아가려면 ETH가 꼭 필요해요.' },
 ];
 
 const BEHAVIOR_SIGNALS = [
-  { icon: '\u{1F6D2}', label: 'ZKAP 매수 vs 매도', value: '매수 62% : 매도 38%', sub: '매수 쪽이 더 많아요' },
-  { icon: '\u{1F464}', label: '이번 주 신규 보유자', value: '+127명', sub: '지난주(+89명)보다 증가' },
-  { icon: '\u{23F3}', label: '평균 보유 기간', value: '4.2개월', sub: '단기 매매보다 보유 경향' },
+  { icon: '\u{1F6D2}', label: 'ZKAP에서 사는 사람 vs 파는 사람', value: '사는 쪽 62% : 파는 쪽 38%', sub: '사는 사람이 더 많아요' },
+  { icon: '\u{1F464}', label: '이번 주 새로 산 사람', value: '+127명', sub: '지난주(+89명)보다 늘었어요' },
+  { icon: '\u{23F3}', label: '보유자들이 평균 얼마나 갖고 있을까', value: '4.2개월', sub: '빨리 파는 것보다 오래 갖고 있는 경향' },
 ];
 
 const NETWORK_HEALTH = [
-  { label: '하루 거래 건수', value: '약 120만 건', status: '평소 수준', statusType: 'normal' },
-  { label: '네트워크 수수료', value: '0.5~2달러', status: '낮음 — 사용하기 좋은 시기', statusType: 'good' },
-  { label: '스테이킹 참여율', value: '전체의 28%', status: '꾸준히 증가 중', statusType: 'good' },
+  { label: '하루 거래 건수', value: '약 120만 건', status: '평소 수준', statusType: 'normal', helper: '이더리움 네트워크에서 하루에 일어나는 거래 수' },
+  { label: '이용 수수료', value: '0.5~2달러', status: '낮은 편', statusType: 'good', helper: '이더리움을 보내거나 사용할 때 드는 비용' },
+  { label: '코인 맡긴 비율', value: '전체의 28%', status: '꾸준히 늘어나는 중', statusType: 'good', helper: '이자를 받으려고 ETH를 맡긴 사람의 비율' },
 ];
 
 // SVG chart path data for a realistic looking price chart
@@ -168,7 +183,7 @@ export default function CoinDetailScreen({ onBack, onBuy, activeTab, setActiveTa
           <span className="cd-hero-change-amt">+210,500원</span>
         </div>
         <div className="cd-hero-timestamp">3월 25일 00:12 기준</div>
-        <div className="cd-hero-social-proof"><span style={{ fontSize: 15 }}>{'\u{1F465}'}</span> 1,247명이 보유 중</div>
+        <div className="cd-hero-social-proof"><span style={{ fontSize: 15 }}>{'\u{1F465}'}</span> ZKAP에서 1,247명이 갖고 있어요</div>
       </div>
 
       {/* Tab bar */}
@@ -206,7 +221,7 @@ export default function CoinDetailScreen({ onBack, onBuy, activeTab, setActiveTa
 
       {/* Disclaimer */}
       <div className="cd-disclaimer">
-        {'\u203B'} 모든 정보는 참고용이며, 투자 판단은 본인의 책임입니다.
+        {'\u203B'} 여기 나오는 정보는 참고용이에요. 어떤 결정이든 직접 판단해 주세요.
       </div>
     </div>
   );
@@ -216,6 +231,20 @@ export default function CoinDetailScreen({ onBack, onBuy, activeTab, setActiveTa
 function IntroTab() {
   return (
     <div className="cd-section" id="sec-intro">
+      {/* Purpose statement — what this coin is trying to do */}
+      <div className="cd-info-block">
+        <h3 className="cd-section-title" id="sec-purpose">이 코인이 하려는 일</h3>
+        <div className="cd-purpose-card">
+          <div className="cd-purpose-main">
+            이더리움은 <strong>은행이나 회사 없이도 앱이 돌아갈 수 있는 세상</strong>을 만들려고 해요.
+          </div>
+          <div className="cd-purpose-sub">
+            돈을 빌려주거나, 디지털 물건을 사고팔거나, 새로운 서비스를 만드는 것까지 — 이 모든 걸 이더리움 위에서 할 수 있어요.
+          </div>
+        </div>
+      </div>
+
+      <div className="section-divider" />
       {/* Q&A */}
       <div className="cd-info-block">
         <h3 className="cd-section-title" id="sec-qna">이더리움이 뭐야?</h3>
@@ -230,21 +259,56 @@ function IntroTab() {
       </div>
 
       <div className="section-divider" />
-      {/* Intent vs Reality — 의도 vs 실제 */}
+      {/* Who uses & where — 누가, 어디서 쓰나? */}
       <div className="cd-info-block">
-        <h3 className="cd-section-title" id="sec-ivr">말한 것 vs 실제로 된 것</h3>
-        <div className="cd-ivr-subtitle">이더리움이 하려던 것과 실제 결과를 비교해 봤어요</div>
+        <h3 className="cd-section-title" id="sec-who-uses">누가, 어디서 쓰고 있을까?</h3>
+        <div className="cd-who-uses-list">
+          {WHO_USES.map((item, i) => (
+            <div key={i} className="cd-who-uses-card">
+              <div className="cd-who-uses-icon">{item.icon}</div>
+              <div className="cd-who-uses-body">
+                <div className="cd-who-uses-label">{item.label}</div>
+                <div className="cd-who-uses-desc">{item.desc}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="section-divider" />
+      {/* Why does the token (ETH) exist? */}
+      <div className="cd-info-block">
+        <h3 className="cd-section-title" id="sec-why-token">이더리움(ETH)은 왜 필요할까?</h3>
+        <div className="cd-section-helper">코인이 그냥 있는 게 아니라, 이 네트워크가 돌아가려면 ETH가 꼭 있어야 해요</div>
+        <div className="cd-why-token-list">
+          {WHY_TOKEN.map((item, i) => (
+            <div key={i} className="cd-why-token-card">
+              <div className="cd-why-token-icon">{item.icon}</div>
+              <div className="cd-why-token-body">
+                <div className="cd-why-token-title">{item.title}</div>
+                <div className="cd-why-token-desc">{item.desc}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="section-divider" />
+      {/* Intent vs Reality — 약속한 것 vs 실제 결과 */}
+      <div className="cd-info-block">
+        <h3 className="cd-section-title" id="sec-ivr">약속한 것 vs 실제로 된 것</h3>
+        <div className="cd-ivr-subtitle">이더리움이 처음에 하겠다고 한 것과, 실제로 어디까지 했는지 비교해 봤어요</div>
         <div className="cd-ivr-list">
           {INTENT_VS_REALITY.map((item, i) => (
             <div key={i} className="cd-ivr-card">
               <div className="cd-ivr-row">
                 <div className="cd-ivr-col">
-                  <div className="cd-ivr-badge cd-ivr-badge-intent">의도</div>
+                  <div className="cd-ivr-badge cd-ivr-badge-intent">약속</div>
                   <div className="cd-ivr-text">{item.intent}</div>
                 </div>
                 <div className="cd-ivr-arrow">{'\u2192'}</div>
                 <div className="cd-ivr-col">
-                  <div className="cd-ivr-badge cd-ivr-badge-reality">현실</div>
+                  <div className="cd-ivr-badge cd-ivr-badge-reality">현재</div>
                   <div className="cd-ivr-text">{item.reality}</div>
                 </div>
               </div>
@@ -257,30 +321,31 @@ function IntroTab() {
       <div className="section-divider" />
       {/* Value source — where does the value come from */}
       <div className="cd-info-block">
-        <h3 className="cd-section-title" id="sec-value">가치는 어디서 올까?</h3>
+        <h3 className="cd-section-title" id="sec-value">이 코인의 가치는 어디서 올까?</h3>
+        <div className="cd-section-helper">숫자가 크면 그만큼 많은 사람이 실제로 쓰고 있다는 뜻이에요</div>
         <div className="cd-value-cards">
           <div className="cd-value-card">
-            <div className="cd-value-icon">{'\u{1F3D7}'}</div>
+            <div className="cd-value-icon">{'\u{1F468}\u200D\u{1F4BB}'}</div>
             <div className="cd-value-right">
-              <div className="cd-value-title">개발자 생태계</div>
+              <div className="cd-value-title">만드는 사람들</div>
               <div className="cd-value-stat">7,000명</div>
-              <div className="cd-value-desc">월 활성 개발자 — 모든 블록체인 중 1위</div>
+              <div className="cd-value-desc">매달 이더리움 위에서 뭔가를 만드는 개발자 수. 모든 블록체인 중 1위</div>
             </div>
           </div>
           <div className="cd-value-card">
-            <div className="cd-value-icon">{'\u{1F4B0}'}</div>
+            <div className="cd-value-icon">{'\u{1F3E6}'}</div>
             <div className="cd-value-right">
-              <div className="cd-value-title">디파이(금융 서비스)</div>
+              <div className="cd-value-title">은행 없는 금융</div>
               <div className="cd-value-stat">80조원</div>
-              <div className="cd-value-desc">예치 자금 — 전체 디파이의 60% 이상</div>
+              <div className="cd-value-desc">이더리움 금융 서비스에 맡겨진 돈. 전체 블록체인 금융의 60% 이상</div>
             </div>
           </div>
           <div className="cd-value-card">
             <div className="cd-value-icon">{'\u{1F525}'}</div>
             <div className="cd-value-right">
-              <div className="cd-value-title">수수료 소각</div>
+              <div className="cd-value-title">쓰면 줄어드는 구조</div>
               <div className="cd-value-stat">130만 ETH</div>
-              <div className="cd-value-desc">지난 1년간 소각 — 사용 늘면 총량 감소</div>
+              <div className="cd-value-desc">1년간 사라진 양. 사람들이 많이 쓸수록 전체 양이 줄어들어요</div>
             </div>
           </div>
         </div>
@@ -312,27 +377,27 @@ function IntroTab() {
         <h3 className="cd-section-title" id="sec-product">기본 정보</h3>
         <div className="cd-product-info">
           <div className="cd-product-row">
-            <span className="cd-product-label">발행일</span>
+            <span className="cd-product-label">처음 만들어진 날</span>
             <span className="cd-product-value">2015년 7월 30일</span>
           </div>
           <div className="cd-product-row cd-product-row-alt">
-            <span className="cd-product-label">시가총액 순위</span>
+            <span className="cd-product-label">전체 코인 중 크기</span>
             <span className="cd-product-value">2위</span>
           </div>
           <div className="cd-product-row">
-            <span className="cd-product-label">현재 유통량</span>
+            <span className="cd-product-label">지금 나와 있는 양</span>
             <span className="cd-product-value">1억 2,040만 개</span>
           </div>
           <div className="cd-product-row cd-product-row-alt">
-            <span className="cd-product-label">최대 발행량</span>
-            <span className="cd-product-value">제한 없음</span>
+            <span className="cd-product-label">앞으로 더 만들 수 있나?</span>
+            <span className="cd-product-value">제한 없음 (단, 사용 시 소각됨)</span>
           </div>
           <div className="cd-product-row">
-            <span className="cd-product-label">합의 방식</span>
-            <span className="cd-product-value">지분 증명 (PoS)</span>
+            <span className="cd-product-label">운영 방식</span>
+            <span className="cd-product-value">코인을 맡긴 사람들이 검증</span>
           </div>
           <div className="cd-product-row cd-product-row-alt">
-            <span className="cd-product-label">거래 가능 거래소</span>
+            <span className="cd-product-label">살 수 있는 곳</span>
             <span className="cd-product-value">업비트, 빗썸, 코인원</span>
           </div>
           <div className="cd-product-row">
@@ -345,7 +410,7 @@ function IntroTab() {
       <div className="section-divider" />
       {/* People section */}
       <div className="cd-info-block">
-        <h3 className="cd-section-title" id="sec-people">어떤 사람들이 갖고 있을까?</h3>
+        <h3 className="cd-section-title" id="sec-people">ZKAP에서는 얼마나 인기 있을까?</h3>
         <div className="cd-people-stats">
           <div className="cd-people-stat-card">
             <div className="cd-people-stat-value">34%</div>
@@ -361,7 +426,7 @@ function IntroTab() {
       <div className="section-divider" />
       {/* Age distribution */}
       <div className="cd-info-block">
-        <h3 className="cd-section-subtitle">연령대별 보유 비율</h3>
+        <h3 className="cd-section-subtitle">어떤 연령대가 많이 갖고 있을까?</h3>
         <div className="cd-age-bars">
           {AGE_DATA.map((age) => (
             <div key={age.label} className="cd-age-row">
@@ -378,7 +443,7 @@ function IntroTab() {
         <div className="cd-insight-card" style={{ marginTop: 16 }}>
           <div className="cd-insight-icon">{'\u{1F4A1}'}</div>
           <div className="cd-insight-text">
-            <strong>20~30대</strong>가 가장 많이 보유한 코인이에요
+            <strong>20~30대</strong>가 가장 많이 갖고 있는 코인이에요
           </div>
         </div>
       </div>
@@ -386,7 +451,7 @@ function IntroTab() {
       <div className="section-divider" />
       {/* Co-held coins */}
       <div className="cd-info-block">
-        <h3 className="cd-section-title">같이 보유한 코인</h3>
+        <h3 className="cd-section-title">이 코인 가진 사람들이 같이 가진 코인</h3>
         <div className="cd-coheld-scroll">
           {CO_HELD.map((coin) => (
             <div key={coin.name} className="cd-coheld-card">
@@ -395,6 +460,34 @@ function IntroTab() {
               <div className="cd-coheld-pct">{coin.pct}</div>
             </div>
           ))}
+        </div>
+      </div>
+
+      <div className="section-divider" />
+      {/* Empty/limited info pattern — for coins with less information */}
+      <div className="cd-info-block">
+        <h3 className="cd-section-title" id="sec-limited-info">정보가 부족한 코인은 이렇게 보여요</h3>
+        <div className="cd-section-helper">아직 충분한 데이터가 없는 코인도 있어요. 그런 경우엔 아래처럼 안내해 드려요.</div>
+        <div className="cd-empty-pattern-card">
+          <div className="cd-empty-pattern-icon">{'\u{1F50D}'}</div>
+          <div className="cd-empty-pattern-body">
+            <div className="cd-empty-pattern-title">아직 이 코인의 정보를 모으고 있어요</div>
+            <div className="cd-empty-pattern-list">
+              <div className="cd-empty-pattern-item">
+                <span className="cd-empty-dot cd-empty-dot-yellow" />
+                <span>기본 소개만 있는 코인</span>
+              </div>
+              <div className="cd-empty-pattern-item">
+                <span className="cd-empty-dot cd-empty-dot-gray" />
+                <span>사용자 데이터가 부족한 코인</span>
+              </div>
+              <div className="cd-empty-pattern-item">
+                <span className="cd-empty-dot cd-empty-dot-gray" />
+                <span>뉴스나 동향이 아직 없는 코인</span>
+              </div>
+            </div>
+            <div className="cd-empty-pattern-note">정보가 모이면 자동으로 채워져요</div>
+          </div>
         </div>
       </div>
     </div>
@@ -418,28 +511,31 @@ function StatusTab() {
             </div>
             <div className="cd-today-item">
               <span className="cd-today-icon">{'\u{1F465}'}</span>
-              <span className="cd-today-text">오늘 새로 <strong>47명</strong>이 매수했어요</span>
+              <span className="cd-today-text">오늘 새로 <strong>47명</strong>이 이 코인을 샀어요</span>
             </div>
             <div className="cd-today-item">
               <span className="cd-today-icon">{'\u{1F525}'}</span>
-              <span className="cd-today-text">거래량이 평소보다 <strong>23%</strong> 많아요</span>
+              <span className="cd-today-text">사고파는 양이 평소보다 <strong>23%</strong> 많아요</span>
             </div>
           </div>
         </div>
         <div className="cd-key-metrics" style={{ marginTop: 12 }}>
           <div className="cd-key-metric">
-            <div className="cd-key-metric-label">시가총액</div>
+            <div className="cd-key-metric-label">전체 가치</div>
             <div className="cd-key-metric-value">630조원</div>
+            <div className="cd-key-metric-helper">이 코인 전체의 시장 가격</div>
           </div>
           <div className="cd-key-metric-divider" />
           <div className="cd-key-metric">
-            <div className="cd-key-metric-label">24시간 거래량</div>
+            <div className="cd-key-metric-label">하루 거래 금액</div>
             <div className="cd-key-metric-value">12.4조원</div>
+            <div className="cd-key-metric-helper">24시간 동안 사고팔린 금액</div>
           </div>
           <div className="cd-key-metric-divider" />
           <div className="cd-key-metric">
-            <div className="cd-key-metric-label">30일 변동</div>
+            <div className="cd-key-metric-label">한 달 변화</div>
             <div className="cd-key-metric-value cd-text-red">+18.3%</div>
+            <div className="cd-key-metric-helper">30일 전과 비교한 가격 변화</div>
           </div>
         </div>
       </div>
@@ -448,14 +544,15 @@ function StatusTab() {
       {/* 52 week range */}
       <div className="cd-info-block">
         <h3 className="cd-section-title" id="sec-52week">지금 비싼 거야, 싼 거야?</h3>
+        <div className="cd-section-helper">지난 1년간 가장 싸고 비쌌던 가격과 비교해 봤어요</div>
         <div className="cd-52week-card">
           <div className="cd-52week-labels">
             <div className="cd-52week-end">
-              <div className="cd-52week-end-label">52주 최저</div>
+              <div className="cd-52week-end-label">1년 중 최저</div>
               <div className="cd-52week-end-value">3,100,000원</div>
             </div>
             <div className="cd-52week-end" style={{ textAlign: 'right' }}>
-              <div className="cd-52week-end-label">52주 최고</div>
+              <div className="cd-52week-end-label">1년 중 최고</div>
               <div className="cd-52week-end-value">6,800,000원</div>
             </div>
           </div>
@@ -466,15 +563,15 @@ function StatusTab() {
             </div>
           </div>
           <div className="cd-52week-result">
-            최고가 대비 <strong>75%</strong> 수준이에요
+            1년 중 가장 비쌌을 때의 <strong>75%</strong> 수준이에요
           </div>
         </div>
       </div>
 
       <div className="section-divider" />
-      {/* Recent news — replacing 했제와 그랬제 */}
+      {/* Recent news */}
       <div className="cd-info-block">
-        <h3 className="cd-section-title" id="sec-news">최근 주요 소식</h3>
+        <h3 className="cd-section-title" id="sec-news">최근에 무슨 일이 있었을까?</h3>
         <div className="cd-news-list">
           {RECENT_NEWS.map((news, i) => (
             <div key={i} className="cd-news-card">
@@ -485,6 +582,7 @@ function StatusTab() {
                   <span className="cd-news-date">{news.date}</span>
                 </div>
                 <div className="cd-news-desc">{news.desc}</div>
+                <div className="cd-news-why">{'\u{1F4A1}'} {news.why}</div>
               </div>
             </div>
           ))}
@@ -494,7 +592,8 @@ function StatusTab() {
       <div className="section-divider" />
       {/* Past performance */}
       <div className="cd-info-block">
-        <h3 className="cd-section-title" id="sec-timing">이때 샀으면 지금은...</h3>
+        <h3 className="cd-section-title" id="sec-timing">그때 샀으면 지금 얼마가 됐을까?</h3>
+        <div className="cd-section-helper">과거 특정 시점에 샀다면 지금 얼마나 변했을지 보여줘요</div>
         <div className="cd-perf-cards">
           <div className="cd-perf-card cd-perf-positive">
             <div className="cd-perf-period">1개월 전</div>
@@ -515,7 +614,7 @@ function StatusTab() {
         <div className="cd-insight-card" style={{ marginTop: 16 }}>
           <div className="cd-insight-icon">{'\u{1F4A1}'}</div>
           <div className="cd-insight-text">
-            과거 데이터 기준이며, 미래 수익을 보장하지 않아요
+            과거 기록일 뿐이에요. 앞으로도 같을 거라는 보장은 없어요.
           </div>
         </div>
       </div>
@@ -523,7 +622,8 @@ function StatusTab() {
       <div className="section-divider" />
       {/* Behavioral signals — what are people doing */}
       <div className="cd-info-block">
-        <h3 className="cd-section-title" id="sec-behavior">지금 사람들은 어떻게 움직이고 있을까?</h3>
+        <h3 className="cd-section-title" id="sec-behavior">지금 사람들은 어떻게 하고 있을까?</h3>
+        <div className="cd-section-helper">ZKAP 안에서 이 코인을 가진 사람들의 행동이에요</div>
         <div className="cd-behavior-cards">
           {BEHAVIOR_SIGNALS.map((s, i) => (
             <div key={i} className="cd-behavior-card">
@@ -539,7 +639,7 @@ function StatusTab() {
         <div className="cd-insight-card" style={{ marginTop: 12 }}>
           <div className="cd-insight-icon">{'\u{1F4A1}'}</div>
           <div className="cd-insight-text">
-            ZKAP 사용자 데이터 기준이며, 전체 시장과 다를 수 있어요
+            ZKAP 사용자 기준이에요. 전체 시장과는 다를 수 있어요.
           </div>
         </div>
       </div>
@@ -547,12 +647,15 @@ function StatusTab() {
       <div className="section-divider" />
       {/* Network health */}
       <div className="cd-info-block">
-        <h3 className="cd-section-title" id="sec-health">네트워크는 건강할까?</h3>
-        <div className="cd-health-subtitle">이더리움 네트워크가 실제로 잘 돌아가고 있는지 확인해요</div>
+        <h3 className="cd-section-title" id="sec-health">이 네트워크는 잘 돌아가고 있을까?</h3>
+        <div className="cd-section-helper">이더리움 네트워크 자체가 건강한지 보여주는 지표예요</div>
         <div className="cd-health-list">
           {NETWORK_HEALTH.map((h, i) => (
             <div key={i} className="cd-health-row">
-              <div className="cd-health-label">{h.label}</div>
+              <div className="cd-health-left-col">
+                <div className="cd-health-label">{h.label}</div>
+                <div className="cd-health-helper">{h.helper}</div>
+              </div>
               <div className="cd-health-right">
                 <div className="cd-health-value">{h.value}</div>
                 <div className={`cd-health-status cd-health-${h.statusType}`}>{h.status}</div>
@@ -565,22 +668,26 @@ function StatusTab() {
       <div className="section-divider" />
       {/* Institutional context */}
       <div className="cd-info-block">
-        <h3 className="cd-section-title" id="sec-context">기관·생태계 동향</h3>
+        <h3 className="cd-section-title" id="sec-context">큰손들은 어떻게 움직이고 있을까?</h3>
+        <div className="cd-section-helper">개인이 아닌 큰 기관이나 펀드의 움직임이에요</div>
         <div className="cd-context-cards">
           <div className="cd-context-card">
-            <div className="cd-context-badge">기관</div>
+            <div className="cd-context-badge">기관 자금</div>
             <div className="cd-context-stat">2.1조원</div>
-            <div className="cd-context-text">이번 달 ETH 현물 ETF 순유입액. 기관 자금 유입 지속 중</div>
+            <div className="cd-context-text">이번 달 큰 기관들이 이더리움에 넣은 돈이에요</div>
+            <div className="cd-context-why">기관이 들어오면 시장이 안정되는 데 도움이 돼요</div>
           </div>
           <div className="cd-context-card">
-            <div className="cd-context-badge">네트워크</div>
+            <div className="cd-context-badge">실제 사용량</div>
             <div className="cd-context-stat">50만 개 (+19%)</div>
-            <div className="cd-context-text">일 평균 활성 주소. 작년 동기(42만 개) 대비 증가</div>
+            <div className="cd-context-text">매일 이더리움을 실제로 사용하는 지갑 수예요</div>
+            <div className="cd-context-why">작년 같은 때(42만 개)보다 늘었어요</div>
           </div>
           <div className="cd-context-card">
-            <div className="cd-context-badge">공급</div>
-            <div className="cd-context-stat">3.2만 ETH 순감소</div>
-            <div className="cd-context-text">최근 30일 기준. PoS 전환 후 순발행량 감소 추세</div>
+            <div className="cd-context-badge">코인 양 변화</div>
+            <div className="cd-context-stat">3.2만 ETH 줄어듦</div>
+            <div className="cd-context-text">최근 30일간 사라진 양이에요</div>
+            <div className="cd-context-why">사용이 늘면서 전체 양이 계속 줄어드는 추세예요</div>
           </div>
         </div>
       </div>
@@ -634,12 +741,13 @@ function ChartTab({ selectedTimeRange, setSelectedTimeRange, selectedCalcAmount,
       <div className="cd-return-sim">
         <div className="cd-return-sim-label">참고: 1개월 전 대비</div>
         <div className="cd-return-sim-value"><strong>+18.3%</strong> 변동</div>
-        <div className="cd-return-sim-sub">과거 수익률이 미래 수익을 보장하지 않습니다</div>
+        <div className="cd-return-sim-sub">과거 기록이에요. 앞으로를 보장하지 않아요.</div>
       </div>
 
       {/* Exchange comparison */}
       <div className="cd-compare-section">
         <h3 className="cd-section-title">어디서 사는 게 제일 쌀까?</h3>
+        <div className="cd-section-helper">같은 코인이라도 거래소마다 가격이 조금씩 달라요</div>
 
         {/* Hero card */}
         <div className="cd-compare-hero-card">
@@ -680,7 +788,8 @@ function ChartTab({ selectedTimeRange, setSelectedTimeRange, selectedCalcAmount,
         <div className="cd-zkap-compare-grid">
           {/* Trading cost comparison */}
           <div className="cd-zkap-compare-card">
-            <div className="cd-zkap-compare-card-title">거래 비용</div>
+            <div className="cd-zkap-compare-card-title">사고팔 때 수수료</div>
+            <div className="cd-zkap-compare-card-helper">거래할 때 내는 비용이에요. 낮을수록 좋아요.</div>
             <div className="cd-zkap-bar-group">
               <div className="cd-zkap-bar-row">
                 <span className="cd-zkap-bar-label">일반</span>
@@ -702,7 +811,8 @@ function ChartTab({ selectedTimeRange, setSelectedTimeRange, selectedCalcAmount,
 
           {/* 1-year return comparison */}
           <div className="cd-zkap-compare-card">
-            <div className="cd-zkap-compare-card-title">1년 수익 비교</div>
+            <div className="cd-zkap-compare-card-title">1년 보유 시 수익 차이</div>
+            <div className="cd-zkap-compare-card-helper">같은 금액으로 1년 갖고 있었을 때 차이예요</div>
             <div className="cd-zkap-bar-group">
               <div className="cd-zkap-bar-row">
                 <span className="cd-zkap-bar-label">일반</span>
@@ -724,7 +834,8 @@ function ChartTab({ selectedTimeRange, setSelectedTimeRange, selectedCalcAmount,
 
           {/* Price stability comparison */}
           <div className="cd-zkap-compare-card">
-            <div className="cd-zkap-compare-card-title">가격 안정성</div>
+            <div className="cd-zkap-compare-card-title">가격 흔들림 폭</div>
+            <div className="cd-zkap-compare-card-helper">가격이 얼마나 오르내리는지 보여줘요. 작을수록 안정적이에요.</div>
             <div className="cd-zkap-bar-group">
               <div className="cd-zkap-bar-row">
                 <span className="cd-zkap-bar-label">일반</span>
@@ -742,7 +853,7 @@ function ChartTab({ selectedTimeRange, setSelectedTimeRange, selectedCalcAmount,
               </div>
             </div>
             <div className="cd-zkap-bar-result">ZKAP이 <strong>3.1%</strong> 더 안정적</div>
-            <div className="cd-zkap-bar-sub">분산 매수 효과</div>
+            <div className="cd-zkap-bar-sub">여러 번 나눠 사서 흔들림을 줄인 효과예요</div>
           </div>
         </div>
       </div>
@@ -750,9 +861,10 @@ function ChartTab({ selectedTimeRange, setSelectedTimeRange, selectedCalcAmount,
       <div className="section-divider" />
       {/* Interest calculator */}
       <div className="cd-info-block">
-        <h3 className="cd-section-title" id="sec-calc">이더리움으로 이자 받기</h3>
+        <h3 className="cd-section-title" id="sec-calc">이더리움 맡기고 이자 받기</h3>
+        <div className="cd-section-helper">갖고 있는 이더리움을 네트워크에 맡기면 매달 이자를 받을 수 있어요</div>
         <div className="cd-calc-wrap">
-          <div className="cd-calc-label">얼마나 넣어볼까요?</div>
+          <div className="cd-calc-label">얼마치를 맡겨볼까요?</div>
           <div className="cd-calc-chips">
             {CALC_AMOUNTS.map((a) => (
               <button
@@ -766,17 +878,17 @@ function ChartTab({ selectedTimeRange, setSelectedTimeRange, selectedCalcAmount,
           </div>
           <div className="cd-calc-output">
             <div className="cd-calc-output-label">
-              {(selectedCalcAmount / 10000).toLocaleString()}만원을 맡기면 매달
+              {(selectedCalcAmount / 10000).toLocaleString()}만원어치를 맡기면 매달
             </div>
             <div className="cd-calc-output-value">
               약 {monthlyInterest.toLocaleString()}원
             </div>
-            <div className="cd-calc-output-sub">연 5.2% 이율 기준</div>
+            <div className="cd-calc-output-sub">연 5.2% 기준</div>
             <div className="cd-calc-output-compare">
-              은행 예금 3.5%보다 높아요
+              일반 은행 예금(3.5%)보다 높은 수준이에요
             </div>
           </div>
-          <div className="cd-calc-note">* 이율은 네트워크 상황에 따라 변동될 수 있어요</div>
+          <div className="cd-calc-note">* 이율은 네트워크 상황에 따라 달라질 수 있어요</div>
         </div>
       </div>
     </div>
@@ -820,7 +932,7 @@ function HoldingsTab({ selectedExchange, setSelectedExchange }) {
           <div className="cd-staking-nudge-text">
             맡겨두면 매달 <strong className="cd-text-green">약 21,667원</strong> 이자
           </div>
-          <div className="cd-staking-nudge-sub">연 5.2% · 보유만 해도 이자가 쌓여요</div>
+          <div className="cd-staking-nudge-sub">연 5.2% · 갖고만 있어도 이자가 쌓여요</div>
         </div>
         <button className="cd-staking-nudge-btn">이자 받기</button>
       </div>
