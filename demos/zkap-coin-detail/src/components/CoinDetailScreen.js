@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 
-const TABS = ['차트', '정보', '내 보유'];
+const TABS = ['소개', '현황', '차트', '내 보유'];
 
 const TIME_RANGES = ['1시간', '1일', '1주', '1달', '3달', '1년'];
 
@@ -36,14 +36,6 @@ const QNA_DATA = [
   },
 ];
 
-const RANKING_DATA = [
-  { rank: 1, age: '30대', months: 14, pct: '+892%', profitAmt: '+12,980,000원', amount: '14,571,271원', emoji: '\u{1F947}' },
-  { rank: 2, age: '50대', months: 11, pct: '+541%', profitAmt: '+7,560,000원', amount: '8,960,318원', emoji: '\u{1F948}' },
-  { rank: 3, age: '40대', months: 8, pct: '+423%', profitAmt: '+5,520,000원', amount: '6,823,400원', emoji: '\u{1F949}' },
-  { rank: 4, age: '30대', months: 6, pct: '+287%', profitAmt: '+3,210,000원', amount: '4,320,000원', emoji: '\u{1F60E}' },
-  { rank: 5, age: '20대', months: 5, pct: '+198%', profitAmt: '+1,430,000원', amount: '2,150,800원', emoji: '\u{1F604}' },
-];
-
 const CO_HELD = [
   { icon: '\u{20BF}', name: '비트코인', pct: '82%가 같이 보유' },
   { icon: '\u{25CE}', name: '솔라나', pct: '45%가 같이 보유' },
@@ -62,6 +54,27 @@ const HOLDINGS_EXCHANGES = [
   { name: '업비트', abbr: 'UP', eth: '0.71691 ETH', krw: '2,500,000원', pnl: '+416,667원', pnlPct: '20%', positive: true },
   { name: '코인원', abbr: 'C1', eth: '0.43014 ETH', krw: '1,500,000원', pnl: '-78,947원', pnlPct: '5%', positive: false },
   { name: '빗썸', abbr: '빗', eth: '0.28676 ETH', krw: '1,000,000원', pnl: '+111,111원', pnlPct: '12.5%', positive: true },
+];
+
+const RECENT_NEWS = [
+  {
+    date: '3월 24일',
+    icon: '\u{1F680}',
+    title: 'Dencun 업그레이드 완료',
+    desc: '이더리움 네트워크 수수료가 크게 낮아졌어요. 레이어2 거래가 더 빨라지고 저렴해졌습니다.',
+  },
+  {
+    date: '3월 20일',
+    icon: '\u{1F3E6}',
+    title: '미국 ETH 현물 ETF 순유입 지속',
+    desc: '기관 투자자들의 자금이 3주 연속 유입되고 있어요.',
+  },
+  {
+    date: '3월 18일',
+    icon: '\u{1F4C8}',
+    title: '디파이 예치금(TVL) 증가세',
+    desc: '이더리움 기반 디파이 프로토콜에 묶인 자금이 최근 한 달간 15% 늘었어요.',
+  },
 ];
 
 // SVG chart path data for a realistic looking price chart
@@ -135,14 +148,16 @@ export default function CoinDetailScreen({ onBack, onBuy, activeTab, setActiveTa
 
       {/* Tab content */}
       <div className="cd-tab-content">
+        {activeTab === '소개' && (
+          <IntroTab />
+        )}
+        {activeTab === '현황' && (
+          <StatusTab />
+        )}
         {activeTab === '차트' && (
           <ChartTab
             selectedTimeRange={selectedTimeRange}
             setSelectedTimeRange={setSelectedTimeRange}
-          />
-        )}
-        {activeTab === '정보' && (
-          <InfoTab
             selectedCalcAmount={selectedCalcAmount}
             setSelectedCalcAmount={setSelectedCalcAmount}
             monthlyInterest={monthlyInterest}
@@ -153,14 +168,291 @@ export default function CoinDetailScreen({ onBack, onBuy, activeTab, setActiveTa
 
       {/* Disclaimer */}
       <div className="cd-disclaimer">
-        ※ 모든 투자 정보는 참고용이며, 투자 권유가 아닙니다. 과거 수익률이 미래 수익을 보장하지 않습니다.
+        {'\u203B'} 모든 정보는 참고용이며, 투자 판단은 본인의 책임입니다.
       </div>
     </div>
   );
 }
 
-/* ============ Chart Tab ============ */
-function ChartTab({ selectedTimeRange, setSelectedTimeRange }) {
+/* ============ Intro Tab — "이 코인이 어떤 애인지" ============ */
+function IntroTab() {
+  return (
+    <div className="cd-section" id="sec-intro">
+      {/* Q&A */}
+      <div className="cd-info-block">
+        <h3 className="cd-section-title" id="sec-qna">이더리움이 뭐야?</h3>
+        <div className="cd-qna-list">
+          {QNA_DATA.map((item, i) => (
+            <div key={i} className="cd-qna-card">
+              <div className="cd-qna-label">{item.label}</div>
+              <div className="cd-qna-a">{item.a}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="section-divider" />
+      {/* Value source — where does the value come from */}
+      <div className="cd-info-block">
+        <h3 className="cd-section-title" id="sec-value">가치는 어디서 올까?</h3>
+        <div className="cd-value-cards">
+          <div className="cd-value-card">
+            <div className="cd-value-icon">{'\u{1F3D7}'}</div>
+            <div className="cd-value-title">개발자 생태계</div>
+            <div className="cd-value-desc">전 세계에서 가장 많은 개발자가 이더리움 위에서 앱을 만들고 있어요</div>
+          </div>
+          <div className="cd-value-card">
+            <div className="cd-value-icon">{'\u{1F4B0}'}</div>
+            <div className="cd-value-title">디파이(금융 서비스)</div>
+            <div className="cd-value-desc">은행 없이 빌려주고, 빌리고, 이자를 받는 서비스가 이더리움 위에서 돌아가요</div>
+          </div>
+          <div className="cd-value-card">
+            <div className="cd-value-icon">{'\u{1F525}'}</div>
+            <div className="cd-value-title">수수료 소각</div>
+            <div className="cd-value-desc">이더리움을 쓸 때마다 일부가 사라져요. 사용이 늘면 총량이 줄어드는 구조예요</div>
+          </div>
+        </div>
+      </div>
+
+      <div className="section-divider" />
+      {/* Product info */}
+      <div className="cd-info-block">
+        <h3 className="cd-section-title" id="sec-product">기본 정보</h3>
+        <div className="cd-product-info">
+          <div className="cd-product-row">
+            <span className="cd-product-label">발행일</span>
+            <span className="cd-product-value">2015년 7월 30일</span>
+          </div>
+          <div className="cd-product-row cd-product-row-alt">
+            <span className="cd-product-label">시가총액 순위</span>
+            <span className="cd-product-value">2위</span>
+          </div>
+          <div className="cd-product-row">
+            <span className="cd-product-label">현재 유통량</span>
+            <span className="cd-product-value">1억 2,040만 개</span>
+          </div>
+          <div className="cd-product-row cd-product-row-alt">
+            <span className="cd-product-label">최대 발행량</span>
+            <span className="cd-product-value">제한 없음</span>
+          </div>
+          <div className="cd-product-row">
+            <span className="cd-product-label">합의 방식</span>
+            <span className="cd-product-value">지분 증명 (PoS)</span>
+          </div>
+          <div className="cd-product-row cd-product-row-alt">
+            <span className="cd-product-label">거래 가능 거래소</span>
+            <span className="cd-product-value">업비트, 빗썸, 코인원</span>
+          </div>
+          <div className="cd-product-row">
+            <span className="cd-product-label">공식 사이트</span>
+            <span className="cd-product-value">ethereum.org</span>
+          </div>
+        </div>
+      </div>
+
+      <div className="section-divider" />
+      {/* People section */}
+      <div className="cd-info-block">
+        <h3 className="cd-section-title" id="sec-people">어떤 사람들이 갖고 있을까?</h3>
+        <div className="cd-people-stats">
+          <div className="cd-people-stat-card">
+            <div className="cd-people-stat-value">34%</div>
+            <div className="cd-people-stat-label">ZKAP 사용자 중 보유</div>
+          </div>
+          <div className="cd-people-stat-card">
+            <div className="cd-people-stat-value">3위</div>
+            <div className="cd-people-stat-label">인기 코인 순위</div>
+          </div>
+        </div>
+      </div>
+
+      <div className="section-divider" />
+      {/* Age distribution */}
+      <div className="cd-info-block">
+        <h3 className="cd-section-subtitle">연령대별 보유 비율</h3>
+        <div className="cd-age-bars">
+          {AGE_DATA.map((age) => (
+            <div key={age.label} className="cd-age-row">
+              <span className="cd-age-label">{age.label}</span>
+              <div className="cd-age-bar-track">
+                <div className="cd-age-bar-fill" style={{ width: `${age.pct}%` }}>
+                  {age.pct >= 25 && <span className="cd-age-fill-text">{age.pct}%</span>}
+                </div>
+              </div>
+              <span className="cd-age-pct">{age.pct}%</span>
+            </div>
+          ))}
+        </div>
+        <div className="cd-insight-card" style={{ marginTop: 16 }}>
+          <div className="cd-insight-icon">{'\u{1F4A1}'}</div>
+          <div className="cd-insight-text">
+            <strong>20~30대</strong>가 가장 많이 보유한 코인이에요
+          </div>
+        </div>
+      </div>
+
+      <div className="section-divider" />
+      {/* Co-held coins */}
+      <div className="cd-info-block">
+        <h3 className="cd-section-title">같이 보유한 코인</h3>
+        <div className="cd-coheld-scroll">
+          {CO_HELD.map((coin) => (
+            <div key={coin.name} className="cd-coheld-card">
+              <div className="cd-coheld-icon">{coin.icon}</div>
+              <div className="cd-coheld-name">{coin.name}</div>
+              <div className="cd-coheld-pct">{coin.pct}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ============ Status Tab — "지금 어떤 상태인지" ============ */
+function StatusTab() {
+  return (
+    <div className="cd-section" id="sec-status">
+      <div className="section-divider" />
+      {/* Market overview — daily freshness */}
+      <div className="cd-info-block" id="sec-market">
+        <h3 className="cd-section-title">3월 25일 오늘의 이더리움</h3>
+        <div className="cd-today-card">
+          <div className="cd-today-subtitle">오늘 달라진 점</div>
+          <div className="cd-today-items">
+            <div className="cd-today-item">
+              <span className="cd-today-icon">{'\u{1F4C8}'}</span>
+              <span className="cd-today-text">어제보다 <strong>4.2%</strong> 올랐어요</span>
+            </div>
+            <div className="cd-today-item">
+              <span className="cd-today-icon">{'\u{1F465}'}</span>
+              <span className="cd-today-text">오늘 새로 <strong>47명</strong>이 매수했어요</span>
+            </div>
+            <div className="cd-today-item">
+              <span className="cd-today-icon">{'\u{1F525}'}</span>
+              <span className="cd-today-text">거래량이 평소보다 <strong>23%</strong> 많아요</span>
+            </div>
+          </div>
+        </div>
+        <div className="cd-key-metrics" style={{ marginTop: 12 }}>
+          <div className="cd-key-metric">
+            <div className="cd-key-metric-label">시가총액</div>
+            <div className="cd-key-metric-value">630조원</div>
+          </div>
+          <div className="cd-key-metric-divider" />
+          <div className="cd-key-metric">
+            <div className="cd-key-metric-label">24시간 거래량</div>
+            <div className="cd-key-metric-value">12.4조원</div>
+          </div>
+          <div className="cd-key-metric-divider" />
+          <div className="cd-key-metric">
+            <div className="cd-key-metric-label">30일 변동</div>
+            <div className="cd-key-metric-value cd-text-red">+18.3%</div>
+          </div>
+        </div>
+      </div>
+
+      <div className="section-divider" />
+      {/* 52 week range */}
+      <div className="cd-info-block">
+        <h3 className="cd-section-title" id="sec-52week">지금 비싼 거야, 싼 거야?</h3>
+        <div className="cd-52week-card">
+          <div className="cd-52week-labels">
+            <div className="cd-52week-end">
+              <div className="cd-52week-end-label">52주 최저</div>
+              <div className="cd-52week-end-value">3,100,000원</div>
+            </div>
+            <div className="cd-52week-end" style={{ textAlign: 'right' }}>
+              <div className="cd-52week-end-label">52주 최고</div>
+              <div className="cd-52week-end-value">6,800,000원</div>
+            </div>
+          </div>
+          <div className="cd-52week-bar">
+            <div className="cd-52week-fill" style={{ width: '75%' }} />
+            <div className="cd-52week-marker" style={{ left: '75%' }}>
+              <div className="cd-52week-marker-dot" />
+            </div>
+          </div>
+          <div className="cd-52week-result">
+            최고가 대비 <strong>75%</strong> 수준이에요
+          </div>
+        </div>
+      </div>
+
+      <div className="section-divider" />
+      {/* Recent news — replacing 했제와 그랬제 */}
+      <div className="cd-info-block">
+        <h3 className="cd-section-title" id="sec-news">최근 주요 소식</h3>
+        <div className="cd-news-list">
+          {RECENT_NEWS.map((news, i) => (
+            <div key={i} className="cd-news-card">
+              <div className="cd-news-icon">{news.icon}</div>
+              <div className="cd-news-body">
+                <div className="cd-news-header">
+                  <span className="cd-news-title">{news.title}</span>
+                  <span className="cd-news-date">{news.date}</span>
+                </div>
+                <div className="cd-news-desc">{news.desc}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="section-divider" />
+      {/* Past performance */}
+      <div className="cd-info-block">
+        <h3 className="cd-section-title" id="sec-timing">이때 샀으면 지금은...</h3>
+        <div className="cd-perf-cards">
+          <div className="cd-perf-card cd-perf-positive">
+            <div className="cd-perf-period">1개월 전</div>
+            <div className="cd-perf-value cd-text-red">+18.3%</div>
+            <div className="cd-perf-emoji">{'\u{1F60A}'}</div>
+          </div>
+          <div className="cd-perf-card cd-perf-negative">
+            <div className="cd-perf-period">3개월 전</div>
+            <div className="cd-perf-value cd-text-blue">-5.2%</div>
+            <div className="cd-perf-emoji">{'\u{1F622}'}</div>
+          </div>
+          <div className="cd-perf-card cd-perf-best">
+            <div className="cd-perf-period">1년 전</div>
+            <div className="cd-perf-value cd-text-red">+142%</div>
+            <div className="cd-perf-emoji">{'\u{1F389}'}</div>
+          </div>
+        </div>
+        <div className="cd-insight-card" style={{ marginTop: 16 }}>
+          <div className="cd-insight-icon">{'\u{1F4A1}'}</div>
+          <div className="cd-insight-text">
+            과거 데이터 기준이며, 미래 수익을 보장하지 않아요
+          </div>
+        </div>
+      </div>
+
+      <div className="section-divider" />
+      {/* Institutional context */}
+      <div className="cd-info-block">
+        <h3 className="cd-section-title" id="sec-context">기관·생태계 동향</h3>
+        <div className="cd-context-cards">
+          <div className="cd-context-card">
+            <div className="cd-context-badge">기관</div>
+            <div className="cd-context-text">미국 ETH 현물 ETF 출시 이후 기관 자금 유입 중</div>
+          </div>
+          <div className="cd-context-card">
+            <div className="cd-context-badge">네트워크</div>
+            <div className="cd-context-text">일 평균 활성 주소 약 50만 개, 꾸준한 사용량 유지</div>
+          </div>
+          <div className="cd-context-card">
+            <div className="cd-context-badge">공급</div>
+            <div className="cd-context-text">PoS 전환 후 순발행량 감소 추세 (수수료 소각 효과)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ============ Chart Tab — decision aid ============ */
+function ChartTab({ selectedTimeRange, setSelectedTimeRange, selectedCalcAmount, setSelectedCalcAmount, monthlyInterest }) {
   return (
     <div className="cd-section" id="sec-chart">
       {/* Chart */}
@@ -317,125 +609,11 @@ function ChartTab({ selectedTimeRange, setSelectedTimeRange }) {
           </div>
         </div>
       </div>
-    </div>
-  );
-}
-
-/* ============ Info Tab ============ */
-function InfoTab({ selectedCalcAmount, setSelectedCalcAmount, monthlyInterest }) {
-  return (
-    <div className="cd-section" id="sec-info">
-      <div className="section-divider" />
-      {/* Market overview — daily freshness */}
-      <div className="cd-info-block" id="sec-market">
-        <h3 className="cd-section-title">3월 25일 오늘의 이더리움</h3>
-        <div className="cd-today-card">
-          <div className="cd-today-subtitle">오늘 달라진 점</div>
-          <div className="cd-today-items">
-            <div className="cd-today-item">
-              <span className="cd-today-icon">{'\u{1F4C8}'}</span>
-              <span className="cd-today-text">어제보다 <strong>4.2%</strong> 올랐어요</span>
-            </div>
-            <div className="cd-today-item">
-              <span className="cd-today-icon">{'\u{1F465}'}</span>
-              <span className="cd-today-text">오늘 새로 <strong>47명</strong>이 매수했어요</span>
-            </div>
-            <div className="cd-today-item">
-              <span className="cd-today-icon">{'\u{1F525}'}</span>
-              <span className="cd-today-text">거래량이 평소보다 <strong>23%</strong> 많아요</span>
-            </div>
-          </div>
-        </div>
-        <div className="cd-key-metrics" style={{ marginTop: 12 }}>
-          <div className="cd-key-metric">
-            <div className="cd-key-metric-label">시가총액</div>
-            <div className="cd-key-metric-value">630조원</div>
-          </div>
-          <div className="cd-key-metric-divider" />
-          <div className="cd-key-metric">
-            <div className="cd-key-metric-label">24시간 거래량</div>
-            <div className="cd-key-metric-value">12.4조원</div>
-          </div>
-          <div className="cd-key-metric-divider" />
-          <div className="cd-key-metric">
-            <div className="cd-key-metric-label">30일 수익률</div>
-            <div className="cd-key-metric-value cd-text-red">+18.3%</div>
-          </div>
-        </div>
-      </div>
-
-      <div className="section-divider" />
-      {/* 52 week range */}
-      <div className="cd-info-block">
-        <h3 className="cd-section-title" id="sec-52week">지금 비싼 거야, 싼 거야?</h3>
-        <div className="cd-52week-card">
-          <div className="cd-52week-labels">
-            <div className="cd-52week-end">
-              <div className="cd-52week-end-label">52주 최저</div>
-              <div className="cd-52week-end-value">3,100,000원</div>
-            </div>
-            <div className="cd-52week-end" style={{ textAlign: 'right' }}>
-              <div className="cd-52week-end-label">52주 최고</div>
-              <div className="cd-52week-end-value">6,800,000원</div>
-            </div>
-          </div>
-          <div className="cd-52week-bar">
-            <div className="cd-52week-fill" style={{ width: '75%' }} />
-            <div className="cd-52week-marker" style={{ left: '75%' }}>
-              <div className="cd-52week-marker-dot" />
-            </div>
-          </div>
-          <div className="cd-52week-result">
-            최고가 대비 <strong>75%</strong> 수준이에요
-          </div>
-        </div>
-      </div>
-
-      <div className="section-divider" />
-      {/* Visual insight card */}
-      <div className="cd-info-block">
-        <div className="cd-visual-insight">
-          <div className="cd-visual-insight-title">시세 데이터로 본 이더리움</div>
-          <div className="cd-visual-insight-body">
-            대형 투자사들의 자금이 꾸준히 유입되고 있어요.
-            지난 1년간 변동성이 줄어들면서 안정적인 성장세를 보이고 있습니다.
-          </div>
-        </div>
-      </div>
-
-      <div className="section-divider" />
-      {/* Past performance */}
-      <div className="cd-info-block">
-        <h3 className="cd-section-title" id="sec-timing">이때 샀으면 지금은...</h3>
-        <div className="cd-perf-cards">
-          <div className="cd-perf-card cd-perf-positive">
-            <div className="cd-perf-period">1개월 전</div>
-            <div className="cd-perf-value cd-text-red">+18.3%</div>
-            <div className="cd-perf-emoji">{'\u{1F60A}'}</div>
-          </div>
-          <div className="cd-perf-card cd-perf-negative">
-            <div className="cd-perf-period">3개월 전</div>
-            <div className="cd-perf-value cd-text-blue">-5.2%</div>
-            <div className="cd-perf-emoji">{'\u{1F622}'}</div>
-          </div>
-          <div className="cd-perf-card cd-perf-best">
-            <div className="cd-perf-period">1년 전</div>
-            <div className="cd-perf-value cd-text-red">+142%</div>
-            <div className="cd-perf-emoji">{'\u{1F389}'}</div>
-          </div>
-        </div>
-        <div className="cd-insight-card" style={{ marginTop: 16 }}>
-          <div className="cd-insight-icon">{'\u{1F4A1}'}</div>
-          <div className="cd-insight-text">
-            1년 이상 보유자의 평균 수익률은 <strong>+142%</strong>예요 (과거 데이터 기준)
-          </div>
-        </div>
-      </div>
 
       <div className="section-divider" />
       {/* Interest calculator */}
       <div className="cd-info-block">
-        <h3 className="cd-section-title" id="sec-calc">이더리움(으)로 이자 받기</h3>
+        <h3 className="cd-section-title" id="sec-calc">이더리움으로 이자 받기</h3>
         <div className="cd-calc-wrap">
           <div className="cd-calc-label">얼마나 넣어볼까요?</div>
           <div className="cd-calc-chips">
@@ -462,201 +640,6 @@ function InfoTab({ selectedCalcAmount, setSelectedCalcAmount, monthlyInterest })
             </div>
           </div>
           <div className="cd-calc-note">* 이율은 네트워크 상황에 따라 변동될 수 있어요</div>
-        </div>
-      </div>
-
-      <div className="section-divider" />
-      {/* Q&A */}
-      <div className="cd-info-block">
-        <h3 className="cd-section-title" id="sec-qna">이더리움이 뭐야?</h3>
-        <div className="cd-qna-list">
-          {QNA_DATA.map((item, i) => (
-            <div key={i} className="cd-qna-card">
-              <div className="cd-qna-label">{item.label}</div>
-              <div className="cd-qna-a">{item.a}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="section-divider" />
-      {/* People section: stats */}
-      <div className="cd-info-block">
-        <h3 className="cd-section-title" id="sec-people">어떤 사람들이 갖고 있을까?</h3>
-        <div className="cd-people-stats">
-          <div className="cd-people-stat-card">
-            <div className="cd-people-stat-value">34%</div>
-            <div className="cd-people-stat-label">ZKAP 사용자 중 보유</div>
-          </div>
-          <div className="cd-people-stat-card">
-            <div className="cd-people-stat-value">3위</div>
-            <div className="cd-people-stat-label">인기 코인 순위</div>
-          </div>
-        </div>
-      </div>
-
-      <div className="section-divider" />
-      {/* Age distribution */}
-      <div className="cd-info-block">
-        <h3 className="cd-section-subtitle">연령대별 보유 비율</h3>
-        <div className="cd-age-bars">
-          {AGE_DATA.map((age) => (
-            <div key={age.label} className="cd-age-row">
-              <span className="cd-age-label">{age.label}</span>
-              <div className="cd-age-bar-track">
-                <div className="cd-age-bar-fill" style={{ width: `${age.pct}%` }}>
-                  {age.pct >= 25 && <span className="cd-age-fill-text">{age.pct}%</span>}
-                </div>
-              </div>
-              <span className="cd-age-pct">{age.pct}%</span>
-            </div>
-          ))}
-        </div>
-        <div className="cd-insight-card" style={{ marginTop: 16 }}>
-          <div className="cd-insight-icon">{'\u{1F4A1}'}</div>
-          <div className="cd-insight-text">
-            <strong>20~30대</strong>가 가장 많이 보유한 코인이에요
-          </div>
-        </div>
-      </div>
-
-      <div className="section-divider" />
-      {/* Ranking */}
-      <div className="cd-info-block">
-        <div className="cd-section-header-row">
-          <h3 className="cd-section-title" style={{ marginBottom: 0 }}>이더리움 수익 랭킹</h3>
-          <span className="cd-section-subtitle-right">ZKAP 사용자 기준</span>
-        </div>
-        <div className="cd-ranking-list">
-          {RANKING_DATA.map((item) => (
-            <div key={item.rank} className={`cd-ranking-item ${item.rank === 1 ? 'cd-ranking-gold' : ''}`}>
-              <div className="cd-ranking-num">{item.rank}</div>
-              <div className="cd-ranking-avatar">{item.emoji}</div>
-              <div className="cd-ranking-info">
-                <div className="cd-ranking-name">익명 ({item.age})</div>
-                <div className="cd-ranking-sub">보유 {item.months}개월</div>
-              </div>
-              <div className="cd-ranking-right">
-                <div className="cd-ranking-profit">{item.profitAmt}</div>
-                <div className="cd-ranking-pct-sub">{item.pct}</div>
-                <div className="cd-ranking-amount">{item.amount}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-        <div className="cd-ranking-more">
-          전체 랭킹 보기 {'\u{2192}'}
-        </div>
-      </div>
-
-      <div className="section-divider" />
-      {/* 했제와 그랬제 */}
-      <div className="cd-info-block">
-        <h3 className="cd-section-title">했제와 그랬제</h3>
-        <div className="cd-pred-scroll">
-          <div className="cd-pred-card cd-pred-hit">
-            <div className="cd-pred-profile">
-              <img className="cd-pred-photo" src="https://i.pravatar.cc/80?img=11" alt="" />
-              <div className="cd-pred-badge-wrap cd-pred-badge-hit">적중</div>
-            </div>
-            <div className="cd-pred-name">크립토 김대리</div>
-            <div className="cd-pred-quote">"500만원 돌파한다"</div>
-            <div className="cd-pred-meta">
-              <span className="cd-pred-rate-label">적중률</span>
-              <span className="cd-pred-rate-value">78%</span>
-            </div>
-            <div className="cd-pred-bar-track"><div className="cd-pred-bar-fill cd-pred-bar-hit" style={{ width: '78%' }} /></div>
-          </div>
-          <div className="cd-pred-card cd-pred-miss">
-            <div className="cd-pred-profile">
-              <img className="cd-pred-photo" src="https://i.pravatar.cc/80?img=33" alt="" />
-              <div className="cd-pred-badge-wrap cd-pred-badge-miss">빗나감</div>
-            </div>
-            <div className="cd-pred-name">머니토크 박실장</div>
-            <div className="cd-pred-quote">"700만원 간다"</div>
-            <div className="cd-pred-meta">
-              <span className="cd-pred-rate-label">적중률</span>
-              <span className="cd-pred-rate-value">45%</span>
-            </div>
-            <div className="cd-pred-bar-track"><div className="cd-pred-bar-fill cd-pred-bar-miss" style={{ width: '45%' }} /></div>
-          </div>
-          <div className="cd-pred-card cd-pred-hit">
-            <div className="cd-pred-profile">
-              <img className="cd-pred-photo" src="https://i.pravatar.cc/80?img=52" alt="" />
-              <div className="cd-pred-badge-wrap cd-pred-badge-hit">적중</div>
-            </div>
-            <div className="cd-pred-name">코인 정프로</div>
-            <div className="cd-pred-quote">"500만원대 안착"</div>
-            <div className="cd-pred-meta">
-              <span className="cd-pred-rate-label">적중률</span>
-              <span className="cd-pred-rate-value">82%</span>
-            </div>
-            <div className="cd-pred-bar-track"><div className="cd-pred-bar-fill cd-pred-bar-hit" style={{ width: '82%' }} /></div>
-          </div>
-          <div className="cd-pred-card cd-pred-hit">
-            <div className="cd-pred-profile">
-              <img className="cd-pred-photo" src="https://i.pravatar.cc/80?img=15" alt="" />
-              <div className="cd-pred-badge-wrap cd-pred-badge-hit">적중</div>
-            </div>
-            <div className="cd-pred-name">온체인 이박사</div>
-            <div className="cd-pred-quote">"연말 600만원"</div>
-            <div className="cd-pred-meta">
-              <span className="cd-pred-rate-label">적중률</span>
-              <span className="cd-pred-rate-value">71%</span>
-            </div>
-            <div className="cd-pred-bar-track"><div className="cd-pred-bar-fill cd-pred-bar-hit" style={{ width: '71%' }} /></div>
-          </div>
-        </div>
-      </div>
-
-      <div className="section-divider" />
-      {/* Co-held coins */}
-      <div className="cd-info-block">
-        <h3 className="cd-section-title">이 코인 보유자가 같이 산 코인</h3>
-        <div className="cd-coheld-scroll">
-          {CO_HELD.map((coin) => (
-            <div key={coin.name} className="cd-coheld-card">
-              <div className="cd-coheld-icon">{coin.icon}</div>
-              <div className="cd-coheld-name">{coin.name}</div>
-              <div className="cd-coheld-pct">{coin.pct}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="section-divider" />
-      {/* 상품 정보 */}
-      <div className="cd-info-block">
-        <h3 className="cd-section-title">상품 정보</h3>
-        <div className="cd-product-info">
-          <div className="cd-product-row">
-            <span className="cd-product-label">발행일</span>
-            <span className="cd-product-value">2015년 7월 30일</span>
-          </div>
-          <div className="cd-product-row cd-product-row-alt">
-            <span className="cd-product-label">현재 유통량</span>
-            <span className="cd-product-value">1억 2,040만 개</span>
-          </div>
-          <div className="cd-product-row">
-            <span className="cd-product-label">최대 발행량</span>
-            <span className="cd-product-value">제한 없음</span>
-          </div>
-          <div className="cd-product-row cd-product-row-alt">
-            <span className="cd-product-label">시가총액 순위</span>
-            <span className="cd-product-value">2위</span>
-          </div>
-          <div className="cd-product-row">
-            <span className="cd-product-label">합의 방식</span>
-            <span className="cd-product-value">지분 증명 (PoS)</span>
-          </div>
-          <div className="cd-product-row cd-product-row-alt">
-            <span className="cd-product-label">거래 가능 거래소</span>
-            <span className="cd-product-value">업비트, 빗썸, 코인원</span>
-          </div>
-          <div className="cd-product-row">
-            <span className="cd-product-label">공식 사이트</span>
-            <span className="cd-product-value">ethereum.org</span>
-          </div>
         </div>
       </div>
     </div>
@@ -693,8 +676,6 @@ function HoldingsTab({ selectedExchange, setSelectedExchange }) {
           </div>
         ))}
       </div>
-
-      {/* Bottom sheet rendered via onSheet callback */}
 
       {/* Staking nudge */}
       <div className="cd-staking-nudge">
