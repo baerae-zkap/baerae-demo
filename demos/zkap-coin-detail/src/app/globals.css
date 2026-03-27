@@ -2276,10 +2276,18 @@ img[src*="bybit"] {
 .cd-wrapper {
   display: flex;
   flex-direction: column;
-  min-height: 100%;
+  height: 100%;
   background: #ffffff;
+  overflow: hidden;
+}
+
+.cd-scroll-area {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   padding-bottom: 80px;
 }
+.cd-scroll-area::-webkit-scrollbar { display: none; }
 
 /* Nav */
 .cd-nav {

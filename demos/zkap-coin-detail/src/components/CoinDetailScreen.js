@@ -149,7 +149,7 @@ export default function CoinDetailScreen({ onBack, onBuy, activeTab, setActiveTa
 
   return (
     <div className="cd-wrapper">
-      {/* Nav bar */}
+      {/* Nav bar — outside scroll area so it stays fixed */}
       <div className="cd-nav">
         <button className="cd-nav-back" onClick={onBack}>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -159,6 +159,9 @@ export default function CoinDetailScreen({ onBack, onBuy, activeTab, setActiveTa
         <span className="cd-nav-title">이더리움</span>
         <div style={{ width: 24 }} />
       </div>
+
+      {/* Dedicated scroll container — sticky tab bar works reliably here */}
+      <div className="cd-scroll-area">
 
       {/* Hero */}
       <div className="cd-hero" id="sec-hero">
@@ -223,6 +226,8 @@ export default function CoinDetailScreen({ onBack, onBuy, activeTab, setActiveTa
       <div className="cd-disclaimer">
         {'\u203B'} 여기 나오는 정보는 참고용이에요. 어떤 결정이든 직접 판단해 주세요.
       </div>
+
+      </div>{/* end cd-scroll-area */}
     </div>
   );
 }
