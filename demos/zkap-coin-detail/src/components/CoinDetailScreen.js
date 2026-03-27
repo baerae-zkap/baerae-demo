@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 
-const TABS = ['소개', '현황', '차트', '내 보유'];
+const TABS = ['차트', '소개', '현황', '내 보유'];
 
 const TIME_RANGES = ['1시간', '1일', '1주', '1달', '3달', '1년'];
 
@@ -75,6 +75,44 @@ const RECENT_NEWS = [
     title: '디파이 예치금(TVL) 증가세',
     desc: '이더리움 기반 디파이 프로토콜에 묶인 자금이 최근 한 달간 15% 늘었어요.',
   },
+];
+
+const MILESTONES = [
+  { year: '2015', event: '첫 출시', detail: '"세계 컴퓨터"라는 큰 꿈으로 시작' },
+  { year: '2017', event: 'ICO 붐', detail: '새 코인 만드는 도구로 폭발적 성장' },
+  { year: '2020', event: '디파이 여름', detail: '은행 없는 금융 서비스가 현실로' },
+  { year: '2022', event: 'PoS 전환', detail: '에너지 99% 절감, 이자 받기 가능해짐' },
+  { year: '2024', event: 'ETF 승인', detail: '전통 금융 시장이 이더리움을 인정' },
+];
+
+const INTENT_VS_REALITY = [
+  {
+    intent: '"전 세계 누구나 쓸 수 있는 컴퓨터"',
+    reality: '디파이(금융)와 NFT에 가장 많이 쓰이고 있어요. 게임·소셜 앱은 아직 초기 단계.',
+    verdict: '핵심 방향은 유지, 실사용은 금융 쪽에 집중',
+  },
+  {
+    intent: '"빠르고 저렴한 거래"',
+    reality: '직접 거래는 느리고 비쌀 수 있지만, 레이어2(보조 네트워크)로 보완 중이에요.',
+    verdict: '문제를 인식하고 해결 중',
+  },
+  {
+    intent: '"탈중앙화된 운영"',
+    reality: '약 90만 명이 검증에 참여 중. 소수 집중 우려는 있지만 다른 코인보다 참여자가 많아요.',
+    verdict: '상대적으로 잘 지키고 있는 편',
+  },
+];
+
+const BEHAVIOR_SIGNALS = [
+  { icon: '\u{1F6D2}', label: 'ZKAP 매수 vs 매도', value: '매수 62% : 매도 38%', sub: '매수 쪽이 더 많아요' },
+  { icon: '\u{1F464}', label: '이번 주 신규 보유자', value: '+127명', sub: '지난주(+89명)보다 증가' },
+  { icon: '\u{23F3}', label: '평균 보유 기간', value: '4.2개월', sub: '단기 매매보다 보유 경향' },
+];
+
+const NETWORK_HEALTH = [
+  { label: '하루 거래 건수', value: '약 120만 건', status: '평소 수준', statusType: 'normal' },
+  { label: '네트워크 수수료', value: '0.5~2달러', status: '낮음 — 사용하기 좋은 시기', statusType: 'good' },
+  { label: '스테이킹 참여율', value: '전체의 28%', status: '꾸준히 증가 중', statusType: 'good' },
 ];
 
 // SVG chart path data for a realistic looking price chart
@@ -192,6 +230,31 @@ function IntroTab() {
       </div>
 
       <div className="section-divider" />
+      {/* Intent vs Reality — 의도 vs 실제 */}
+      <div className="cd-info-block">
+        <h3 className="cd-section-title" id="sec-ivr">말한 것 vs 실제로 된 것</h3>
+        <div className="cd-ivr-subtitle">이더리움이 하려던 것과 실제 결과를 비교해 봤어요</div>
+        <div className="cd-ivr-list">
+          {INTENT_VS_REALITY.map((item, i) => (
+            <div key={i} className="cd-ivr-card">
+              <div className="cd-ivr-row">
+                <div className="cd-ivr-col">
+                  <div className="cd-ivr-badge cd-ivr-badge-intent">의도</div>
+                  <div className="cd-ivr-text">{item.intent}</div>
+                </div>
+                <div className="cd-ivr-arrow">{'\u2192'}</div>
+                <div className="cd-ivr-col">
+                  <div className="cd-ivr-badge cd-ivr-badge-reality">현실</div>
+                  <div className="cd-ivr-text">{item.reality}</div>
+                </div>
+              </div>
+              <div className="cd-ivr-verdict">{item.verdict}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="section-divider" />
       {/* Value source — where does the value come from */}
       <div className="cd-info-block">
         <h3 className="cd-section-title" id="sec-value">가치는 어디서 올까?</h3>
@@ -199,18 +262,38 @@ function IntroTab() {
           <div className="cd-value-card">
             <div className="cd-value-icon">{'\u{1F3D7}'}</div>
             <div className="cd-value-title">개발자 생태계</div>
-            <div className="cd-value-desc">전 세계에서 가장 많은 개발자가 이더리움 위에서 앱을 만들고 있어요</div>
+            <div className="cd-value-desc">월 활성 개발자 약 <strong>7,000명</strong> — 모든 블록체인 중 1위. 앱이 많을수록 사용 이유가 늘어나요</div>
           </div>
           <div className="cd-value-card">
             <div className="cd-value-icon">{'\u{1F4B0}'}</div>
             <div className="cd-value-title">디파이(금융 서비스)</div>
-            <div className="cd-value-desc">은행 없이 빌려주고, 빌리고, 이자를 받는 서비스가 이더리움 위에서 돌아가요</div>
+            <div className="cd-value-desc">이더리움에 맡겨진 자금 약 <strong>80조원</strong>. 전체 디파이의 60% 이상이 이더리움 기반이에요</div>
           </div>
           <div className="cd-value-card">
             <div className="cd-value-icon">{'\u{1F525}'}</div>
             <div className="cd-value-title">수수료 소각</div>
-            <div className="cd-value-desc">이더리움을 쓸 때마다 일부가 사라져요. 사용이 늘면 총량이 줄어드는 구조예요</div>
+            <div className="cd-value-desc">지난 1년간 약 <strong>130만 ETH</strong>가 소각됐어요. 사용이 늘면 총량이 줄어드는 구조예요</div>
           </div>
+        </div>
+      </div>
+
+      <div className="section-divider" />
+      {/* Timeline — 10-year history */}
+      <div className="cd-info-block">
+        <h3 className="cd-section-title" id="sec-timeline">10년간 어떻게 여기까지 왔을까?</h3>
+        <div className="cd-timeline">
+          {MILESTONES.map((m, i) => (
+            <div key={i} className="cd-timeline-item">
+              <div className="cd-timeline-left">
+                <div className="cd-timeline-year">{m.year}</div>
+                <div className="cd-timeline-line" />
+              </div>
+              <div className="cd-timeline-content">
+                <div className="cd-timeline-event">{m.event}</div>
+                <div className="cd-timeline-detail">{m.detail}</div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 
@@ -429,21 +512,63 @@ function StatusTab() {
       </div>
 
       <div className="section-divider" />
+      {/* Behavioral signals — what are people doing */}
+      <div className="cd-info-block">
+        <h3 className="cd-section-title" id="sec-behavior">지금 사람들은 어떻게 움직이고 있을까?</h3>
+        <div className="cd-behavior-cards">
+          {BEHAVIOR_SIGNALS.map((s, i) => (
+            <div key={i} className="cd-behavior-card">
+              <div className="cd-behavior-icon">{s.icon}</div>
+              <div className="cd-behavior-body">
+                <div className="cd-behavior-label">{s.label}</div>
+                <div className="cd-behavior-value">{s.value}</div>
+                <div className="cd-behavior-sub">{s.sub}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="cd-insight-card" style={{ marginTop: 12 }}>
+          <div className="cd-insight-icon">{'\u{1F4A1}'}</div>
+          <div className="cd-insight-text">
+            ZKAP 사용자 데이터 기준이며, 전체 시장과 다를 수 있어요
+          </div>
+        </div>
+      </div>
+
+      <div className="section-divider" />
+      {/* Network health */}
+      <div className="cd-info-block">
+        <h3 className="cd-section-title" id="sec-health">네트워크는 건강할까?</h3>
+        <div className="cd-health-subtitle">이더리움 네트워크가 실제로 잘 돌아가고 있는지 확인해요</div>
+        <div className="cd-health-list">
+          {NETWORK_HEALTH.map((h, i) => (
+            <div key={i} className="cd-health-row">
+              <div className="cd-health-label">{h.label}</div>
+              <div className="cd-health-right">
+                <div className="cd-health-value">{h.value}</div>
+                <div className={`cd-health-status cd-health-${h.statusType}`}>{h.status}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="section-divider" />
       {/* Institutional context */}
       <div className="cd-info-block">
         <h3 className="cd-section-title" id="sec-context">기관·생태계 동향</h3>
         <div className="cd-context-cards">
           <div className="cd-context-card">
             <div className="cd-context-badge">기관</div>
-            <div className="cd-context-text">미국 ETH 현물 ETF 출시 이후 기관 자금 유입 중</div>
+            <div className="cd-context-text">미국 ETH 현물 ETF 출시 이후 기관 자금 유입 중. 이번 달 순유입 약 <strong>2.1조원</strong></div>
           </div>
           <div className="cd-context-card">
             <div className="cd-context-badge">네트워크</div>
-            <div className="cd-context-text">일 평균 활성 주소 약 50만 개, 꾸준한 사용량 유지</div>
+            <div className="cd-context-text">일 평균 활성 주소 약 50만 개. 작년 동기(42만 개) 대비 <strong>19% 증가</strong></div>
           </div>
           <div className="cd-context-card">
             <div className="cd-context-badge">공급</div>
-            <div className="cd-context-text">PoS 전환 후 순발행량 감소 추세 (수수료 소각 효과)</div>
+            <div className="cd-context-text">PoS 전환 후 순발행량 감소 추세. 최근 30일간 약 <strong>3.2만 ETH 순감소</strong></div>
           </div>
         </div>
       </div>

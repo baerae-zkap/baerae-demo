@@ -37,7 +37,7 @@ export default function Home() {
   const [indicatorVisible, setIndicatorVisible] = useState(true);
   const [stakingPasskey, setStakingPasskey] = useState(false);
   const [selectedExchange, setSelectedExchange] = useState(null);
-  const [coinDetailTab, setCoinDetailTab] = useState('소개');
+  const [coinDetailTab, setCoinDetailTab] = useState('차트');
   const [scrollToId, setScrollToId] = useState(null);
 
   const annoClick = useCallback((tab, sectionId) => {
@@ -273,7 +273,7 @@ export default function Home() {
       <div className="anno-panel">
         <div className="anno-header">
           <div className="anno-title">코인 상세 페이지 기획안</div>
-          <div className="anno-subtitle">ZKAP UX 개선 · 2026.03.26 미팅 반영</div>
+          <div className="anno-subtitle">ZKAP UX 개선 · 2차 개선 (2026.03.27)</div>
         </div>
 
         <div className="anno-section anno-clickable" onClick={() => annoClick('소개', 'sec-hero')}>
@@ -281,19 +281,19 @@ export default function Home() {
           <div className="anno-text">아이콘, 이름, 쉬운 태그, 현재가, 변동률, 보유자 수. 처음 보는 사람도 이게 뭔지 한눈에 파악.</div>
         </div>
 
-        <div className="anno-section anno-clickable" onClick={() => annoClick('소개', 'sec-tabs')}>
-          <div className="anno-label">탭 구조 변경</div>
-          <div className="anno-text">소개 | 현황 | 차트 | 내 보유 — 4탭. 차트가 아니라 '소개'가 기본. "무엇을, 언제"를 차트보다 먼저 판단하도록.</div>
+        <div className="anno-section anno-clickable" onClick={() => annoClick('차트', 'sec-tabs')}>
+          <div className="anno-label">탭 구조 (2차 개선)</div>
+          <div className="anno-text">차트 | 소개 | 현황 | 내 보유 — 차트가 첫 탭(사용자 기대에 부합). 단, 소개·현황 탭의 정보 밀도를 대폭 강화해 "무엇을/언제" 판단을 뒷받침.</div>
         </div>
 
         <div className="anno-section anno-clickable" onClick={() => annoClick('소개', 'sec-qna')}>
           <div className="anno-label">소개 탭 — 이 코인이 어떤 애인지</div>
-          <div className="anno-text">한줄 요약 · 가치 원천 · 기본 정보 · 보유자 분포. 코인을 처음 접하는 사용자도 "이게 뭔지, 왜 가치가 있는지" 쉽게 파악.</div>
+          <div className="anno-text">Q&A + <strong>의도 vs 현실</strong>(약속한 것 vs 실제 결과) + 가치 원천(구체적 수치) + <strong>10년 타임라인</strong> + 기본 정보 + 보유자 분포. 단순 소개를 넘어 "약속을 지키고 있는지"까지.</div>
         </div>
 
         <div className="anno-section anno-clickable" onClick={() => annoClick('현황', 'sec-market')}>
           <div className="anno-label">현황 탭 — 지금 어떤 상태인지</div>
-          <div className="anno-text">오늘의 시장 변동 · 52주 위치 · 최근 주요 소식 · 과거 수익 시뮬 · 기관/생태계 동향. 타이밍 판단에 필요한 맥락 정보.</div>
+          <div className="anno-text">오늘의 변동 · 52주 위치 · 뉴스 · 과거 수익 시뮬 + <strong>사용자 행동 신호</strong>(매수/매도 비율, 신규 보유자) + <strong>네트워크 건강 지표</strong>(거래량, 수수료, 스테이킹) + 기관 동향(구체적 수치).</div>
         </div>
 
         <div className="anno-section anno-clickable" onClick={() => annoClick('차트', 'sec-chart')}>
@@ -307,13 +307,15 @@ export default function Home() {
         </div>
 
         <div className="anno-section">
-          <div className="anno-label">3/26 미팅 반영 사항</div>
+          <div className="anno-label">2차 개선 (3/27)</div>
           <div className="anno-text">
-            {'\u2022'} 차트 우선 → 소개 우선으로 전환 (무엇을/언제 판단 선행)<br/>
-            {'\u2022'} 했제와 그랬제 제거 → 최근 주요 소식으로 대체<br/>
-            {'\u2022'} 수익 랭킹 제거 (유도성 콘텐츠)<br/>
-            {'\u2022'} "가치는 어디서 올까?" 섹션 신규 추가<br/>
-            {'\u2022'} 기관·생태계 동향 섹션 신규 추가
+            {'\u2022'} 차트를 다시 첫 번째 탭으로 복원 (사용자 기대에 맞춤)<br/>
+            {'\u2022'} "말한 것 vs 실제로 된 것" 의도-현실 비교 섹션 추가<br/>
+            {'\u2022'} 10년 타임라인으로 코인 역사 맥락 제공<br/>
+            {'\u2022'} 가치 원천에 구체적 수치 추가 (개발자 7천명, TVL 80조원 등)<br/>
+            {'\u2022'} 사용자 행동 신호 섹션 추가 (매수/매도 비율, 신규 보유자)<br/>
+            {'\u2022'} 네트워크 건강 지표 추가 (거래량, 수수료, 스테이킹)<br/>
+            {'\u2022'} 기관 동향에 구체적 수치 보강
           </div>
         </div>
 
