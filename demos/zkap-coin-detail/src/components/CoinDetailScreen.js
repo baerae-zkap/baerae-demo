@@ -125,9 +125,9 @@ const BEHAVIOR_SIGNALS = [
 ];
 
 const NETWORK_HEALTH = [
-  { label: '하루 거래 건수', value: '약 120만 건', status: '평소 수준', statusType: 'normal', helper: '하루에 일어나는 거래 수' },
-  { label: '이용 수수료', value: '0.5~2달러', status: '낮은 편', statusType: 'good', helper: '보내거나 사용할 때 드는 비용' },
-  { label: '코인 맡긴 비율', value: '전체의 28%', status: '꾸준히 늘어나는 중', statusType: 'good', helper: '이자 위해 ETH를 맡긴 비율' },
+  { label: '하루 거래 건수', value: '약 120만 건', status: '평소 수준', statusType: 'normal' },
+  { label: '이용 수수료', value: '0.5~2달러', status: '낮은 편', statusType: 'good', helper: '보내거나 쓸 때 비용' },
+  { label: '코인 맡긴 비율', value: '전체의 28%', status: '꾸준히 증가 중', statusType: 'good' },
 ];
 
 // SVG chart path data for a realistic looking price chart
@@ -467,7 +467,6 @@ function IntroTab() {
       {/* Empty/limited info pattern — for coins with less information */}
       <div className="cd-info-block">
         <h3 className="cd-section-title" id="sec-limited-info">정보가 부족한 코인은 이렇게 보여요</h3>
-        <div className="cd-section-helper">데이터가 부족한 코인은 이렇게 안내해요</div>
         <div className="cd-empty-pattern-card">
           <div className="cd-empty-pattern-icon">{'\u{1F50D}'}</div>
           <div className="cd-empty-pattern-body">
@@ -523,19 +522,16 @@ function StatusTab() {
           <div className="cd-key-metric">
             <div className="cd-key-metric-label">전체 가치</div>
             <div className="cd-key-metric-value">630조원</div>
-            <div className="cd-key-metric-helper">전체 시장 가격</div>
           </div>
           <div className="cd-key-metric-divider" />
           <div className="cd-key-metric">
-            <div className="cd-key-metric-label">하루 거래 금액</div>
+            <div className="cd-key-metric-label">하루 거래량</div>
             <div className="cd-key-metric-value">12.4조원</div>
-            <div className="cd-key-metric-helper">24시간 거래 금액</div>
           </div>
           <div className="cd-key-metric-divider" />
           <div className="cd-key-metric">
             <div className="cd-key-metric-label">한 달 변화</div>
             <div className="cd-key-metric-value cd-text-red">+18.3%</div>
-            <div className="cd-key-metric-helper">30일 전 대비</div>
           </div>
         </div>
       </div>
@@ -593,7 +589,6 @@ function StatusTab() {
       {/* Past performance */}
       <div className="cd-info-block">
         <h3 className="cd-section-title" id="sec-timing">그때 샀으면 지금 얼마가 됐을까?</h3>
-        <div className="cd-section-helper">그때 샀다면 지금 얼마나 변했을까?</div>
         <div className="cd-perf-cards">
           <div className="cd-perf-card cd-perf-positive">
             <div className="cd-perf-period">1개월 전</div>
@@ -623,7 +618,6 @@ function StatusTab() {
       {/* Behavioral signals — what are people doing */}
       <div className="cd-info-block">
         <h3 className="cd-section-title" id="sec-behavior">지금 사람들은 어떻게 하고 있을까?</h3>
-        <div className="cd-section-helper">ZKAP 사용자들의 행동 패턴</div>
         <div className="cd-behavior-cards">
           {BEHAVIOR_SIGNALS.map((s, i) => (
             <div key={i} className="cd-behavior-card">
@@ -648,13 +642,12 @@ function StatusTab() {
       {/* Network health */}
       <div className="cd-info-block">
         <h3 className="cd-section-title" id="sec-health">이 네트워크는 잘 돌아가고 있을까?</h3>
-        <div className="cd-section-helper">네트워크 건강 지표</div>
         <div className="cd-health-list">
           {NETWORK_HEALTH.map((h, i) => (
             <div key={i} className="cd-health-row">
               <div className="cd-health-left-col">
                 <div className="cd-health-label">{h.label}</div>
-                <div className="cd-health-helper">{h.helper}</div>
+                {h.helper && <div className="cd-health-helper">{h.helper}</div>}
               </div>
               <div className="cd-health-right">
                 <div className="cd-health-value">{h.value}</div>
@@ -669,7 +662,6 @@ function StatusTab() {
       {/* Institutional context */}
       <div className="cd-info-block">
         <h3 className="cd-section-title" id="sec-context">큰손들은 어떻게 움직이고 있을까?</h3>
-        <div className="cd-section-helper">기관·펀드의 움직임</div>
         <div className="cd-context-cards">
           <div className="cd-context-card">
             <div className="cd-context-badge">기관 자금</div>
