@@ -2309,7 +2309,7 @@ img[src*="bybit"] {
 
 /* ---- Hero ---- */
 .cd-hero {
-  padding: 4px 24px 24px;
+  padding: 8px 24px 28px;
   flex-shrink: 0;
 }
 .cd-hero-top {
@@ -2365,23 +2365,26 @@ img[src*="bybit"] {
   color: #8a8e9b;
 }
 .cd-hero-price {
-  font-size: 28px;
+  font-size: 30px;
   font-weight: 700;
   color: #1a1e2e;
   letter-spacing: -1px;
   line-height: 1.2;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 .cd-hero-change {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 .cd-hero-change-pct {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 700;
   color: #ef4444;
+  background: rgba(239, 68, 68, 0.06);
+  padding: 3px 10px;
+  border-radius: 8px;
 }
 .cd-hero-change-amt {
   font-size: 14px;
@@ -2393,11 +2396,14 @@ img[src*="bybit"] {
   color: #b0b3bd;
 }
 .cd-hero-social-proof {
-  margin-top: 10px;
+  margin-top: 12px;
   font-size: 13px;
   font-weight: 600;
   color: #8a8e9b;
   letter-spacing: -0.2px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 /* ---- Tab bar ---- */
@@ -2470,7 +2476,7 @@ img[src*="bybit"] {
   border-radius: 0;
   box-shadow: none;
   margin: 0;
-  padding: 0 20px 16px;
+  padding: 0 20px 24px;
 }
 
 #sec-info {
@@ -2479,18 +2485,19 @@ img[src*="bybit"] {
 }
 
 .section-divider {
-  height: 8px;
-  background: #F5F6F8;
+  height: 10px;
+  background: #F2F3F5;
 }
 
 .cd-info-block > .cd-section-title {
-  padding: 20px 0 12px;
+  padding: 24px 0 14px;
   margin-bottom: 0;
   font-size: 17px;
+  line-height: 1.35;
 }
 
 .cd-info-block > .cd-section-header-row {
-  padding: 20px 0 12px;
+  padding: 24px 0 14px;
 }
 .cd-info-block > .cd-section-header-row .cd-section-title {
   font-size: 17px;
@@ -2498,7 +2505,7 @@ img[src*="bybit"] {
 }
 
 .cd-info-block > .cd-section-subtitle {
-  padding: 20px 0 12px;
+  padding: 24px 0 14px;
   margin-bottom: 0;
   font-size: 17px;
 }
@@ -2718,11 +2725,11 @@ img[src*="bybit"] {
   color: #8a8e9b;
 }
 .cd-52week-bar {
-  height: 6px;
+  height: 8px;
   background: rgba(0, 0, 0, 0.06);
   border-radius: 100px;
   position: relative;
-  margin: 16px 0 20px;
+  margin: 16px 0 22px;
 }
 .cd-52week-fill {
   height: 100%;
@@ -2738,11 +2745,12 @@ img[src*="bybit"] {
   align-items: center;
 }
 .cd-52week-marker-dot {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   background: #fff;
   border: 3px solid #00C8BE;
+  box-shadow: 0 2px 6px rgba(0, 200, 190, 0.25);
 }
 .cd-52week-result {
   text-align: center;
@@ -2765,7 +2773,7 @@ img[src*="bybit"] {
 }
 .cd-perf-card {
   border-radius: 14px;
-  padding: 16px 12px;
+  padding: 18px 12px;
   text-align: center;
 }
 .cd-perf-positive {
@@ -2889,25 +2897,26 @@ img[src*="bybit"] {
   gap: 10px;
 }
 .cd-qna-card {
-  background: transparent;
+  background: #f8f9fb;
   border: none;
-  border-bottom: 1px solid #F5F6F8;
-  border-radius: 0;
+  border-radius: 14px;
   padding: 18px 20px;
 }
 .cd-qna-label {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
   color: #00C8BE;
   margin-bottom: 8px;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
 }
 .cd-qna-card:last-child {
   border-bottom: none;
 }
 .cd-qna-a {
   font-size: 14px;
-  color: #888888;
-  line-height: 1.75;
+  color: #6b7080;
+  line-height: 1.7;
   letter-spacing: -0.2px;
 }
 .cd-qna-a strong {
@@ -2920,20 +2929,20 @@ img[src*="bybit"] {
 .cd-people-stats {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 8px;
+  gap: 10px;
 }
 .cd-people-stat-card {
-  background: transparent;
-  border: 1px solid #F5F6F8;
+  background: #f8f9fb;
+  border: none;
   border-radius: 14px;
-  padding: 18px 16px;
+  padding: 20px 16px;
   text-align: center;
 }
 .cd-people-stat-value {
-  font-size: 22px;
-  font-weight: 700;
+  font-size: 26px;
+  font-weight: 800;
   color: #00C8BE;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
   letter-spacing: -0.5px;
 }
 .cd-people-stat-label {
@@ -3081,10 +3090,10 @@ img[src*="bybit"] {
 }
 .cd-coheld-card {
   min-width: 120px;
-  background: transparent;
-  border: 1px solid #F5F6F8;
-  border-radius: 12px;
-  padding: 16px 14px;
+  background: #f8f9fb;
+  border: none;
+  border-radius: 14px;
+  padding: 18px 14px;
   text-align: center;
   flex-shrink: 0;
 }
@@ -3457,15 +3466,15 @@ img[src*="bybit"] {
   text-align: center;
 }
 .cd-key-metric-label {
-  font-size: 13px;
+  font-size: 12px;
   color: #888888;
-  font-weight: 400;
-  margin-bottom: 8px;
+  font-weight: 500;
+  margin-bottom: 6px;
   letter-spacing: -0.1px;
 }
 .cd-key-metric-value {
-  font-size: 15px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 700;
   color: #1A1A1A;
   letter-spacing: -0.3px;
 }
@@ -4040,28 +4049,37 @@ img[src*="bybit"] {
 .cd-today-items {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
 }
 .cd-today-item {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+  background: #f8f9fb;
+  border-radius: 12px;
+  padding: 14px 16px;
 }
 .cd-today-icon {
-  font-size: 16px;
+  font-size: 18px;
   flex-shrink: 0;
-  width: 24px;
-  text-align: center;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-radius: 10px;
 }
 .cd-today-text {
-  font-size: 15px;
-  color: #888888;
+  font-size: 14.5px;
+  color: #6b7080;
   line-height: 1.5;
   letter-spacing: -0.2px;
 }
 .cd-today-text strong {
   color: #1A1A1A;
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 15.5px;
 }
 
 /* ===== Product info table ===== */
@@ -4075,7 +4093,7 @@ img[src*="bybit"] {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 14px 0;
+  padding: 15px 0;
   border-bottom: 1px solid #F0F0F0;
 }
 .cd-product-row:last-child {
@@ -4265,13 +4283,14 @@ img[src*="bybit"] {
 .cd-news-list {
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 10px;
 }
 .cd-news-card {
   display: flex;
-  gap: 12px;
-  padding: 14px 0;
-  border-bottom: 1px solid #f3f4f6;
+  gap: 14px;
+  padding: 16px 16px;
+  background: #f8f9fb;
+  border-radius: 14px;
 }
 .cd-news-card:last-child {
   border-bottom: none;
@@ -4279,13 +4298,13 @@ img[src*="bybit"] {
 .cd-news-icon {
   font-size: 20px;
   flex-shrink: 0;
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f8f9fb;
-  border-radius: 10px;
+  background: #fff;
+  border-radius: 12px;
 }
 .cd-news-body {
   flex: 1;
@@ -4296,11 +4315,11 @@ img[src*="bybit"] {
   justify-content: space-between;
   align-items: baseline;
   gap: 8px;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 .cd-news-title {
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 700;
   color: #1a1e2e;
   line-height: 1.4;
 }
@@ -4313,36 +4332,56 @@ img[src*="bybit"] {
 .cd-news-desc {
   font-size: 13px;
   color: #8a8e9b;
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
 /* ===== 가치는 어디서 올까 — value cards ===== */
 .cd-value-cards {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 .cd-value-card {
   background: #f8f9fb;
   border-radius: 14px;
-  padding: 16px;
+  padding: 18px 20px;
   display: flex;
-  flex-direction: column;
-  gap: 4px;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 14px;
 }
 .cd-value-icon {
-  font-size: 20px;
-  margin-bottom: 2px;
+  font-size: 24px;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-radius: 12px;
+}
+.cd-value-right {
+  flex: 1;
+  min-width: 0;
 }
 .cd-value-title {
   font-size: 14px;
   font-weight: 700;
   color: #1a1e2e;
+  margin-bottom: 4px;
+}
+.cd-value-stat {
+  font-size: 20px;
+  font-weight: 800;
+  color: #00C8BE;
+  letter-spacing: -0.5px;
+  margin-bottom: 4px;
 }
 .cd-value-desc {
   font-size: 13px;
   color: #8a8e9b;
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
 /* ===== 기관·생태계 동향 — context cards ===== */
@@ -4353,11 +4392,11 @@ img[src*="bybit"] {
 }
 .cd-context-card {
   display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  padding: 14px 16px;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px 18px;
   background: #f8f9fb;
-  border-radius: 12px;
+  border-radius: 14px;
 }
 .cd-context-badge {
   font-size: 11px;
@@ -4367,12 +4406,18 @@ img[src*="bybit"] {
   padding: 3px 8px;
   border-radius: 6px;
   white-space: nowrap;
-  flex-shrink: 0;
+  align-self: flex-start;
+}
+.cd-context-stat {
+  font-size: 18px;
+  font-weight: 800;
+  color: #1a1e2e;
+  letter-spacing: -0.5px;
 }
 .cd-context-text {
   font-size: 13px;
-  color: #4a4e5a;
-  line-height: 1.5;
+  color: #6b7080;
+  line-height: 1.55;
 }
 
 /* ===== Intent vs Reality (의도 vs 현실) ===== */
@@ -4385,12 +4430,12 @@ img[src*="bybit"] {
 .cd-ivr-list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 .cd-ivr-card {
   background: #f8f9fb;
   border-radius: 14px;
-  padding: 16px;
+  padding: 18px 18px;
 }
 .cd-ivr-row {
   display: flex;
@@ -4475,7 +4520,7 @@ img[src*="bybit"] {
   display: none;
 }
 .cd-timeline-content {
-  padding-bottom: 18px;
+  padding-bottom: 22px;
   flex: 1;
 }
 .cd-timeline-item:last-child .cd-timeline-content {
@@ -4501,22 +4546,22 @@ img[src*="bybit"] {
 }
 .cd-behavior-card {
   display: flex;
-  align-items: flex-start;
-  gap: 12px;
+  align-items: center;
+  gap: 14px;
   background: #f8f9fb;
   border-radius: 14px;
-  padding: 14px 16px;
+  padding: 16px 18px;
 }
 .cd-behavior-icon {
-  font-size: 20px;
+  font-size: 22px;
   flex-shrink: 0;
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: #fff;
-  border-radius: 10px;
+  border-radius: 12px;
 }
 .cd-behavior-body {
   flex: 1;
@@ -4525,18 +4570,19 @@ img[src*="bybit"] {
 .cd-behavior-label {
   font-size: 12px;
   color: #8a8e9b;
-  margin-bottom: 2px;
+  margin-bottom: 3px;
 }
 .cd-behavior-value {
-  font-size: 15px;
-  font-weight: 700;
+  font-size: 17px;
+  font-weight: 800;
   color: #1a1e2e;
+  letter-spacing: -0.3px;
 }
 .cd-behavior-sub {
   font-size: 12px;
   color: #00C8BE;
-  margin-top: 2px;
-  font-weight: 500;
+  margin-top: 3px;
+  font-weight: 600;
 }
 
 /* ===== Network Health (네트워크 건강 지표) ===== */
@@ -4558,7 +4604,7 @@ img[src*="bybit"] {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 14px 16px;
+  padding: 16px 18px;
 }
 .cd-health-row + .cd-health-row {
   border-top: 1px solid #ecedf0;
@@ -4572,9 +4618,10 @@ img[src*="bybit"] {
   text-align: right;
 }
 .cd-health-value {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 700;
   color: #1a1e2e;
+  letter-spacing: -0.3px;
 }
 .cd-health-status {
   font-size: 11.5px;

@@ -61,19 +61,19 @@ const RECENT_NEWS = [
     date: '3월 24일',
     icon: '\u{1F680}',
     title: 'Dencun 업그레이드 완료',
-    desc: '이더리움 네트워크 수수료가 크게 낮아졌어요. 레이어2 거래가 더 빨라지고 저렴해졌습니다.',
+    desc: '수수료 대폭 인하, 레이어2 거래 더 빠르고 저렴해짐',
   },
   {
     date: '3월 20일',
     icon: '\u{1F3E6}',
     title: '미국 ETH 현물 ETF 순유입 지속',
-    desc: '기관 투자자들의 자금이 3주 연속 유입되고 있어요.',
+    desc: '기관 자금 3주 연속 유입 중',
   },
   {
     date: '3월 18일',
     icon: '\u{1F4C8}',
     title: '디파이 예치금(TVL) 증가세',
-    desc: '이더리움 기반 디파이 프로토콜에 묶인 자금이 최근 한 달간 15% 늘었어요.',
+    desc: '이더리움 디파이 자금 최근 한 달간 15% 증가',
   },
 ];
 
@@ -88,17 +88,17 @@ const MILESTONES = [
 const INTENT_VS_REALITY = [
   {
     intent: '"전 세계 누구나 쓸 수 있는 컴퓨터"',
-    reality: '디파이(금융)와 NFT에 가장 많이 쓰이고 있어요. 게임·소셜 앱은 아직 초기 단계.',
+    reality: '디파이·NFT에 집중. 게임·소셜은 아직 초기',
     verdict: '핵심 방향은 유지, 실사용은 금융 쪽에 집중',
   },
   {
     intent: '"빠르고 저렴한 거래"',
-    reality: '직접 거래는 느리고 비쌀 수 있지만, 레이어2(보조 네트워크)로 보완 중이에요.',
+    reality: '직접 거래는 아직 비싸지만, 레이어2로 보완 중',
     verdict: '문제를 인식하고 해결 중',
   },
   {
     intent: '"탈중앙화된 운영"',
-    reality: '약 90만 명이 검증에 참여 중. 소수 집중 우려는 있지만 다른 코인보다 참여자가 많아요.',
+    reality: '약 90만 명 검증 참여. 다른 코인보다 참여자 많음',
     verdict: '상대적으로 잘 지키고 있는 편',
   },
 ];
@@ -168,7 +168,7 @@ export default function CoinDetailScreen({ onBack, onBuy, activeTab, setActiveTa
           <span className="cd-hero-change-amt">+210,500원</span>
         </div>
         <div className="cd-hero-timestamp">3월 25일 00:12 기준</div>
-        <div className="cd-hero-social-proof">1,247명이 보유 중</div>
+        <div className="cd-hero-social-proof"><span style={{ fontSize: 15 }}>{'\u{1F465}'}</span> 1,247명이 보유 중</div>
       </div>
 
       {/* Tab bar */}
@@ -261,18 +261,27 @@ function IntroTab() {
         <div className="cd-value-cards">
           <div className="cd-value-card">
             <div className="cd-value-icon">{'\u{1F3D7}'}</div>
-            <div className="cd-value-title">개발자 생태계</div>
-            <div className="cd-value-desc">월 활성 개발자 약 <strong>7,000명</strong> — 모든 블록체인 중 1위. 앱이 많을수록 사용 이유가 늘어나요</div>
+            <div className="cd-value-right">
+              <div className="cd-value-title">개발자 생태계</div>
+              <div className="cd-value-stat">7,000명</div>
+              <div className="cd-value-desc">월 활성 개발자 — 모든 블록체인 중 1위</div>
+            </div>
           </div>
           <div className="cd-value-card">
             <div className="cd-value-icon">{'\u{1F4B0}'}</div>
-            <div className="cd-value-title">디파이(금융 서비스)</div>
-            <div className="cd-value-desc">이더리움에 맡겨진 자금 약 <strong>80조원</strong>. 전체 디파이의 60% 이상이 이더리움 기반이에요</div>
+            <div className="cd-value-right">
+              <div className="cd-value-title">디파이(금융 서비스)</div>
+              <div className="cd-value-stat">80조원</div>
+              <div className="cd-value-desc">예치 자금 — 전체 디파이의 60% 이상</div>
+            </div>
           </div>
           <div className="cd-value-card">
             <div className="cd-value-icon">{'\u{1F525}'}</div>
-            <div className="cd-value-title">수수료 소각</div>
-            <div className="cd-value-desc">지난 1년간 약 <strong>130만 ETH</strong>가 소각됐어요. 사용이 늘면 총량이 줄어드는 구조예요</div>
+            <div className="cd-value-right">
+              <div className="cd-value-title">수수료 소각</div>
+              <div className="cd-value-stat">130만 ETH</div>
+              <div className="cd-value-desc">지난 1년간 소각 — 사용 늘면 총량 감소</div>
+            </div>
           </div>
         </div>
       </div>
@@ -560,15 +569,18 @@ function StatusTab() {
         <div className="cd-context-cards">
           <div className="cd-context-card">
             <div className="cd-context-badge">기관</div>
-            <div className="cd-context-text">미국 ETH 현물 ETF 출시 이후 기관 자금 유입 중. 이번 달 순유입 약 <strong>2.1조원</strong></div>
+            <div className="cd-context-stat">2.1조원</div>
+            <div className="cd-context-text">이번 달 ETH 현물 ETF 순유입액. 기관 자금 유입 지속 중</div>
           </div>
           <div className="cd-context-card">
             <div className="cd-context-badge">네트워크</div>
-            <div className="cd-context-text">일 평균 활성 주소 약 50만 개. 작년 동기(42만 개) 대비 <strong>19% 증가</strong></div>
+            <div className="cd-context-stat">50만 개 (+19%)</div>
+            <div className="cd-context-text">일 평균 활성 주소. 작년 동기(42만 개) 대비 증가</div>
           </div>
           <div className="cd-context-card">
             <div className="cd-context-badge">공급</div>
-            <div className="cd-context-text">PoS 전환 후 순발행량 감소 추세. 최근 30일간 약 <strong>3.2만 ETH 순감소</strong></div>
+            <div className="cd-context-stat">3.2만 ETH 순감소</div>
+            <div className="cd-context-text">최근 30일 기준. PoS 전환 후 순발행량 감소 추세</div>
           </div>
         </div>
       </div>
