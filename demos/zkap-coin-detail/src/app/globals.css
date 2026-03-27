@@ -2410,8 +2410,7 @@ img[src*="bybit"] {
 .cd-tab-bar {
   display: flex;
   border-bottom: 1px solid #ecedf0;
-  padding: 48px 24px 0;
-  margin-top: -48px;
+  padding: 0 24px;
   flex-shrink: 0;
   position: sticky;
   top: 0;
